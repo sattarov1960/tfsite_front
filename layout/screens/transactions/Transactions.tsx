@@ -1,9 +1,13 @@
 import {FC} from "react";
+import Wrap from "@/layout/wrap/Wrap";
+import {Transactions} from "@/layout/components/transactions/main";
 
-const Transactions: FC = () => {
+const TransactionsScreen: FC = () => {
     return (
-        <h1>Transactions</h1>
+        <Wrap>
+            <Transactions/>
+        </Wrap>
     )
 }
 
-export default Transactions
+export default TransactionsScreen

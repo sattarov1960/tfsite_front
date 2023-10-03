@@ -1,0 +1,67 @@
+.ticketsKeys_frstPart {
+    @apply pt-[70px] lg:pt-[150px] text-center;
+}
+.ticketsKeys_part_swap_sub_block {
+    @apply flex items-baseline justify-center;
+}
+.ticketsKeys_part_swap_sub_block_mainText {
+    @apply text-[30px] lg:text-[71px] text-[#FFFFFF] font-[600] leading-[46px] lg:leading-[72px];
+}
+.ticketsKeys_part_swap_sub_block_subText {
+    @apply text-[#F2F1F899] text-[10px] lg:text-[22px] font-[400] leading-[16px] lg:leading-[26px] ml-[6px] lg:ml-0;
+}
+.ticketsKeys_part_swap_button {
+    @apply w-[140px] lg:w-[304px] h-[40px] lg:h-[70px] rounded-[6px] mx-auto lg:mx-0 lg:rounded-[7px] bg-[#FF7710] flex items-center justify-center text-[16px] lg:text-[22px] text-[#F2F1F8] font-[600] lg:font-[700] leading-[20px] lg:uppercase mt-[4px] lg:mt-[40px];
+}
+.ticketsKeys_part_swap_sub_blockBottom {
+    @apply flex items-center justify-center mt-[10px] lg:mt-[20px];
+}
+.ticketsKeys_part_swap_sub_block_subTextWhite {
+    @apply text-[10px] lg:text-[22px] text-[#F2F1F8] font-[500] leading-[16px] lg:leading-[26px];
+}
+.key {
+    @apply w-[86px] lg:w-[260px] h-[86px] lg:h-[260px] mx-[25px] lg:mx-[50px] 2xl:mx-[163px];
+}
+.ticketsKeys_part_swap_sub_block_subText_underButton {
+    @apply text-[10px] lg:text-[22px] text-[#F2F1F899] font-[500] lg:font-[400] leading-[16px] lg:leading-[26px];
+}
+.line_between_blocks {
+    @apply h-[2px] bg-[#f2f1f81f] w-full mt-[40px] lg:mt-[110px] border-none;
+}
+.ticketsKeys_scndPart {
+    @apply pt-[40px] lg:pt-[90px] text-center;
+}
+.ticketsKeys_sub_part {
+    @apply mx-[20px] lg:mx-[25px] 2xl:mx-[120px];
+}
+.ticketsKeys_block_mainText {
+    @apply text-[22px] lg:text-[56px] font-[800] leading-[30px] lg:leading-[72px];
+    background: linear-gradient(90deg, #8E9DFF 0.22%, #FC8080 57.51%, #FF9444 99.94%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.ticketsKeys_block_subText {
+    @apply text-[14px] lg:text-[32px] text-[#F2F1F899] font-[400] leading-[20px] lg:leading-[36px] mt-[6px] lg:mt-[16px];
+}
+.ticketsKeys_block_currency {
+    @apply flex items-center justify-center mt-[20px] lg:mt-[73px];
+}
+.ticketsKeys_block_currency_text {
+    @apply text-[14px] lg:text-[32px] text-[#919CFB] font-[400] leading-[20px] lg:leading-[40px];
+}
+.ticketsKeys_block_currency_change {
+    @apply flex items-center justify-center rounded-[3px] lg:rounded-[6px] border-[2px] border-[#F2F1F829] w-[80px] lg:w-[120px] h-[32px] lg:h-[50px] ml-[8px] lg:ml-[14px] cursor-pointer;
+}
+.ticketsKeys_block_currency_change_text {
+    @apply text-[14px] lg:text-[22px] text-[#F2F1F8] font-[600] lg:font-[400] leading-[20px] lg:leading-[22px];
+}
+.ticketsKeys_block_currency_change_icon {
+    @apply w-[10px] lg:w-[14px] h-[10px] lg:h-[14px] ml-[4px];
+}
+.ticketsKeys_part_swap {
+    @apply mt-[30px] lg:mt-[100px] flex items-center justify-center flex-wrap;
+}
+.ticket {
+    @apply w-[86px] lg:w-[260px] h-[86px] lg:h-[260px] mx-[25px] lg:mx-[50px] 2xl:mx-[163px];
+}

@@ -1,0 +1,12 @@
+.sub_footer_items {
+    @apply hidden lg:flex items-center justify-center flex-wrap;
+}
+.sub_footer_item {
+    @apply whitespace-nowrap text-[16px] text-[#F2F1F866] font-[400] leading-[20px] block lg:ml-[60px] cursor-pointer;
+}
+.sub_footer_items_mobile {
+    @apply w-[10000px] space-y-2 flex flex-col items-center lg:hidden;
+}
+.sub_footer_item_active {
+    @apply text-[#F2F1F8] !important;
+}

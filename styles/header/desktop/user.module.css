@@ -1,5 +1,5 @@
 .menu_profile {
-    @apply flex items-center;
+    @apply max-2xl:mt-[34px] flex flex-row items-center;
 }
 .sub_menu_profile {
     @apply mr-[12px];
@@ -19,4 +19,10 @@
 
 .menu_profile_img {
     @apply cursor-pointer w-[50px] h-[50px] rounded-[8px];
+}
+.wrap_desktop{
+    @apply max-2xl:ml-[25px] max-2xl:flex max-2xl:justify-start
+}
+.sub_menu_balance_top_icon{
+    @apply cursor-pointer
 }

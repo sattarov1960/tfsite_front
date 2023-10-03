@@ -1,0 +1,15 @@
+.footer {
+    @apply mt-[100px] lg:mt-[150px] pb-[50px] lg:pb-[78px] lg:px-[120px];
+}
+.sub_footer {
+    @apply flex items-center justify-between flex-wrap;
+}
+.sub_footer_top {
+    @apply max-2xl:flex;
+}
+.sub_footer_logo {
+     @apply w-[204px] h-[66px] lg:h-[132px];
+ }
+.sub_footer_wrap_logo {
+     @apply max-lg:w-full max-lg:flex max-lg:justify-center;
+ }

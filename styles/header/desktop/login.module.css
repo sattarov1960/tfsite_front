@@ -1,7 +1,10 @@
 .login_btn{
-    @apply w-[256px] h-[50px] bg-[#FF7710] flex justify-center items-center space-x-[11px] rounded-[7px]
+    @apply max-2xl:mt-[30px] max-2xl:ml-[24px] w-[151px] h-[34px] space-x-[6px] 2xl:w-[256px] 2xl:h-[50px] bg-[#FF7710] flex justify-center items-center 2xl:space-x-[11px] rounded-[7px]
 }
 
 .login_btn_text{
-    @apply text-[#F2F1F8] text-[16px] leading-[20px] font-semibold;
+    @apply text-[#F2F1F8] text-[11px] leading-[14px] 2xl:text-[16px] 2xl:leading-[20px] font-semibold;
+}
+.login_svg{
+    @apply w-[26px] h-[26px] 2xl:w-[36px] 2xl:h-[36px]
 }

@@ -1,8 +1,6 @@
-'use client';
-
 import { FC } from "react";
 import Link from 'next/link'
-import styles from "@/styles/header/login.module.css"
+import styles from "@/styles/header/desktop/login.module.css"
 import Image from "next/image";
 import {useTranslations} from "next-intl";
 
@@ -10,7 +8,7 @@ import {useTranslations} from "next-intl";
 export const Login: FC = () => {
     const t = useTranslations()
     return (
-        <Link href="http://127.0.0.1:8000/login">
+        <Link href={`${process.env.api}/login`}>
             <div className={styles.login_btn}>
                 <Image
                     src="/login_steam.svg"

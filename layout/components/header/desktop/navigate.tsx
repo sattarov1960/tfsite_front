@@ -4,7 +4,7 @@ import {FC} from "react";
 import {useTranslations} from "next-intl";
 import {usePathname} from "next/navigation";
 import Link from 'next/link'
-import styles from "@/styles/header/navigate.module.css"
+import styles from "@/styles/header/desktop/navigate.module.css"
 import Image from 'next/image'
 
 
@@ -20,7 +20,7 @@ const Navigate: FC = () => {
                         width={21}
                         height={21}
                         alt="Home"
-                        className={styles.menu_item_icon}
+                        className={`${styles.hover_navigate} ${["/ru", "/en", "/blr", "/ua", "/"].includes(pathname) ? "" : styles.menu_item_icon_active}`}
                     />
                     <Link href="/"><span className={`${styles.menu_item_text} ${["/ru", "/en", "/blr", "/ua", "/"].includes(pathname) ? styles.menu_item_text_active : ""}`}>{t("Home")}</span></Link>
                 </div>
@@ -33,7 +33,7 @@ const Navigate: FC = () => {
                         width={22}
                         height={22}
                         alt="BUY/SELL"
-                        className={styles.menu_item_icon}
+                        className={`${styles.hover_navigate} ${pathname.includes("#buy-sell") ? "" : styles.menu_item_icon_active}`}
                     />
                     <Link href="/#buy-sell"><span className={styles.menu_item_text}>{t("Buy/Sell")}</span></Link>
                 </div>
@@ -46,7 +46,7 @@ const Navigate: FC = () => {
                         width={20}
                         height={20}
                         alt="FAQ"
-                        className={styles.menu_item_icon}/>
+                        className={`${styles.hover_navigate} ${pathname.includes("#faq") ? "" : styles.menu_item_icon_active}`}/>
                     <Link href="/#faq"><span className={`${styles.menu_item_text} ${pathname.includes("#faq") ? styles.menu_item_text_active : ""}`}>{t("FAQ")}</span></Link>
                 </div>
                 {pathname.includes("#faq") ? <hr className={styles.menu_item_active_border}/> : null}
@@ -58,7 +58,7 @@ const Navigate: FC = () => {
                         width={20}
                         height={20}
                         alt="Transactions"
-                        className={styles.menu_item_icon}/>
+                        className={`${styles.hover_navigate} ${pathname.includes("transactions") ? "" : styles.menu_item_icon_active}`}/>
                     <Link href="/transactions"><span className={`${styles.menu_item_text} ${pathname.includes("transactions") ? styles.menu_item_text_active : ""}`}>{t("Transactions")}</span></Link>
                 </div>
                 {pathname.includes("/transactions") ? <hr className={styles.menu_item_active_border}/> : null}

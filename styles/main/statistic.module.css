@@ -1,0 +1,31 @@
+.statistic_part {
+    @apply pt-[40px] lg:pt-[110px] px-[120px];
+}
+.statistic_part_wrap {
+    @apply w-full flex justify-center;
+}
+.statistic_part_items {
+    @apply flex items-center justify-between flex-wrap 2xl:w-[1680px];
+}
+.statistic_part_items_wrap {
+    @apply 2xl:flex 2xl:justify-center 2xl:items-center 2xl:w-full;
+}
+.statistic_part_item {
+    @apply w-[260px] lg:w-[405px] h-[80px] lg:h-[160px] rounded-[6px] lg:rounded-[12px] py-[14px] lg:py-[33px];
+    background: linear-gradient(0deg, rgba(145, 156, 251, 0.24) 0%, rgba(231, 116, 190, 0.15) 28.23%, rgba(255, 147, 70, 0.01) 83.45%);
+}
+.statistic_part_itemHeader {
+    @apply flex items-center px-[18px] lg:px-[90px];
+}
+.statistic_part_itemHeader_icon {
+    @apply w-[22px] lg:w-[34px] h-[22px] lg:h-[34px];
+}
+.statistic_part_itemHeader_text {
+    @apply text-[16px] lg:text-[32px] text-[#F2F1F8] font-[600] leading-[22px] lg:leading-[36px] block ml-[10px] lg:ml-[16px] whitespace-nowrap;
+}
+.statistic_part_item_main {
+    @apply px-[18px] lg:px-[90px] mt-[6px] lg:mt-[10px];
+}
+.statistic_part_item_mainText {
+    @apply whitespace-pre-line text-[8px] lg:text-[16px] text-[#F2F1F899] font-[400] leading-[12px] lg:leading-[24px] block max-h-[24px];
+}

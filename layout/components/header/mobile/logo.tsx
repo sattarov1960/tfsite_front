@@ -1,20 +1,26 @@
 import { FC } from "react";
-import styles from "@/styles/header/desktop/logo.module.css"
+import styles from "@/styles/header/mobile/logo.module.css"
 import Image from "next/image";
+import {HeaderLogoMI} from "@/interface/logo";
+import {useStoreUser} from "@/store/user";
+import Link from "next/link";
 
 
-export const HeaderLogo: FC = () => {
+
+export const HeaderLogoM: FC<HeaderLogoMI> = ({width, height}) => {
     return (
-        <div className={styles.logo}>
-            <Image
-                src="/logo.svg"
-                width={218}
-                height={98}
-                alt="Home"
-                className={styles.menu_item_icon}
-            />
+        <div>
+            <Link href={`${process.env.current}/`}>
+                <Image
+                    src="/logo.svg"
+                    width={width}
+                    height={height}
+                    alt="Home"
+                    className={useStoreUser.getState().auth ? styles.logo_auth : styles.logo}
+                />
+            </Link>
         </div>
     )
 }
 
-export default HeaderLogo;
+export default HeaderLogoM;

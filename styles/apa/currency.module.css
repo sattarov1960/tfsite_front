@@ -1,26 +1,38 @@
 .popUp_currency {
-    @apply w-[120px] h-[122px] bg-[#0D1220] border-[2px] border-[#f2f1f899] rounded-[5px] pt-[14px] pl-[16px];
+    @apply flex justify-center items-center w-[80px] h-[32px] ml-[12px] 2xl:w-[120px] 2xl:h-[40px] 2xl:ml-[16px] bg-[#0D1220] border-[2px] border-[#f2f1f899] rounded-[5px];
 }
 .popUp_currency_frstItem {
     @apply flex items-center;
 }
+.popUp_currency_wrap {
+    @apply z-10 flex flex-col items-center relative;
+}
 .popUp_currency_frstItem_textMark {
-    @apply text-white text-[22px] font-[600] leading-[22px] cursor-pointer;
+    @apply text-white 2xl:text-[22px] text-[14px] font-[600] leading-[22px] cursor-pointer;
 }
 .popUp_currency_frstItem_text {
-    @apply text-white text-[22px] font-[400] leading-[22px] block ml-[6px] cursor-pointer;
+    @apply text-white 2xl:text-[22px] text-[14px] font-[400] leading-[22px] block ml-[6px] cursor-pointer;
 }
 .arrow {
     @apply w-[14px] h-[14px] ml-[6px] cursor-pointer;
 }
 .popUp_currency_item {
-    @apply flex items-center mt-[16px];
+    @apply flex items-center mt-[10px];
+}
+.group:hover > span {
+    @apply 2xl:text-[22px] text-[14px] font-[400] leading-[22px] cursor-pointer text-white;
+}
+.popUp_currency_items {
+    @apply absolute w-[80px] h-[32px] 2xl:w-[120px] 2xl:h-[40px] left-6 2xl:left-9 ;
 }
 .popUp_currency_frstItem_textGrayMark {
-    @apply text-[#f2f1f899] text-[22px] font-[600] leading-[22px] cursor-pointer;
+    @apply text-[#f2f1f899] 2xl:text-[22px] text-[14px] font-[600] leading-[22px] cursor-pointer;
 }
 .popUp_currency_frstItem_textGray {
-    @apply text-[#f2f1f899] text-[22px] font-[400] leading-[22px] block ml-[6px] cursor-pointer hover:text-white;
+    @apply text-[#f2f1f899] 2xl:text-[22px] text-[14px] font-[400] leading-[22px] cursor-pointer;
+}
+.popUp_currency_frstItem_textGray_block_left{
+    @apply block ml-[6px]
 }
 .popUp_currency_nextItem {
     @apply flex items-center mt-[10px];

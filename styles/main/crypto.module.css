@@ -1,0 +1,27 @@
+.crypto_part {
+    @apply pt-[20px] lg:pt-[50px];
+}
+.crypto_part_items {
+    @apply flex items-center justify-center;
+}
+.crypto_part_item_iconCards {
+    @apply w-[48px] md:w-[77px] h-[41px] md:h-[57px];
+}
+.crypto_part_item_iconQIWI {
+    @apply w-[20px] md:w-[34px] h-[20px] md:h-[34px];
+}
+.crypto_part_item_iconETH {
+    @apply w-[20px] md:w-auto h-[20px] md:h-auto;
+}
+.crypto_part_item_iconUSDT {
+    @apply w-[20px] md:w-auto h-[20px] md:h-auto;
+}
+.crypto_part_item_iconBTC {
+    @apply w-[20px] md:w-auto h-[20px] md:h-auto;
+}
+.crypto_part_item_text {
+    @apply text-[10px] md:text-[16px] text-[#F2F1F833] font-[500] leading-[20px] block ml-[4px] md:ml-[6px];
+}
+.crypto_part_item {
+    @apply ml-[10px] lg:ml-[40px] flex items-center;
+}

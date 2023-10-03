@@ -3,11 +3,12 @@
 import {FC, useState} from "react";
 import { Listbox } from '@headlessui/react'
 import { useLocale } from "next-intl";
-import {usePathname, useRouter} from 'next-intl/client';
-import styles from "@/styles/header/language.module.css"
+import styles from "@/styles/header/desktop/language.module.css"
 import Image from 'next/image'
+import {useStoreUser} from "@/store/user";
+import Link from 'next/link'
 
-const currency:LanguageListI = [
+const language:LanguageListI = [
     { id: 1, name: 'ru', imgPath: "/russian_flag.svg"},
     { id: 2, name: 'en', imgPath: "/english_flag.svg"},
     { id: 3, name: 'blr', imgPath: "/belarusian_flag.svg"},
@@ -16,15 +17,14 @@ const currency:LanguageListI = [
 
 
 const Language: FC = () => {
+    const store = useStoreUser()
     const locale = useLocale()
-    const active = currency.filter((value: { id: number, name: string }) => value.name === locale)
-    const listCurrency = [active[0], ...currency.filter((value: { id: number, name: string }) => value.name !== locale)]
+    const active = language.filter((value: { id: number, name: string }) => value.name === locale)
+    const listCurrency = [active[0], ...language.filter((value: { id: number, name: string }) => value.name !== locale)]
     const [selectedCurrency, setSelectedCurrency] = useState(active[0])
-    const router = useRouter()
-    const pathName = usePathname()
     return (
         <Listbox value={selectedCurrency} onChange={setSelectedCurrency}>
-            <div className={styles.menu_wrap}>
+            <div className={store.auth ? styles.menu_wrap_auth : styles.menu_wrap}>
                 <Listbox.Button>
                     <div className={styles.menu_language}>
                         <Image
@@ -45,22 +45,26 @@ const Language: FC = () => {
                     </div>
                 </Listbox.Button>
                 <Listbox.Options className={styles.menu_options}>
+                    <div className={styles.wrap_language}>
                     {listCurrency.map((item) => (
-                        <Listbox.Option key={item.id} value={item} onClick={() => router.replace(pathName, {locale: item.name})}>
-                            {({ active, selected }) => (
-                                <div className={styles.menu_language_item}>
-                                    <Image
-                                        src={item.imgPath}
-                                        width={16}
-                                        height={16}
-                                        alt="Flag"
-                                        className={styles.menu_language_iconFlag}
-                                    />
-                                    <span className={selected ? styles.menu_language_text_active : styles.menu_language_text}>{item.name}</span>
-                                </div>
-                            )}
-                        </Listbox.Option>
-                    ))}
+                            <Listbox.Option key={item.id} value={item}>
+                                {({ active, selected }) => (
+                                    <div className={styles.menu_language_item}>
+                                        <Image
+                                            src={item.imgPath}
+                                            width={8}
+                                            height={4}
+                                            alt="Flag"
+                                            className={styles.menu_language_iconFlag}
+                                        />
+                                        <Link href={`${process.env.current}/${item.name}`}>
+                                            <span className={selected ? styles.menu_language_text_active : styles.menu_language_text}>{item.name}</span>
+                                        </Link>
+                                    </div>
+                                )}
+                            </Listbox.Option>
+                        ))}
+                    </div>
                 </Listbox.Options>
             </div>
         </Listbox>

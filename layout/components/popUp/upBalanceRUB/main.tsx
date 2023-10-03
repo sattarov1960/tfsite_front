@@ -2,12 +2,13 @@
 
 import {FC, useEffect} from "react";
 import {useTranslations} from "next-intl";
-import styles from "@/styles/popUp/upBalance/main.module.css"
+import styles from "@/styles/popUp/upBalanceRUB/main.module.css"
 import Image from "next/image";
-import { useStoreUpBalance } from "@/store/user";
+import { useStoreUpBalanceRUB } from "@/store/user";
 import {PaymentDataI} from "@/interface/paymentData";
 import axios from "axios";
 import {getCookie, setCookie} from "@/utilities/Cookies";
+import Link from "next/link";
 
 const paymentData: PaymentDataI = {
     "CardAIFORY": {coms: 1.025, comsView: 2.5, min: 100, name: "Card"},
@@ -18,31 +19,33 @@ const paymentData: PaymentDataI = {
 }
 export const Main: FC = () => {
     const t = useTranslations()
-    const store = useStoreUpBalance()
-    const start = false
+    const store = useStoreUpBalanceRUB()
+    // const start = false
 
-    useEffect(() => {
-        const defEmail = getCookie("upEmail")
-        if (defEmail){
-            store.setEmail(defEmail)
-        }
-    }, [start])
+    // useEffect(() => {
+    //     const defEmail = getCookie("upEmailRUB")
+    //     if (defEmail){
+    //         store.setEmail(defEmail)
+    //     }
+    // }, [start])
 
 
-    const checkEmail = () => {
-        const pattern = /^[a-z0-9][a-z0-9\._-]*[a-z0-9]*@([a-z0-9]+([a-z0-9-]*[a-z0-9]+)*\.)+[a-z]+/i;
-        const isError = store.email.search(pattern) != 0
-        store.setErrorEmail(isError)
-        return isError
-    }
+    // const checkEmail = () => {
+    //     const pattern = /^[a-z0-9][a-z0-9\._-]*[a-z0-9]*@([a-z0-9]+([a-z0-9-]*[a-z0-9]+)*\.)+[a-z]+/i;
+    //     const isError = store.email.search(pattern) != 0
+    //     store.setErrorEmail(isError)
+    //     return isError
+    // }
     const createUp = async () => {
-        const errorEmail = checkEmail()
-        if (!errorEmail){
-            setCookie("upEmail", store.email, 360)
-            if (["CardGM", "QiwiGM", "BtcGM", "EthGM"].includes(store.active)){
-                window.location.href = `http://127.0.0.1:8000/create_invoice_gm`;
+        // const errorEmail = checkEmail()
+        // if (!errorEmail && store.balance >= 100){
+        if (store.balance >= 100){
+            // setCookie("upEmailRUB", store.email, 360)
+            if (store.active === "CardGM" || store.active === "QiwiGM" || store.active === "BtcGM" || store.active === "EthGM"){
+                window.location.href = `${process.env.api}/create_invoice_gm`;
+                return
             }
-            const response = await axios.get(`http://127.0.0.1:8000/create_invoice_aifory?amount=${store.balance}`, { withCredentials: true });
+            const response = await axios.get(`${process.env.api}/create_invoice_aifory?amount=${store.balance}`, { withCredentials: true });
             if (response.data.status){
                 window.location.href = response.data.paymentURL;
             }
@@ -238,19 +241,19 @@ export const Main: FC = () => {
                                 <span className={styles.popUp_sub_main_card_percent}>2%</span>
                             </div>
                         </div>
-                        <div className={styles.popUp_sub_main_inputBlock}>
-                            <span className={styles.popUp_sub_main_subText}>{t("Enter contact details")}</span>
-                            <input
-                                type="text"
-                                className={styles.popUp_main_input}
-                                placeholder={t("Enter data")}
-                                value={store.email}
-                                onChange={(e) => store.setEmail(e.target.value)}
-                                onBlur={() => checkEmail()}
-                                tabIndex={7}
-                            />
-                            {store.errorEmail ? <span className={styles.popUp_sub_main_warningText}>{t("Email mail is incorrect")}</span> : null}
-                        </div>
+                        {/*<div className={styles.popUp_sub_main_inputBlock}>*/}
+                        {/*    <span className={styles.popUp_sub_main_subText}>{t("Enter contact details")}</span>*/}
+                        {/*    <input*/}
+                        {/*        type="text"*/}
+                        {/*        className={styles.popUp_main_input}*/}
+                        {/*        placeholder={t("Enter data")}*/}
+                        {/*        value={store.email}*/}
+                        {/*        onChange={(e) => store.setEmail(e.target.value)}*/}
+                        {/*        onBlur={() => checkEmail()}*/}
+                        {/*        tabIndex={7}*/}
+                        {/*    />*/}
+                        {/*    {store.errorEmail ? <span className={styles.popUp_sub_main_warningText}>{t("Email mail is incorrect")}</span> : null}*/}
+                        {/*</div>*/}
                         <div className={`${styles.popUp_sub_main_footer} ${["CardGM", "QiwiGM", "BtcGM", "EthGM"].includes(store.active) ? styles.popUp_sub_main_footer_mini : null}`}>
                             <div className={styles.popUp_sub_main_footer_frstItem}>
                                 <span className={styles.popUp_sub_main_footer_item_text}>{t("Payment method:")}</span>
@@ -274,7 +277,9 @@ export const Main: FC = () => {
                         </div>
                         <div className={styles.popUp_sub_main_privacyPolicy}>
                         <span className={styles.popUp_sub_main_privacyPolicy_textGray}>{t("By clicking \"Top up\", I agree to the")}<br/>
-                            <span className={styles.popUp_sub_main_privacyPolicy_textWhite}>{t("refund policy")}</span>
+                            <Link href={`${process.env.current}/privacy`}>
+                                <span className={styles.popUp_sub_main_privacyPolicy_textWhite}>{t("refund policy")}</span>
+                            </Link>
                         </span>
                         </div>
                     </div>

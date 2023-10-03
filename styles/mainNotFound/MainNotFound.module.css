@@ -1,0 +1,24 @@
+.error {
+    @apply flex items-center justify-center flex-wrap mt-[120px] px-[20px] sm:px-[60px];
+}
+.error_leftBlock_mainLargeText {
+    @apply text-[26px] lg:text-[80px] text-[#F2F1F8] font-[700] lg:font-[800] leading-[32px] lg:leading-[84px];
+}
+.error_leftBlock_mainText {
+    @apply text-[26px] lg:text-[60px] text-[#F2F1F8] font-[700] lg:font-[800] leading-[32px] lg:leading-[84px];
+}
+.error_leftBlock_line {
+    @apply w-[50px] lg:w-[130px] h-[3px] lg:h-[12px] border-none bg-[#F46E00] mt-[50px];
+}
+.error_leftBlock_subText {
+    @apply text-[14px] lg:text-[22px] text-[#F2F1F899] font-[500] lg:font-[400] leading-[20px] lg:leading-[32px] block mt-[16px] lg:mt-[44px] max-w-[335px] lg:max-w-none text-center;
+}
+.error_leftBlock_button {
+    @apply w-[256px] h-[50px] mt-[120px] rounded-[7px] bg-[#FF7710] text-[16px] text-[#F2F1F8] font-[600] leading-[20px] capitalize;
+}
+.error_rightBlock {
+    @apply ml-[129px];
+}
+.error_image {
+    @apply w-[236px] lg:w-[682px] h-[200px] lg:h-[581px];
+}

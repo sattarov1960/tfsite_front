@@ -1,20 +1,21 @@
-'use client';
+"use client"
 
 import {FC} from "react";
+import styles from "@/styles/header/desktop/user.module.css"
+import {useStoreUser} from "@/store/user";
 import {useTranslations} from "next-intl";
-import styles from "@/styles/header/user.module.css"
-import {UserI} from "@/utilities/Navigate";
-import Image from "next/image";
+import Image from 'next/image'
+import { useStoreLogout } from "@/store/user";
 
-
-export const User: FC<UserI> = ({personName, hashIMG}) => {
+export const User: FC = () => {
     const t = useTranslations()
-    const img = `https://avatars.steamstatic.com/${hashIMG}_medium.jpg`
+    const store = useStoreLogout()
+    const img = `https://avatars.steamstatic.com/${useStoreUser.getState().steam.avatarhash}_medium.jpg`
     return (
-        <div className={styles.sub_header_mobile_rightBlock}>
+        <div className={styles.wrap_desktop}>
             <div className={styles.menu_profile}>
                 <div className={styles.sub_menu_profile}>
-                        <span className={styles.sub_menu_profile_mainText}>{personName}</span>
+                        <span className={styles.sub_menu_profile_mainText}>{useStoreUser.getState().steam.personaname}</span>
                     <div className={styles.menu_profile_out}>
                         <Image
                             src="/icon_goOut.svg"
@@ -22,11 +23,14 @@ export const User: FC<UserI> = ({personName, hashIMG}) => {
                             height={20}
                             alt="Log Out"
                             className={styles.sub_menu_balance_top_icon}
+                            onClick={() => store.Open()}
                         />
-                        <span className={styles.menu_profile_out_text}>{t("Logout")}</span>
+                        <span className={styles.menu_profile_out_text} onClick={() => store.Open()}>
+                            {t("Logout")}
+                        </span>
                     </div>
                 </div>
-                <img src={img} alt={personName} className={styles.menu_profile_img}/>
+                <img src={img} alt={useStoreUser.getState().steam.personaname} className={styles.menu_profile_img}/>
             </div>
         </div>
     )

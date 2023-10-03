@@ -11,7 +11,7 @@
     @apply text-[16px] text-[#F2F1F8] font-[500] leading-[22px] text-center block sm:hidden;
 }
 .cross {
-    @apply w-[30px] sm:w-[40px] h-[30px] sm:h-[40px] right-[4px] sm:right-[20px] top-[4px] sm:top-[20px] absolute;
+    @apply w-[30px] sm:w-[40px] h-[30px] sm:h-[40px] right-[4px] sm:right-[20px] top-[4px] sm:top-[20px] absolute cursor-pointer;
 }
 .popUp_header_line {
     @apply h-[1px] sm:h-[2px] bg-[#242836] mt-[10px] sm:mt-[20px] border-none;
@@ -32,5 +32,5 @@
     @apply mt-[40px] sm:mt-[30px] max-w-[210px] sm:max-w-[355px] mx-auto;
 }
 .popUp_main_textWhitePrivacyPolicy {
-    @apply text-[12px] text-[#F2F1F8] font-[400] leading-[18px] underline underline-offset-2;
+    @apply ml-[4px] mr-[4px] text-[12px] text-[#F2F1F8] font-[400] leading-[18px] underline underline-offset-2;
 }

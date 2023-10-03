@@ -1,12 +1,18 @@
 import {FC} from "react";
 import Wrap from "@/layout/wrap/Wrap";
+import Main from "@/layout/components/main/main";
+import Products from "@/layout/components/apa/apa";
+import FAQ from "@/layout/components/faq/faq";
 
-const Home: FC = () => {
+
+const HomeScreen: FC = () => {
     return (
         <Wrap>
-            <h1>Home</h1>
+            <Main/>
+            <Products/>
+            <FAQ/>
         </Wrap>
     )
 }
 
-export default Home
+export default HomeScreen

@@ -1,3 +1,6 @@
-.logo {
+.logo_auth {
     @apply ml-[10px] 2xl:ml-0;
+}
+.logo {
+    @apply ml-[80px] 2xl:ml-0;
 }

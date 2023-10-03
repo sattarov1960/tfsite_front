@@ -1,0 +1,146 @@
+.popUp_replenishmentOfTheBalance_inDollars {
+    @apply bg-[#111729] border-[1px] md:border-[2px] border-[#242836] rounded-[8px] md:rounded-[10px] w-[335px] md:w-[790px] max-h-[661px] md:max-h-[590px];
+}
+.popUp_header {
+    @apply pt-[20px] md:pt-[30px] relative;
+}
+.popUp_header_textDesktop {
+    @apply text-[22px] text-[#F2F1F8] font-[500] leading-[32px] text-center hidden md:block;
+}
+.popUp_header_textMobile {
+    @apply text-[16px] text-[#F2F1F8] font-[500] leading-[22px] text-center block md:hidden;
+}
+.cross {
+    @apply w-[30px] md:w-[40px] h-[30px] md:h-[40px] right-[4px] md:right-[20px] top-[4px] md:top-[20px] absolute cursor-pointer;
+}
+.popUp_header_line {
+    @apply h-[1px] md:h-[2px] bg-[#242836] mt-[16px] md:mt-[20px] border-none;
+}
+.popUp_main {
+    @apply pt-[20px] pb-[30px] md:py-[30px] px-[16px] md:px-[50px];
+}
+.popUp_sub_main {
+    @apply flex items-end justify-between flex-wrap;
+}
+.popUp_sub_main_leftBlock {
+    @apply flex items-center;
+}
+.key {
+    @apply w-[100px] h-[100px];
+}
+.popUp_sub_main_sub_leftBlock {
+    @apply ml-[10px] md:ml-[20px];
+}
+.popUp_sub_main_sub_leftBlock_mainText {
+    @apply text-[16px] text-[#F2F1F8] font-[500] leading-[24px];
+}
+.popUp_sub_main_sub_leftBlock_subText {
+    @apply text-[14px] text-[#F2F1F899] font-[400] leading-[20px] block mt-[4px] text-start;
+}
+.popUp_sub_main_sub_leftBlock_footerPart {
+    @apply mt-[20px] flex items-center;
+}
+.popUp_sub_main_sub_leftBlock_footerPart_grayText {
+    @apply text-[14px] text-[#F2F1F899] font-[500] md:font-[400] leading-[20px];
+}
+.popUp_sub_main_sub_leftBlock_footerPart_whiteText {
+    @apply text-[16px] text-[#F2F1F8] font-[600] leading-[24px] block ml-[10px];
+}
+
+.popUp_sub_main_rightBlock_frstPart {
+    @apply flex items-center justify-between mt-[20px] md:mt-0;
+}
+.popUp_sub_main_rightBlock_frstPart_text {
+    @apply text-[14px] text-[#F2F1F899] font-[500] leading-[20px];
+}
+.popUp_sub_main_rightBlock_frstPart_numberBlock {
+    @apply w-[60px] h-[30px] border-[1px] border-[#F2F1F829] bg-[#111729] text-center rounded-[4px] ml-[10px] text-[14px] text-[#F2F1F8] font-[500] leading-[20px];
+}
+.popUp_sub_main_rightBlock_scndPart {
+    @apply flex items-center mt-[14px] md:mt-[18px];
+}
+.popUp_sub_main_rightBlock_scndPart_mainText {
+    @apply text-[14px] text-[#F2F1F8] font-[500] leading-[20px];
+}
+.popUp_sub_main_rightBlock_scndPart_orangeText {
+    @apply text-[18px] text-[#FF7610] font-[700] leading-[20px] ml-[18px];
+}
+.popUp_sub_main_rightBlock_scndPart_redText {
+    @apply text-[18px] text-[#CB4F4F] font-[700] leading-[20px] ml-[27px];
+}
+.popUp_sub_mainBlock {
+    @apply bg-[#04050A] mt-[20px] md:mt-[26px] h-[198px] md:h-[210px] pt-[20px] pb-[20px] md:pb-[30px] px-[10px] md:px-[30px];
+}
+.popUp_sub_mainBlock_topText {
+    @apply text-[12px] text-[#F2F1F8] font-[400] leading-[16px] text-start;
+}
+.popUp_sub_mainBlock_input {
+    @apply h-[34px] bg-[#0B0D1B] border-[1px] border-[#F2F1F833] rounded-[4px] w-full mt-[6px] pl-[20px] text-[12px] text-[#F2F1F8] font-[400] leading-[20px];
+}
+.popUp_sub_mainBlock_input::placeholder {
+    @apply text-[12px] font-[400] leading-[20px];
+}
+.popUp_sub_mainBlock_bottomPart {
+    @apply flex items-start justify-between flex-wrap;
+}
+.popUp_sub_mainBlock_bottomPart_leftBlock {
+    @apply flex items-start mt-[20px];
+}
+
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextGray {
+    @apply text-[14px] text-[#F2F1F899] font-[500] leading-[20px] block;
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextGray_wrap {
+    @apply flex flex-col items-start
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGrayDesktop {
+    @apply text-[14px] text-[#F2F1F899] font-[500] leading-[20px] md:block hidden mt-[12px];
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGray {
+    @apply text-[14px] text-[#F2F1F899] font-[500] leading-[20px] block mt-[6px] md:mt-[12px];
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGray_mobile {
+    @apply text-[14px] text-[#F2F1F899] font-[500] leading-[20px] block md:hidden mt-[6px];
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock {
+    @apply ml-[10px] md:ml-[20px]
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextWhite {
+    @apply text-[14px] text-[#F2F1F8] font-[600] leading-[20px] text-start;
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textViolet {
+    @apply text-[14px] text-[#919CFB] font-[600] leading-[20px] mt-[6px] md:mt-[12px];
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textAddGray {
+    @apply ml-[5px] text-[14px] text-[#F2F1F899] font-[500] leading-[20px];
+}
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textWhite {
+    @apply mt-[6px] md:mt-[12px];
+}
+.popUp_sub_mainBlock_bottomPart_rightBlock {
+    @apply mt-[20px] hidden md:block;
+}
+.popUp_sub_mainBlock_bottomPart_sub_rightBlock {
+    @apply flex items-start;
+}
+.checkbox_open {
+    @apply block w-[20px] h-[20px] bg-[#919cfb] border-[1px] border-[#F2F1F833] rounded-[4px] relative cursor-pointer flex justify-center items-center z-10 select-none;
+}
+.checkbox {
+    @apply w-[20px] h-[20px];
+}
+.checkbox_svg {
+    @apply w-[25px] h-[25px] z-50 select-none;
+}
+.checkbox_close {
+    @apply block w-[20px] h-[20px] bg-[#0B0D1B] border-[1px] border-[#F2F1F833] rounded-[4px] relative cursor-pointer select-none;
+}
+.popUp_sub_mainBlock_bottomPart_rightBlock_text {
+    @apply text-[12px] text-[#F2F1F899] font-[400] leading-[16px] block ml-[12px] text-start;
+}
+.popUp_sub_mainBlock_bottomPart_rightBlock_textWhite {
+    @apply text-[12px] text-[#F2F1F8] font-[400] leading-[16px] underline underline-offset-2;
+}
+.popUp_sub_main_button {
+    @apply w-[150px] h-[50px] rounded-[7px] bg-[#FF7710] text-[16px] text-[#F2F1F8] font-[600] leading-[20px] flex items-center justify-center mx-auto mt-[30px];
+}

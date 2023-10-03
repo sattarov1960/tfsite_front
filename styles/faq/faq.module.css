@@ -1,0 +1,157 @@
+.ticketsKeys_FAQ_part {
+    @apply mt-[35px] lg:mt-[100px];
+}
+.ticketsKeys_FAQ_part_mainText {
+    @apply text-[22px] lg:text-[56px] font-[800] leading-[33px] lg:leading-[72px] text-center;
+    background: linear-gradient(90deg, #8E9DFF 0.22%, #FC8080 57.51%, #FF9444 99.94%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.ticketsKeys_FAQ_part_accordionReviews {
+    @apply flex items-start justify-between flex-wrap px-[20px] lg:px-[120px];
+}
+.ticketsKeys_FAQ_part_accordionItems {
+    @apply mt-[35px] lg:mt-[86px];
+}
+.ticketsKeys_FAQ_part_accordion_subItem {
+    @apply flex items-start lg:items-center;
+}
+.ticketsKeys_FAQ_part_accordionItem_icon {
+    @apply w-[20px] lg:w-[40px] h-[20px] lg:h-[40px] cursor-pointer mt-[5px] lg:mt-0 duration-300;
+}
+.ticketsKeys_FAQ_part_accordionItem_icon_open{
+    @apply rotate-90
+}
+.ticketsKeys_FAQ_part_accordionItem_icon_close{
+    @apply  rotate-45
+}
+.ticketsKeys_FAQ_part_accordionItem{
+    @apply mt-[30px]
+}
+.ticketsKeys_FAQ_part_accordionItem_text {
+    @apply text-[14px] lg:text-[30px] text-[#F2F1F8] font-[500] leading-[20px] lg:leading-[38px] block ml-[10px] lg:ml-[37px] max-w-[1263px] cursor-pointer;
+}
+.ticketsKeys_FAQ_part_accordionItem_getOut {
+    @apply hidden lg:flex items-center ml-[15px] lg:ml-[55px] mt-[14px] lg:mt-[26px];
+}
+.ticketsKeys_FAQ_part_accordionItem_getOut_icon {
+    @apply h-[180px] lg:h-[113px];
+}
+.ticketsKeys_FAQ_part_accordionItem_getOut_text {
+    @apply border-l-2 pl-[25px] border-[#FF7610] text-[14px] lg:text-[22px] text-[#F2F1F899] font-[400] leading-[20px] lg:leading-[30px] block ml-[8px] lg:ml-[30px] max-w-[287px] lg:max-w-[1243px] whitespace-pre-line;
+}
+.ticketsKeys_FAQ_part_accordionItem_getOut_mobile {
+    @apply flex lg:hidden items-center ml-[32px] lg:ml-[80px] mt-[14px] lg:mt-[26px];
+}
+.ticketsKeys_FAQ_part_accordionItem_getOut_icon_mobile {
+    @apply h-[180px];
+}
+.ticketsKeys_FAQ_part_accordionItem_getOut_text {
+    @apply text-[14px] lg:text-[22px] text-[#F2F1F899] font-[400] leading-[20px] lg:leading-[30px] block ml-[8px] lg:ml-[30px] max-w-[287px] lg:max-w-[1243px];
+}
+.ticketsKeys_FAQ_part_accordionItem_underline {
+    @apply max-w-[335px] lg:max-w-[1340px] h-[2px] bg-[#F2F1F81F] border-none mt-[20px] lg:mt-[50px];
+}
+.ticketsKeys_FAQ_part_accordion_subItem {
+    @apply flex items-start lg:items-center;
+}
+.ticketsKeys_FAQ_part_nextAccordion_subItem {
+    @apply mt-[20px] lg:mt-[33px];
+}
+.ticketsKeys_FAQ_part_accordionItem_icon {
+    @apply w-[20px] lg:w-[40px] h-[20px] lg:h-[40px] cursor-pointer mt-[5px] lg:mt-0;
+}
+.ticketsKeys_FAQ_part_accordionItem_text {
+    @apply text-[14px] lg:text-[30px] text-[#F2F1F8] font-[500] leading-[20px] lg:leading-[38px] block ml-[10px] lg:ml-[37px] max-w-[1263px] cursor-pointer;
+}
+.ticketsKeys_FAQ_part_accordionItem_underline {
+    @apply max-w-[335px] lg:max-w-[1340px] h-[2px] bg-[#F2F1F81F] border-none mt-[20px] lg:mt-[50px];
+}
+.ticketsKeys_FAQ_part_accordion_subItem {
+    @apply flex items-start lg:items-center;
+}
+.ticketsKeys_FAQ_part_nextAccordion_subItem {
+    @apply mt-[20px] lg:mt-[33px];
+}
+.ticketsKeys_FAQ_part_accordionItem_icon {
+    @apply w-[20px] lg:w-[40px] h-[20px] lg:h-[40px] cursor-pointer mt-[5px] lg:mt-0;
+}
+.ticketsKeys_FAQ_part_accordionItem_text {
+    @apply text-[14px] lg:text-[30px] text-[#F2F1F8] font-[500] leading-[20px] lg:leading-[38px] block ml-[10px] lg:ml-[37px] max-w-[1263px] cursor-pointer;
+}
+.ticketsKeys_FAQ_part_accordionItem_underline {
+    @apply max-w-[335px] lg:max-w-[1340px] h-[2px] bg-[#F2F1F81F] border-none mt-[20px] lg:mt-[50px];
+}
+.ticketsKeys_FAQ_part_accordion_subItem {
+    @apply flex items-start lg:items-center;
+}
+.ticketsKeys_FAQ_part_nextAccordion_subItem {
+    @apply mt-[20px] lg:mt-[33px];
+}
+.ticketsKeys_FAQ_part_accordionItem_icon {
+    @apply w-[20px] lg:w-[40px] h-[20px] lg:h-[40px] cursor-pointer mt-[5px] lg:mt-0;
+}
+.ticketsKeys_FAQ_part_accordionItem_text {
+    @apply text-[14px] lg:text-[30px] text-[#F2F1F8] font-[500] leading-[20px] lg:leading-[38px] block ml-[10px] lg:ml-[37px] max-w-[1263px] cursor-pointer;
+}
+.ticketsKeys_FAQ_part_accordionItem_underline {
+    @apply max-w-[335px] lg:max-w-[1340px] h-[2px] bg-[#F2F1F81F] border-none mt-[20px] lg:mt-[50px];
+}
+.ticketsKeys_FAQ_part_accordion_subItem {
+    @apply flex items-start lg:items-center;
+}
+.ticketsKeys_FAQ_part_nextAccordion_subItem {
+    @apply mt-[20px] lg:mt-[33px];
+}
+.ticketsKeys_FAQ_part_accordionItem_icon {
+    @apply w-[20px] lg:w-[40px] h-[20px] lg:h-[40px] cursor-pointer mt-[5px] lg:mt-0;
+}
+.ticketsKeys_FAQ_part_accordionItem_text {
+    @apply text-[14px] lg:text-[30px] text-[#F2F1F8] font-[500] leading-[20px] lg:leading-[38px] block ml-[10px] lg:ml-[37px] max-w-[1263px] cursor-pointer;
+}
+.ticketsKeys_FAQ_part_accordionItem_underline {
+    @apply max-w-[335px] lg:max-w-[1340px] h-[2px] bg-[#F2F1F81F] border-none mt-[20px] lg:mt-[50px];
+}
+.ticketsKeys_FAQ_part_accordion_subItem {
+    @apply flex items-start lg:items-center;
+}
+.ticketsKeys_FAQ_part_nextAccordion_subLastItem {
+    @apply mt-[20px] lg:mt-[33px] flex lg:hidden;
+}
+.ticketsKeys_FAQ_part_accordionItem_icon {
+    @apply w-[20px] lg:w-[40px] h-[20px] lg:h-[40px] cursor-pointer mt-[5px] lg:mt-0;
+}
+.ticketsKeys_FAQ_part_accordionItem_text {
+    @apply text-[14px] lg:text-[30px] text-[#F2F1F8] font-[500] leading-[20px] lg:leading-[38px] block ml-[10px] lg:ml-[37px] max-w-[1263px] cursor-pointer;
+}
+.ticketsKeys_FAQ_part_reviews {
+    @apply mt-[100px] lg:mt-[60px];
+}
+.ticketsKeys_FAQ_part_reviews_image {
+    @apply w-[310px] h-[117px];
+}
+.ticketsKeys_FAQ_part_sub_reviews {
+    @apply mt-[8px] rounded-[12px] w-[283px] h-[220px] ml-auto flex items-start justify-between px-[20px] py-[30px];
+    border-radius: 12px;
+    background: linear-gradient(0deg, rgba(145, 156, 251, 0.24) 0%, rgba(231, 116, 190, 0.15) 28.23%, rgba(255, 147, 70, 0.01) 83.45%);
+}
+.ticketsKeys_FAQ_part_sub_reviews_item_textOrange {
+    @apply text-[22px] text-[#FF7610] font-[700] leading-[28px] mr-[12px] mt-[16px];
+}
+.ticketsKeys_FAQ_part_sub_reviews_item_frstTextOrange {
+    @apply mt-0 !important;
+}
+.ticketsKeys_FAQ_part_sub_reviews_item {
+    @apply flex items-center justify-between;
+}
+.ticketsKeys_FAQ_part_sub_reviews_item_textWhite {
+    @apply text-[#F2F1F8] text-[14px] font-[600] leading-[20px] block mr-auto mt-[23px];
+}
+.ticketsKeys_FAQ_part_sub_reviews_item_frstTextWhite {
+    @apply mt-[5px] !important;
+}
+
+
+
+

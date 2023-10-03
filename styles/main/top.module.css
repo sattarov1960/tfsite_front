@@ -1,0 +1,55 @@
+.for_background {
+    @apply h-[477px] md:h-[548px] lg:h-[1016px] bg-[url('/main_bg.png')] bg-no-repeat bg-cover relative bg-top lg:bg-center;
+}
+.for_background_line {
+    @apply 4xl:hidden absolute -bottom-[5px] right-0 left-0 mx-auto -rotate-[0.8deg];
+}
+.for_background_arrow {
+    @apply hover:animate-bounce w-[20px] lg:w-auto h-[20px] lg:h-auto absolute bottom-[10px] lg:bottom-[40px] right-0 left-0 mx-auto cursor-pointer;
+}
+.main_part {
+    @apply flex items-start justify-between pt-[100px] lg:pt-[270px] px-[20px] md:px-[262px];
+}
+.main_part_leftBlock {
+    @apply mx-auto xl:mx-0;
+}
+.main_part_leftBlock_textWhite {
+    @apply text-[26px] lg:text-[56px] text-[#F2F1F8] font-[500] leading-[32px] lg:leading-[66px] text-start md:text-center lg:text-start lg:max-w-[652px];
+}
+.main_part_leftBlock_textGradient {
+    @apply text-[34px] lg:text-[71px] font-[800] leading-[40px] lg:leading-[72px] text-start md:text-center lg:text-start mt-[14px] lg:mt-[30px];
+    background: linear-gradient(90deg, #8E9DFF 0.22%, #FC8080 57.51%, #FF9444 99.94%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.main_part_leftBlock_subText {
+    @apply mt-[60px] lg:mt-[146px] text-start md:text-center lg:text-start lg:max-w-[649px];
+}
+.main_part_leftBlock_subTextGray {
+    @apply text-[14px] lg:text-[22px] text-[#F2F1F880] font-[400] leading-[20px] lg:leading-[32px] block h-[40px];
+}
+.main_part_leftBlock_subTextOrange {
+    @apply ml-[8px] mr-[8px] text-[14px] lg:text-[22px] text-[#FF7610] font-[700] leading-[20px] lg:leading-[32px];
+}
+.main_part_rightBlock_items {
+    @apply hidden xl:block max-w-[450px];
+}
+.main_part_sub_rightBlock_frstItem {
+    @apply mt-0;
+}
+.main_part_sub_rightBlock_item {
+    @apply flex items-start mt-[30px];
+}
+.main_part_sub_rightBlock_item_icon {
+    @apply w-[30px] h-[30px];
+}
+.main_part_sub_rightBlock_item_subText {
+    @apply ml-[16px];
+}
+.main_part_sub_rightBlock_item_subText_prgf {
+    @apply text-[16px] text-[#F2F1F8] font-[600] leading-[24px];
+}
+.main_part_sub_rightBlock_item_subText_text {
+    @apply text-[16px] text-[#F2F1F899] font-[400] leading-[24px] whitespace-pre-line;
+}

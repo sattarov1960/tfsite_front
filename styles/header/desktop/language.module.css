@@ -1,24 +1,30 @@
 .menu_language {
-    @apply flex items-center justify-center border-[1px] border-[#F2F1F829] rounded-[5px] w-[90px] h-[34px] cursor-pointer ml-[8px] 2xl:ml-0;
+    @apply w-[50px] h-[24px] rounded-[3px] flex items-center justify-center border-[1px] border-[#F2F1F829] 2xl:rounded-[5px] 2xl:w-[90px] 2xl:h-[34px] cursor-pointer 2xl:ml-[8px] 2xl:ml-0;
 }
 .menu_language_iconFlag {
-    @apply w-[16px] h-[16px];
+    @apply w-[14px] h-[14px] max-2xl:ml-[-3px] 2xl:w-[16px] 2xl:h-[16px];
 }
 .menu_language_text_active {
-    @apply text-[16px] text-[#F2F1F8] font-[400] leading-[20px] uppercase block ml-[6px] cursor-pointer;
+    @apply text-[8px] ml-[2px] max-2xl:mr-[2px] 2xl:text-[16px] text-[#F2F1F8] font-[400] 2xl:leading-[20px] uppercase block 2xl:ml-[6px] cursor-pointer hover:text-white;
 }
 .menu_language_text {
-    @apply text-[16px] text-[#F2F1F899] font-[400] leading-[20px] uppercase block ml-[6px] cursor-pointer;
+    @apply text-[16px] text-[#F2F1F899] font-[400] leading-[20px] uppercase block ml-[6px] cursor-pointer hover:text-white;
 }
 .menu_language_iconArrow {
-    @apply w-[8px] h-[8px] ml-[6px];
+    @apply w-[6px] h-[3px] 2xl:w-[8px] 2xl:h-[8px] 2xl:ml-[6px] ;
 }
 .menu_wrap{
-    @apply flex flex-col items-center relative ml-[100px];
+    @apply z-10 flex flex-col items-center relative 2xl:ml-[100px];
+}
+.menu_wrap_auth{
+    @apply z-10 flex flex-col items-center relative ml-[10px] 2xl:ml-[100px];
+}
+.wrap_language{
+    @apply z-10 w-full flex flex-col items-center lg:ml-[-2px];
 }
 .menu_options{
-    @apply absolute top-10 w-[90px] flex flex-col items-start;
+    @apply w-[50px] absolute top-10 2xl:w-[90px] flex flex-col items-start;
 }
 .menu_language_item{
-    @apply flex;
+    @apply flex justify-start mt-[5px] w-[52px];
 }

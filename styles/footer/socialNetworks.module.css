@@ -1,0 +1,24 @@
+.sub_footer_socialNetworks_items {
+    @apply block lg:flex items-center;
+}
+.sub_footer_socialNetworks_itemText {
+    @apply text-[14px] lg:text-[16px] text-[#F2F1F899] font-[400] leading-[18px] lg:leading-[20px];
+}
+.sub_footer_socialNetworks_sub_items {
+    @apply flex items-center mt-[9px] lg:mt-0;
+}
+.sub_footer_socialNetworks_item {
+    @apply ml-[16px];
+}
+.sub_footer_socialNetworks_frstItem {
+    @apply ml-0 lg:ml-[20px];
+}
+.sub_footer_socialNetworks_item_icon {
+    @apply cursor-pointer w-[20px] lg:w-auto h-[20px] lg:h-auto;
+}
+.sub_footer_socialNetworks_item_iconVK {
+    @apply w-[30px] lg:w-auto h-[20px] lg:h-auto;
+}
+.sub_footer_socialNetworks_items_wrap{
+    @apply  max-lg:w-full max-lg:flex max-lg:justify-center lg:mt-0 mt-[30px]
+}

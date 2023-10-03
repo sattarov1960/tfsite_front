@@ -1,5 +1,5 @@
 .menu_items {
-    @apply flex items-center ml-[80px];
+    @apply max-2xl:mt-[40px] max-2xl:flex-col ml-[24px] items-start flex 2xl:items-center 2xl:ml-[80px] z-50;
 }
 .menu_itemFrst {
     @apply block pr-[6px] relative cursor-pointer;
@@ -8,14 +8,23 @@
     @apply flex items-center;
 }
 .menu_item_text {
-    @apply text-[#F2F1F866] text-[16px] leading-[20px] font-[400] ml-[7px] duration-150 hover:text-white;
+    @apply text-[#F2F1F866] text-[16px] leading-[20px] font-[400] ml-[7px] duration-150;
+}
+.sub_menu_item:hover .hover_navigate {
+    @apply duration-150 opacity-100
+}
+.sub_menu_item:hover .menu_item_text {
+    @apply duration-150 text-white
+}
+.menu_item_icon_active{
+    @apply opacity-40
 }
 .menu_item_text_active {
     @apply text-[#F2F1F8] !important;
 }
 .menu_item_active_border {
-    @apply w-[58px] h-[4px] bg-[#FF7710] border-t-0 rounded-tl-[15px] rounded-tr-[15px] absolute -bottom-[30px] ml-[20px];
+    @apply max-2xl:hidden w-[58px] h-[4px] bg-[#FF7710] border-t-0 rounded-tl-[15px] rounded-tr-[15px] absolute -bottom-[30px] ml-[20px];
 }
 .menu_item {
-    @apply flex items-center ml-[47px] cursor-pointer relative;
+    @apply ml-[0px] max-2xl:mt-[20px] flex items-center 2xl:ml-[47px] cursor-pointer relative;
 }

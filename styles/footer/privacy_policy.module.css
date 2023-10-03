@@ -1,0 +1,18 @@
+.sub_footer_privacy_policy {
+    @apply mt-[60px] lg:mt-[34px] text-center mx-auto relative;
+}
+.sub_footer_privacy_policy_frstBlock {
+    @apply block sm:flex items-center justify-center;
+}
+.sub_footer_privacy_policy_textGray {
+    @apply text-[16px] text-[#F2F1F899] font-[400] leading-[20px];
+}
+.sub_footer_privacy_policy_textWhite {
+    @apply text-[16px] text-[#F2F1F8] font-[600] leading-[20px] ml-[4px];
+}
+.sub_footer_privacy_policy_scndBlock {
+    @apply block sm:flex items-center justify-center mt-[20px] lg:mt-[16px];
+}
+.sub_footer_privacy_policy_btn {
+    @apply hidden md:block absolute right-0 top-0 cursor-pointer;
+}

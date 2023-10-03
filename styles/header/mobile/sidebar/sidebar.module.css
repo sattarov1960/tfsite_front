@@ -1,0 +1,6 @@
+.sidebar_cross {
+    @apply mt-[20px] ml-[20px] cursor-pointer;
+}
+.sidebar {
+    @apply bg-[#0D1220] w-[270px] h-[120vh] absolute z-50 block top-0 2xl:hidden;
+}

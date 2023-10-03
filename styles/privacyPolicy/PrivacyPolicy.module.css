@@ -1,0 +1,24 @@
+.privacyPolicy {
+    @apply mt-[30px] lg:mt-[57px] px-[20px] lg:px-[120px];
+}
+.privacyPolicy_mainText {
+    @apply text-[16px] lg:text-[32px] text-[#F2F1F8] font-[600] leading-[22px] lg:leading-[36px];
+}
+.privacyPolicy_mainBlock {
+    @apply mt-[14px] lg:mt-[30px] bg-[#191B2D] rounded-[10px] px-[20px] py-[30px] lg:p-[60px];
+}
+.privacyPolicy_mainBlock_frstPrgrf {
+    @apply text-[12px] lg:text-[20px] text-[#F2F1F8] font-[700] leading-[18px] lg:leading-[32px];
+}
+.privacyPolicy_mainBlock_text {
+    @apply text-[12px] lg:text-[20px] text-[#F2F1F899] font-[400] leading-[18px] lg:leading-[32px] hidden lg:block;
+}
+.privacyPolicy_mainBlock_text_mobile {
+    @apply text-[12px] text-[#F2F1F899] font-[400] leading-[18px] block lg:hidden mt-[20px];
+}
+.privacyPolicy_mainBlock_scndPrgrf {
+    @apply text-[12px] lg:text-[20px] text-[#F2F1F8] font-[700] leading-[18px] lg:leading-[32px] mt-[35px] lg:mt-[70px];
+}
+.privacyPolicy_mainBlock_text_mobile {
+    @apply text-[12px] text-[#F2F1F899] font-[400] leading-[18px] block lg:hidden mt-[20px];
+}

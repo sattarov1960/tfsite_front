@@ -1,0 +1,12 @@
+.popUp_logoutConfirmation {
+    @apply w-[545px] h-[234px] bg-[#0D1220] border-[2px] border-[#242836] rounded-[10px] relative;
+}
+.popUp_logoutConfirmation_cross {
+    @apply w-[30px] h-[30px] absolute top-[20px] right-[20px] cursor-pointer;
+}
+.popUp_logoutConfirmation_mainText {
+    @apply text-[22px] text-[#F2F1F8] font-[500] leading-[32px] text-center mt-[50px] max-w-[287px] mx-auto;
+}
+.popUp_logoutConfirmation_button {
+    @apply flex items-center justify-center bg-[#FF7710] rounded-[7px] w-[150px] h-[50px] mx-auto mt-[30px] text-[#F2F1F8] text-[16px] font-[600] leading-[20px];
+}

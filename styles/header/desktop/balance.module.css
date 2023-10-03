@@ -1,8 +1,8 @@
 .menu_balance {
-    @apply flex items-center mr-[105px];
+    @apply max-2xl:mb-[60px] max-2xl:space-y-7 max-2xl:mt-[60px] mr-[225px] flex-col flex 2xl:flex-row items-center 2xl:mr-[105px];
 }
 .sub_menu_balance{
-    @apply ml-[80px]
+    @apply ml-[80px] relative
 }
 .sub_menu_balance_top {
     @apply flex items-center;
@@ -10,18 +10,39 @@
 .sub_menu_balance_top_icon {
     @apply w-[24px] h-[24px];
 }
+.sub_menu_balance_top_icon_withdraw {
+    @apply w-[12px] h-[2px] ml-[10px];
+}
+.sub_menu_balance_top_menu{
+    @apply w-[128px] h-[44px] rounded-[5px] bg-[#0D1220] border-[#9698A2] border-[1px] absolute top-8 left-0 z-20 flex items-center justify-center
+}
+.sub_menu_balance_top_menu_item{
+    @apply flex justify-center items-center opacity-60 hover:opacity-100 w-[128px] cursor-pointer
+}
+.sub_menu_balance_top_menu_withdraw{
+    @apply text-[14px] leading-[20px] text-[#F2F1F8]
+}
+.sub_menu_balance_top_icon_open {
+    @apply w-[12px] h-[6px] ml-[7px] cursor-pointer;
+}
 .sub_menu_balance_top_textOrange {
-    @apply text-[#FF7610] text-[18px] font-[600] leading-[24px] block ml-[10px];
+    @apply whitespace-nowrap text-[#FF7610] text-[18px] font-[600] leading-[24px] block ml-[10px];
 }
 .sub_menu_balance_bot {
     @apply flex items-center mt-[4px];
 }
 .sub_menu_balance_bot_text {
-    @apply text-[14px] text-[#f2f1f866] font-[500] cursor-pointer duration-150 hover:text-white;
+    @apply text-[14px] text-[#f2f1f866] font-[500] cursor-pointer;
 }
 .sub_menu_balance_bot_icon {
-    @apply w-[12px] h-[12px] ml-[4px] cursor-pointer;
+    @apply w-[12px] h-[12px] ml-[4px] cursor-pointer opacity-60;
+}
+.sub_menu_balance_bot:hover .sub_menu_balance_bot_icon{
+    @apply opacity-100 duration-150
+}
+.sub_menu_balance_bot:hover .sub_menu_balance_bot_text{
+    @apply text-white duration-150
 }
 .sub_menu_balance_top_textFiolet {
-    @apply text-[#919CFB] text-[18px] font-[600] leading-[24px] block ml-[10px];
+    @apply text-[#919CFB] text-[18px] font-[600] leading-[24px] block ml-[10px] whitespace-nowrap;
 }

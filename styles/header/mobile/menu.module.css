@@ -1,0 +1,3 @@
+.sub_header_mobile_burgerMenu {
+    @apply w-[30px] lg:w-[50px] h-[30px] lg:h-[50px] cursor-pointer;
+}

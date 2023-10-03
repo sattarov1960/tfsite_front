@@ -1,0 +1,287 @@
+.withdraw_wrap{
+    /*@apply w-[335px] h-[1176px] flex rounded-[10px] overflow-hidden lg:flex-row flex-col lg:w-[928px] lg:h-[716px];*/
+    @apply w-[335px] flex rounded-[10px] overflow-hidden lg:flex-row flex-col lg:w-[928px];
+}
+.withdraw_wrap_left {
+    @apply bg-[#111729] w-[335px] lg:w-[380px] flex flex-col items-start pb-[40px] pt-[13px] lg:pt-[21px] px-[20px] lg:pl-[30px] relative
+}
+.withdraw_wrap_left_h1 {
+    @apply text-[#F2F1F8] text-[16px] leading-[22px] font-medium lg:text-[22px] lg:leading-[32px] max-lg:text-center w-full
+}
+.withdraw_wrap_left_hr {
+    @apply w-full mt-[10px] lg:mt-[17px] border-[#161E35];
+}
+.withdraw_wrap_left_p {
+    @apply mt-[22px] text-[#F2F1F899] text-[14px] leading-[20px] font-medium
+}
+.withdraw_wrap_left_item_active{
+    @apply opacity-100 !important
+}
+.withdraw_wrap_left_item{
+    @apply cursor-pointer rounded bg-[#1E2947] w-full lg:w-[320px] mt-[10px] lg:mt-[12px] h-[90px] pt-[12px] pl-[30px] pr-[12px] pb-[18px] flex justify-between items-center opacity-40
+}
+.withdraw_wrap_left_item_active{
+    @apply opacity-100
+}
+.withdraw_wrap_left_item_first{
+    @apply mt-[10px] lg:mt-[19px]
+}
+.withdraw_wrap_left_item_qiwi {
+    @apply w-[50px] h-[50px]
+}
+.withdraw_wrap_left_item_card {
+    @apply w-[50px] h-[50px]
+}
+.withdraw_wrap_left_item_you_money {
+    @apply w-[45px] h-[35px]
+}
+.withdraw_wrap_left_item_img_wrap{
+    @apply flex
+}
+.withdraw_wrap_left_item_desc_wrap{
+    @apply ml-[20px]
+}
+.withdraw_wrap_left_item_ps {
+    @apply text-[#F2F1F8] text-[20px] leading-[26px] font-medium text-left
+}
+.withdraw_wrap_left_item_desc{
+    @apply text-[#F2F1F8] text-[12px] leading-[18px] font-normal opacity-40
+}
+.withdraw_wrap_left_item_right_wrap{
+    @apply flex flex-col self-start
+}
+.withdraw_wrap_left_item_checkbox{
+    @apply w-[20px] h-[20px] rounded bg-[#0B0D1B]
+}
+.withdraw_wrap_left_item_checkbox_active{
+    @apply w-[20px] h-[20px] rounded border-[1px] bg-[#919CFB] flex justify-center items-center
+}
+.withdraw_wrap_left_item_checkbox_img_active{
+    @apply w-[10px] h-[7px]
+}
+.withdraw_wrap_left_item_percent{
+    @apply text-[#919CFB] lg:text-[12px] lg:leading-[20px] text-[14px] leading-[20px] font-bold whitespace-nowrap
+}
+
+.withdraw_wrap_right {
+    /*@apply w-[335px] h-[652px] lg:w-[548px] lg:h-[716px] bg-[#161E35] pt-[26px] px-[20px] lg:pr-[33px] lg:pl-[30px] relative*/
+    @apply w-[335px] lg:w-[548px] bg-[#161E35] pt-[26px] px-[20px] lg:pr-[33px] lg:pl-[30px] relative pb-[30px]
+}
+.withdraw_wrap_right_input{
+    @apply relative bg-[#0B0D1B] w-full lg:w-[485px] h-[38px] rounded-[4px] border-[#393B47] outline-none border-[1px] text-[#FFFFFF] text-[16px] leading-[20px] px-[20px]
+}
+.withdraw_wrap_right_input_active{
+    @apply rounded-b-none !important
+}
+.withdraw_wrap_right_input_frst{
+    @apply mt-[10px] lg:mt-[13px]
+}
+.withdraw_wrap_right_closeIcon {
+    @apply w-[22px] h-[22px] bg-[#161E35] absolute right-[25px] top-[10px] lg:right-[34px] lg:top-[25px] cursor-pointer
+}
+.withdraw_wrap_right_closeIcon_hidden_desktop {
+    @apply lg:hidden
+}
+.withdraw_wrap_right_closeIcon_hidden_mobile {
+    @apply max-lg:hidden
+}
+.withdraw_wrap_right_withdrawBalance {
+    @apply mt-[5px] lg:mt-[47px] w-full lg:w-[485px] h-[60px] px-[30px] py-[21px] flex justify-between items-center bg-[#1E2947] rounded-md
+}
+.withdraw_wrap_right_withdrawBalance_grey{
+    @apply  text-white opacity-60 text-[14px] leading-[20px] text-left
+}
+.withdraw_wrap_right_withdrawBalance_bal{
+    @apply text-white text-[22px] leading-[32px]
+}
+.withdraw_wrap_right_amount_wrap{
+    @apply mt-[30px]
+}
+.withdraw_wrap_right_amount_wrap_desc{
+    @apply text-white opacity-60 text-[14px] leading-[20px] text-left
+}
+.withdraw_wrap_right_amount_wrap_err{
+    @apply text-[#CB4F4F] text-[12px] leading-[14px] mt-[6px] text-left
+}
+.withdraw_wrap_right_data_wrap{
+    @apply mt-[30px]
+}
+.withdraw_wrap_right_data_wrap_text{
+    @apply text-[14px] leading-[20px] text-[#F2F1F8] opacity-60 text-left
+}
+.withdraw_wrap_right_data_wrap_frst{
+    @apply mt-[17px]
+}
+.withdraw_wrap_right_data_wrap_scnd{
+    @apply mt-[14px]
+}
+.withdraw_wrap_right_bottom_wrap{
+    @apply bg-[#04050A] w-full lg:w-[485px] h-[210px] mt-[30px] pt-[10px] px-[20px] pb-[31px] flex flex-col justify-between items-center relative
+}
+.withdraw_wrap_right_wrap_text{
+    @apply w-full flex justify-between
+}
+.withdraw_wrap_right_wrap_text_col{
+    @apply flex flex-col
+}
+.withdraw_wrap_right_bottom_wrap_text_left{
+    @apply text-[13px] lg:text-[14px] leading-[20px] text-[#F2F1F8] mt-[10px] text-left
+}
+.withdraw_wrap_right_bottom_wrap_text_right{
+    @apply text-[14px] leading-[20px] text-white opacity-80 mt-[10px] text-right
+}
+.withdraw_wrap_right_bottom_wrap_text_right_orange{
+    @apply text-[14px] leading-[20px] text-[#FF7610] mt-[10px] text-right
+}
+.withdraw_wrap_right_bottom_wrap_text_right_error{
+    @apply text-[14px] leading-[20px] text-[#CB4F4F] mt-[10px] text-right
+}
+.withdraw_wrap_right_bottom_wrap_btn{
+    @apply w-[180px] h-[50px] flex justify-center items-center  cursor-pointer bg-[#FF7710] rounded-[7px]
+}
+.withdraw_wrap_right_bottom_wrap_btn_text{
+    @apply text-[16px] leading-[20px] text-[#F2F1F8] font-semibold cursor-pointer
+}
+.withdraw_wrap_right_btm_wrap{
+    @apply w-full flex flex-col items-center mt-[10px] lg:mt-[20px]
+}
+.withdraw_wrap_right_politics_grey{
+    @apply text-[10px] leading-[14px] text-white opacity-50
+}
+.withdraw_wrap_right_politics_white{
+    @apply text-[10px] leading-[14px] text-white underline cursor-pointer
+}
+
+.withdraw_input_wrap{
+    @apply relative
+}
+.withdraw_input_wrap_card{
+    @apply absolute top-[18px] right-11 w-[32px] h-[22px] lg:w-[40px] lg:h-[28px]
+}
+.withdraw_input_wrap_up{
+    @apply absolute top-[20px] right-2.5 w-[24px] h-[24px] cursor-pointer
+}
+.withdraw_input_wrap_up_text{
+    @apply text-[16px] leading-[20px] text-white
+}
+.withdraw_input_wrap_up_abs{
+    @apply absolute w-fit flex items-center top-[19px] lg:top-[22px] 4xl:top-[20px] left-[20px] lg:left-[22px] cursor-pointer
+}
+.withdraw_input_wrap_open{
+    @apply rotate-180
+}
+.withdraw_card_menu{
+    @apply absolute z-50 pb-[12px] border-t-0 flex flex-col lg:w-[485px] bg-[#0B0D1B] rounded-b-[4px] rounded-b-[4px] border-[#393B47] outline-none border-[1px] pl-[20px] pr-[15px]
+}
+.withdraw_card_menu_item{
+    @apply flex justify-between items-center w-full h-[38px]
+}
+.withdraw_card_menu_item_text{
+    @apply text-[16px] leading-[20px] text-white cursor-pointer  opacity-40 hover:opacity-100
+}
+.withdraw_card_menu_item_img_wrap{
+    @apply flex items-center h-full
+}
+.withdraw_card_menu_item_delIcon{
+    @apply w-[22px] h-[22px] cursor-pointer opacity-40 hover:opacity-100
+}
+.withdraw_card_menu_item_cardIcon{
+    @apply w-[32px] h-[22px] lg:w-[40px] lg:h-[28px] mr-[15px]
+}
+.withdraw_card_menu_item_add_text{
+    @apply text-[12px] leading-[18px] text-white cursor-pointer
+}
+.withdraw_card_menu_item_add_img{
+    @apply w-[12px] h-[12px] ml-[6px] cursor-pointer
+}
+.withdraw_card_menu_item_add_img_mt{
+    @apply mt-[5px]
+}
+.withdraw_card_menu_item_wrap{
+    @apply flex justify-center items-center mt-[5px] opacity-40 hover:opacity-100
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.withdraw_wrap_dl{
+    /*@apply  lg:h-[860px] rounded-[10px] h-[820px] pt-[21px] !important*/
+    @apply rounded-[10px] pt-[21px] pb-[35px] !important
+}
+.withdraw_wrap_dl_head {
+    @apply text-[16px] leading-[22px] text-white lg:text-[22px] lg:leading-[32px]
+}
+.withdraw_wrap_dl_balance{
+    @apply mt-[28px]
+}
+.withdraw_wrap_dl_wallet {
+    @apply text-[14px] leading-[20px] text-white opacity-60 lg:text-[14px] lg:leading-[20px] mt-[30px]  text-left
+}
+.withdraw_wrap_dl_wrap_items{
+    @apply flex w-full mt-[15px] space-x-[6px] lg:space-x-[10px]
+}
+.withdraw_wrap_dl_wrap_item{
+    @apply rounded-[6px] h-[70px] w-[150px] flex justify-center items-center lg:w-[155px] bg-[#1E2947] space-x-[11px] cursor-pointer
+}
+.withdraw_wrap_dl_wrap_item_active{
+    @apply border-2 border-[#FF7610]
+}
+.withdraw_wrap_dl_wrap_item_desc{
+    @apply flex flex-col
+}
+.wrap_item_icon{
+    @apply w-[32px] h-[32px]
+}
+.withdraw_wrap_dl_wrap_item_desc_top{
+    @apply text-[14px] leading-[20px] text-white text-left
+}
+.withdraw_wrap_dl_wrap_item_desc_btm{
+    @apply text-[10px] leading-[12px] text-white opacity-40 text-left
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.popUp_wrap{
+    @apply rounded-[8px] lg:rounded-[10px] flex flex-col items-center bg-[#111729] w-[335px] h-[196px] lg:w-[545px] lg:h-[280px] pt-[20px] lg:pt-[32px] relative
+}
+.popUp_wrap_err{
+    @apply rounded-[8px] lg:rounded-[10px] flex flex-col items-center bg-[#111729] w-[335px] h-[328px] lg:w-[545px] lg:h-[335px] pt-[20px] lg:pt-[32px] relative
+}
+.popUp_hr{
+    @apply border-[#161E35] w-full mt-[11px] lg:mt-[16px]
+}
+.popUp_par{
+    @apply text-[16px] leading-[22px] lg:text-[22px] lg:leading-[32px] text-white
+}
+.popUp_img_close {
+    @apply w-[16px] h-[16px] lg:w-[22px] lg:h-[22px] absolute top-4 right-4 2xl:top-7 2xl:right-7 cursor-pointer
+}
+.popUp_img_ok {
+    @apply w-[40px] h-[40px] mt-[20px] lg:w-[60px] lg:h-[60px] lg:mt-[22px]
+}
+.popUp_desc_grey{
+    @apply text-[#F2F1F899] text-[14px] leading-[20px] lg:text-[22px] lg:leading-[30px] text-center lg:mt-[18px] mt-[25px]
+}
+.popUp_desc_white{
+    @apply text-[#F2F1F8]
+}
+.popUp_desc_grey_sad{
+    @apply text-[#F2F1F899] text-[14px] leading-[20px] mt-[10px]
+}

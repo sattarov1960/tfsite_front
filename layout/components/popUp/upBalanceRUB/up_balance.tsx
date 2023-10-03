@@ -3,12 +3,12 @@
 import {FC} from "react";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import {Main} from "@/layout/components/popUp/upBalance/main";
-import styles from "@/styles/popUp/upBalance/up_balance.module.css"
-import {useStoreUpBalance, useStoreUser} from "@/store/user";
+import {Main} from "@/layout/components/popUp/upBalanceRUB/main";
+import styles from "@/styles/popUp/upBalanceRUB/up_balance.module.css"
+import {useStoreUpBalanceRUB, useStoreUser} from "@/store/user";
 
-export const UpBalance: FC = () => {
-    const storeUpBalance = useStoreUpBalance()
+export const UpBalanceRUB: FC = () => {
+    const storeUpBalance = useStoreUpBalanceRUB()
     const storeUser = useStoreUser()
     if (storeUser.auth){
         return (
@@ -36,9 +36,9 @@ export const UpBalance: FC = () => {
         )
     }
     else {
-        return <h1>Пользователь не авторизован</h1>
+        return null
     }
 
 }
 
-export default UpBalance;
+export default UpBalanceRUB;

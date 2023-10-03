@@ -20,7 +20,7 @@
     @apply px-[20px] sm:px-[30px] py-[20px];
 }
 .popUp_sub_main_subText {
-    @apply text-[14px] text-[#F2F1F899] font-[400] sm:font-[500] leading-[20px];
+    @apply text-[14px] text-[#F2F1F899] font-[400] sm:font-[500] leading-[20px] text-left;
 }
 .popUp_main_input {
     @apply w-full bg-[#0B0D1B] border-[1px] border-[#F2F1F833] rounded-[4px] h-[38px] px-[20px] text-[16px] text-[#F2F1F8] font-[400] leading-[20px] mt-[10px] sm:mt-[12px];
@@ -56,10 +56,10 @@
     @apply ml-[10px];
 }
 .popUp_sub_main_card_mainText {
-    @apply text-[14px] text-[#F2F1F8] font-[500] leading-[20px];
+    @apply text-[14px] text-[#F2F1F8] font-[500] leading-[20px] text-left;
 }
 .popUp_sub_main_card_subText {
-    @apply text-[10px] text-[#F2F1F866] font-[400] leading-[12px] block h-[24px] max-w-[60px];
+    @apply text-[10px] text-[#F2F1F866] font-[400] leading-[12px] block h-[24px] max-w-[60px] text-left;
 }
 .popUp_sub_main_card_subTextBTC {
     @apply h-[14px] max-w-[74px];

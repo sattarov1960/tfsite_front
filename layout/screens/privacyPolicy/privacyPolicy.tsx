@@ -1,14 +1,14 @@
 import {FC} from "react";
 import Wrap from "@/layout/wrap/Wrap";
-import MainNotFound from "@/layout/components/mainNotFound/MainNotFound";
+import PrivacyPolicy from "@/layout/components/privacyPolicy/PrivacyPolicy";
 
 
-const NotFound: FC = () => {
+const PrivacyPolicyScreen: FC = () => {
     return (
         <Wrap>
-            <MainNotFound/>
+            <PrivacyPolicy/>
         </Wrap>
     )
 }
 
-export default NotFound
+export default PrivacyPolicyScreen

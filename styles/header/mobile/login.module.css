@@ -1,7 +1,0 @@
-.login_btn{
-    @apply w-[256px] h-[50px] bg-[#FF7710] flex justify-center items-center space-x-[11px] rounded-[7px]
-}
-
-.login_btn_text{
-    @apply text-[#F2F1F8] text-[16px] leading-[20px] font-semibold;
-}

@@ -1,12 +1,8 @@
-import Link from 'next/link'
+import NotFoundScreen from "@/layout/screens/notFound/notFound";
 
-function NotFound() {
+function Page() {
     return (
-        <div>
-            <h2>Not Found</h2>
-            <p>Could not find requested resource</p>
-            <Link href="/">Return Home</Link>
-    </div>
+        <NotFoundScreen/>
 )
 }
-export default NotFound
+export default Page

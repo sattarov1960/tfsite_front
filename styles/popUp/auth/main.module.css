@@ -1,0 +1,42 @@
+.popUp_authorizationRequest {
+    @apply w-[335px] sm:w-[545px] h-[196px] sm:h-[326px] bg-[#111729] border-[1px] sm:border-[2px] border-[#242836] rounded-[8px] sm:rounded-[10px];
+}
+.popUp_header {
+    @apply relative;
+}
+.cross {
+    @apply absolute w-[30px] sm:w-[40px] h-[30px] sm:h-[40px] right-[4px] sm:right-[20px] top-[4px] sm:top-[20px] cursor-pointer;
+}
+.popUp_header_text {
+    @apply text-[16px] sm:text-[22px] text-[#F2F1F8] font-[500] leading-[22px] sm:leading-[32px] text-center pt-[14px] sm:pt-[30px];
+}
+.popUp_header_line {
+    @apply h-[1px] sm:h-[2px] border-none bg-[#242836] mt-[10px] sm:mt-[20px];
+}
+.popUp_main {
+    @apply pt-[20px] pb-[30px] sm:py-[40px] text-center;
+}
+.popUp_main_textGray {
+    @apply text-[14px] sm:text-[22px] text-[#F2F1F899] font-[400] leading-[20px] sm:leading-[32px] block mx-auto max-w-[254px] sm:max-w-[400px];
+}
+.popUp_main_textWhite {
+    @apply text-[14px] sm:text-[22px] text-[#F2F1F8] font-[500] leading-[20px] sm:leading-[32px] ml-[8px];
+}
+.popUp_main_buttonDesktop {
+    @apply w-[256px] h-[50px] rounded-[7px] bg-[#FF7710] mx-auto mt-[50px] hidden sm:flex items-center justify-center;
+}
+.popUp_main_buttonDesktop_icon {
+    @apply w-[36px] h-[36p];
+}
+.popUp_main_buttonDesktop_text {
+    @apply text-[16px] text-[#F2F1F8] font-[600] leading-[20px] block ml-[8px];
+}
+.popUp_main_buttonMobile {
+    @apply flex items-center justify-center sm:hidden w-[151px] h-[34px] bg-[#FF7710] rounded-[6px] mx-auto mt-[26px];
+}
+.popUp_main_buttonMobile_icon {
+    @apply w-[24px] h-[24px] ml-[4px];
+}
+.popUp_main_buttonMobile_text {
+    @apply text-[10px] text-[#F2F1F8] font-[600] leading-[14px];
+}
