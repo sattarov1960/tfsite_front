@@ -4,8 +4,8 @@ import TransactionsScreen from "@/layout/screens/transactions/Transactions";
 
 
 export const metadata: Metadata = {
-    title: getTitle("Transactions"),
-    description: 'Transactions Page',
+    title: getTitle("Транзакции"),
+    description: 'Транзакции пользователя покупка, продажа, пополнение баланса',
 }
 
 const TransactionsPage: NextPage = () => {
