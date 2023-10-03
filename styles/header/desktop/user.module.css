@@ -1,0 +1,22 @@
+.menu_profile {
+    @apply flex items-center;
+}
+.sub_menu_profile {
+    @apply mr-[12px];
+}
+.sub_menu_profile_mainText {
+    @apply text-[18px] text-[#F2F1F8] font-[600] leading-[22px];
+}
+.menu_profile_out {
+    @apply flex items-center justify-end;
+}
+.menu_profile_out_icon {
+    @apply w-[20px] h-[20px] cursor-pointer;
+}
+.menu_profile_out_text {
+    @apply text-[14px] text-[#f2f1f866] font-[500] leading-[22px] block ml-[3px] cursor-pointer duration-150 hover:text-white;
+}
+
+.menu_profile_img {
+    @apply cursor-pointer w-[50px] h-[50px] rounded-[8px];
+}

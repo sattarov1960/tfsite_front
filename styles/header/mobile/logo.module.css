@@ -1,0 +1,3 @@
+.logo {
+    @apply ml-[10px] 2xl:ml-0;
+}

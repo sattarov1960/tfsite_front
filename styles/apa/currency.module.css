@@ -1,0 +1,30 @@
+.popUp_currency {
+    @apply w-[120px] h-[122px] bg-[#0D1220] border-[2px] border-[#f2f1f899] rounded-[5px] pt-[14px] pl-[16px];
+}
+.popUp_currency_frstItem {
+    @apply flex items-center;
+}
+.popUp_currency_frstItem_textMark {
+    @apply text-white text-[22px] font-[600] leading-[22px] cursor-pointer;
+}
+.popUp_currency_frstItem_text {
+    @apply text-white text-[22px] font-[400] leading-[22px] block ml-[6px] cursor-pointer;
+}
+.arrow {
+    @apply w-[14px] h-[14px] ml-[6px] cursor-pointer;
+}
+.popUp_currency_item {
+    @apply flex items-center mt-[16px];
+}
+.popUp_currency_frstItem_textGrayMark {
+    @apply text-[#f2f1f899] text-[22px] font-[600] leading-[22px] cursor-pointer;
+}
+.popUp_currency_frstItem_textGray {
+    @apply text-[#f2f1f899] text-[22px] font-[400] leading-[22px] block ml-[6px] cursor-pointer hover:text-white;
+}
+.popUp_currency_nextItem {
+    @apply flex items-center mt-[10px];
+}
+.popUp_currency_frstItem_textGrayUSD {
+    @apply ml-[8px] cursor-pointer hover:text-white;
+}

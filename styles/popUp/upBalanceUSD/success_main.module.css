@@ -1,0 +1,87 @@
+.popUp_replenishmentOfTheBalance_inDollars {
+    @apply bg-[#111729] border-[1px] sm:border-[2px] border-[#242836] rounded-[8px] sm:rounded-[10px] w-[335px] sm:w-[545px] max-h-[563px] sm:max-h-[606px];
+}
+.popUp_header {
+    @apply pt-[14px] sm:pt-[30px];
+}
+.popUp_header_text {
+    @apply text-[16px] sm:text-[22px] text-[#F2F1F8] font-[500] leading-[22px] sm:leading-[32px] text-center;
+}
+.popUp_header_line {
+    @apply h-[1px] sm:h-[2px] bg-[#242836] mt-[10px] sm:mt-[20px] border-none;
+}
+.popUp_main {
+    @apply pt-[20px] pb-[40px] sm:pb-[50px] px-[20px] sm:px-[30px];
+}
+.popUp_main_subTextWhite {
+    @apply text-[14px] text-[#F2F1F8] font-[500] leading-[20px];
+}
+.popUp_main_subTextViolet {
+    @apply text-[14px] text-[#919CFB] font-[600] leading-[20px];
+}
+.popUp_main_items {
+    @apply list-decimal;
+}
+.popUp_main_frstItem {
+    @apply mt-[10px] ml-[20px] h-[40px] sm:h-auto;
+}
+.popUp_main_frstItem::marker {
+    @apply text-[#F2F1F899];
+}
+.popUp_main_sub_frstItem {
+    @apply flex items-center;
+}
+.popUp_main_sub_frstItemSpecial {
+    @apply flex-wrap;
+}
+.popUp_main_item_text {
+    @apply text-[14px] text-[#F2F1F899] font-[400] leading-[20px];
+}
+.popUp_main_item_textWhite {
+    @apply text-[#F2F1F8];
+}
+.popUp_main_item_textWhiteSpecial {
+    @apply ml-0 sm:ml-[4px];
+}
+.popUp_main_item_textSpecial {
+    @apply break-all;
+}
+.popUp_main_subItem_copy {
+    @apply flex items-center ml-[6px];
+}
+.popUp_main_subItem_copySpecial {
+    @apply absolute sm:static top-[22px] left-[30px];
+}
+.popUp_main_subItem_copy_text {
+    @apply text-[12px] text-[#919CFB80] font-[500] leading-[16px] underline underline-offset-2;
+}
+.popUp_main_nextItem {
+    @apply mt-[10px] ml-[20px];
+}
+.popUp_main_nextItem::marker {
+    @apply text-[#F2F1F899];
+}
+.popUp_main_sub_nextItem {
+    @apply flex items-center relative;
+}
+.popUp_main_sub_nextItem_subTitle {
+    @apply mt-[20px];
+}
+.popUp_main_buttons {
+    @apply flex items-center justify-center flex-wrap mt-[30px] sm:mt-[50px];
+}
+.popUp_main_frstButton {
+    @apply flex items-center justify-center w-[210px] h-[50px] bg-[#00AA58] rounded-[7px];
+}
+.popUp_main_buttons_text {
+    @apply text-[#F2F1F8] text-[16px] font-[600] leading-[20px];
+}
+.popUp_main_frstButton_icon {
+    @apply w-[17.5px] h-[13.5px] ml-[7.5px];
+}
+.popUp_main_scndButton {
+    @apply flex items-center justify-center w-[210px] h-[50px] bg-[#CB4F4F] rounded-[7px] mt-[20px] sm:mt-0 ml-[0px] sm:ml-[30px];
+}
+.popUp_main_scndButton_icon {
+    @apply w-[14px] h-[14px] ml-[6px];
+}

@@ -1,0 +1,36 @@
+.popUp_replenishmentOfTheBalance_inDollars {
+    @apply bg-[#111729] border-[1px] sm:border-[2px] border-[#242836] rounded-[8px] sm:rounded-[10px] w-[335px] sm:w-[545px] max-h-[414px] sm:max-h-[416px];
+}
+.popUp_header {
+    @apply pt-[14px] sm:pt-[30px] relative;
+}
+.popUp_header_textDesktop {
+    @apply text-[22px] text-[#F2F1F8] font-[500] leading-[32px] text-center hidden sm:block;
+}
+.popUp_header_textMobile {
+    @apply text-[16px] text-[#F2F1F8] font-[500] leading-[22px] text-center block sm:hidden;
+}
+.cross {
+    @apply w-[30px] sm:w-[40px] h-[30px] sm:h-[40px] right-[4px] sm:right-[20px] top-[4px] sm:top-[20px] absolute;
+}
+.popUp_header_line {
+    @apply h-[1px] sm:h-[2px] bg-[#242836] mt-[10px] sm:mt-[20px] border-none;
+}
+.popUp_main {
+    @apply pb-[30px] sm:pb-[40px] px-[19px] sm:px-[30px];
+}
+.smile {
+    @apply w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] my-[20px] sm:my-[30px] mx-auto;
+}
+.popUp_main_textWhite {
+    @apply text-[14px] sm:text-[16px] text-[#F2F1F8] font-[500] leading-[20px] sm:leading-[22px] block text-center;
+}
+.popUp_main_textGray {
+    @apply block text-center mt-[10px] text-[12px] text-[#F2F1F899] font-[400] leading-[18px];
+}
+.popUp_main_textGrayPrivacyPolicy {
+    @apply mt-[40px] sm:mt-[30px] max-w-[210px] sm:max-w-[355px] mx-auto;
+}
+.popUp_main_textWhitePrivacyPolicy {
+    @apply text-[12px] text-[#F2F1F8] font-[400] leading-[18px] underline underline-offset-2;
+}
