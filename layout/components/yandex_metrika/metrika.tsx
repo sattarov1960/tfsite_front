@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const enabled = process.env.use_yandex_metrika && process.env.yandex_metrika_id
 
 export const YandexMetrika = () => {
@@ -24,7 +26,7 @@ export const YandexMetrika = () => {
             />
             <noscript>
                 <div>
-                    <img src="https://mc.yandex.ru/watch/12345678" style={{ position:'absolute', left:'-9999px' }} alt="" />
+                    <Image src="https://mc.yandex.ru/watch/12345678" style={{ position:'absolute', left:'-9999px' }} alt="" />
                 </div>
             </noscript>
         </>

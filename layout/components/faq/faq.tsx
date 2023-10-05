@@ -1,10 +1,11 @@
 "use client"
 
-import {FC, useState} from "react";
+import {FC} from "react";
 import Image from "next/image";
 import styles from "@/styles/faq/faq.module.css"
 import {useTranslations} from "next-intl";
 import {useStoreAccordion} from "@/store/user";
+import Link from "next/link";
 
 
 export const FAQ: FC = () => {
@@ -140,26 +141,28 @@ export const FAQ: FC = () => {
                         </div>
                     </div>
                     <div className={styles.ticketsKeys_FAQ_part_reviews}>
-                        <Image
-                            src="/tg_bot.png"
-                            width={310}
-                            height={117}
-                            alt="tg_bot"
-                            className={styles.ticketsKeys_FAQ_part_reviews_image}
-                        />
+                        <Link href="https://t.me/ManCoKeybot">
+                            <Image
+                                src="/tg_bot.png"
+                                width={310}
+                                height={117}
+                                alt="tg_bot"
+                                className={styles.ticketsKeys_FAQ_part_reviews_image}
+                            />
+                        </Link>
                         <div className={styles.ticketsKeys_FAQ_part_sub_reviews}>
                             <ul>
                                 <li className={styles.ticketsKeys_FAQ_part_sub_reviews_item}>
-                                    <p className={`${styles.ticketsKeys_FAQ_part_sub_reviews_item_textOrange} ${styles.ticketsKeys_FAQ_part_sub_reviews_item_frstTextOrange}`}>5+</p>
+                                    <p className={`${styles.ticketsKeys_FAQ_part_sub_reviews_item_textOrange} ${styles.ticketsKeys_FAQ_part_sub_reviews_item_frstTextOrange}`}>2+</p>
                                 </li>
                                 <li className={styles.ticketsKeys_FAQ_part_sub_reviews_item}>
-                                    <p className={styles.ticketsKeys_FAQ_part_sub_reviews_item_textOrange}>1.5М+</p>
+                                    <p className={styles.ticketsKeys_FAQ_part_sub_reviews_item_textOrange}>240К+</p>
                                 </li>
                                 <li className={styles.ticketsKeys_FAQ_part_sub_reviews_item}>
-                                    <p className={styles.ticketsKeys_FAQ_part_sub_reviews_item_textOrange}>200К+</p>
+                                    <p className={styles.ticketsKeys_FAQ_part_sub_reviews_item_textOrange}>15к+</p>
                                 </li>
                                 <li className={styles.ticketsKeys_FAQ_part_sub_reviews_item}>
-                                    <p className={styles.ticketsKeys_FAQ_part_sub_reviews_item_textOrange}>6767</p>
+                                    <p className={styles.ticketsKeys_FAQ_part_sub_reviews_item_textOrange}>77</p>
                                 </li>
                             </ul>
                             <ul>
