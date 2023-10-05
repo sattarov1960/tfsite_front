@@ -3,7 +3,7 @@ import {Metadata} from "next";
 import {getTitle} from "@/utilities/Meta";
 
 export const metadata: Metadata = {
-    title: getTitle("Политика"),
+    title: getTitle("Правила"),
     description: 'Политика возврата/конфиденциальности, а также пользовательское соглашение.',
 }
 function Page() {
