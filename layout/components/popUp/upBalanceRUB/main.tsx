@@ -209,7 +209,7 @@ export const Main: FC = () => {
                                     <span
                                         className={`${styles.popUp_sub_main_card_subText} ${styles.popUp_sub_main_card_subTextBTC}`}>Cryptocurrency</span>
                                 </div>
-                                <span className={styles.popUp_sub_main_card_percent}>7.5%</span>
+                                <span className={styles.popUp_sub_main_card_percent}>2%</span>
                             </div>
                             <div onClick={() => store.setActive("BtcGM")} className={`${styles.popUp_sub_main_card} ${store.active === "BtcGM" ? styles.popUp_sub_main_card_active : null}`}>
                                 <Image
@@ -223,7 +223,7 @@ export const Main: FC = () => {
                                     <p className={styles.popUp_sub_main_card_mainText}>QIWI</p>
                                     <span className={styles.popUp_sub_main_card_subText}>Payment system</span>
                                 </div>
-                                <span className={styles.popUp_sub_main_card_percent}>2%</span>
+                                <span className={styles.popUp_sub_main_card_percent}>7.5%</span>
                             </div>
                             <div onClick={() => store.setActive("EthGM")} className={`${styles.popUp_sub_main_card} ${store.active === "EthGM" ? styles.popUp_sub_main_card_active : null}`}>
                                 <Image

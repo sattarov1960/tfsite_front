@@ -26,7 +26,7 @@ export const YandexMetrika = () => {
             />
             <noscript>
                 <div>
-                    <Image src="https://mc.yandex.ru/watch/12345678" style={{ position:'absolute', left:'-9999px' }} alt="" />
+                    <Image src="https://mc.yandex.ru/watch/12345678" style={{ position:'absolute', left:'-9999px' }} alt="" width={0} height={0} />
                 </div>
             </noscript>
         </>
