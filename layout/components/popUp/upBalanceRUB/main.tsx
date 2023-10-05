@@ -45,13 +45,13 @@ export const Main: FC = () => {
                 window.location.href = `${process.env.api}/create_invoice_gm`;
                 return
             }
-            const response = await axios.get(`${process.env.api}/create_invoice_aifory?amount=${store.balance}`, { withCredentials: true });
-            if (response.data.status){
-                window.location.href = response.data.paymentURL;
-            }
-            else{
-                alert("Ошибка при создании invoice")
-            }
+            // const response = await axios.get(`${process.env.api}/create_invoice_aifory?amount=${store.balance}`, { withCredentials: true });
+            // if (response.data.status){
+            //     window.location.href = response.data.paymentURL;
+            // }
+            // else{
+            //     alert("Ошибка при создании invoice")
+            // }
         }
     }
     return (
@@ -92,7 +92,8 @@ export const Main: FC = () => {
                     <div className={styles.popUp_sub_main}>
                         <span className={styles.popUp_sub_main_subText}>{t("Choose payment method")}</span>
                         <div className={styles.popUp_sub_main_cardsDesktop}>
-                            <div tabIndex={2} onKeyPress={(e) => e.key === 'Enter' ? store.setActive("CardAIFORY") : null} onClick={() => store.setActive("CardAIFORY")} className={`${styles.popUp_sub_main_card} ${store.active === "CardAIFORY" ? styles.popUp_sub_main_card_active : null}`}>
+                            <div
+                                tabIndex={2} onKeyPress={(e) => e.key === 'Enter' ? store.setActive("CardAIFORY") : null} onClick={() => store.setActive("CardAIFORY")} className={`${styles.popUp_sub_main_card} ${store.active === "CardAIFORY" ? styles.popUp_sub_main_card_active : null}`}>
                                 <Image
                                     src="/icon_card.svg"
                                     width={48}
