@@ -46,7 +46,7 @@ export const Key = ({keyRUB, keyUSD}) => {
         store_sell.setActiveItem(name)
     }
     return (
-        <div className={styles.ticketsKeys_sub_part}>
+        <div className={styles.ticketsKeys_sub_part} id="buy-sell">
             <h2 className={styles.ticketsKeys_block_mainText}>{t("Mann Co Crate Key")}</h2>
             <p className={styles.ticketsKeys_block_subText}>(Mann Co Supply Crate Key)</p>
             <div className={styles.ticketsKeys_block_currency}>
@@ -88,8 +88,7 @@ export const Key = ({keyRUB, keyUSD}) => {
                     </div>
                 </div>
             </div>
-            <hr
-                id="buy-sell" className={styles.line_between_blocks}/>
+            <hr className={styles.line_between_blocks}/>
         </div>
     )
 }

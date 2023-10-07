@@ -3,12 +3,18 @@
 import {FC} from "react";
 import {useTranslations} from "next-intl";
 import {usePathname} from "next/navigation";
-import Link from 'next/link'
 import styles from "@/styles/header/desktop/navigate.module.css"
 import Image from 'next/image'
+import Link from "next/link";
 
 
 const Navigate: FC = () => {
+    const scrollToBuySell = (name: string) => {
+        const buySellSection = document.getElementById(name);
+        if (buySellSection) {
+            buySellSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     const t = useTranslations()
     const pathname = usePathname()
     return (
@@ -35,7 +41,10 @@ const Navigate: FC = () => {
                         alt="BUY/SELL"
                         className={`${styles.hover_navigate} ${pathname.includes("#buy-sell") ? "" : styles.menu_item_icon_active}`}
                     />
-                    <Link href="/#buy-sell"><span className={styles.menu_item_text}>{t("Buy/Sell")}</span></Link>
+                    <Link href="/#buy-sell" onClick={(e) => {
+                        e.preventDefault();
+                        scrollToBuySell('buy-sell');
+                    }}><span className={styles.menu_item_text}>{t("Buy/Sell")}</span></Link>
                 </div>
                 {pathname.includes("#buy-sell") ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
@@ -47,7 +56,10 @@ const Navigate: FC = () => {
                         height={20}
                         alt="FAQ"
                         className={`${styles.hover_navigate} ${pathname.includes("#faq") ? "" : styles.menu_item_icon_active}`}/>
-                    <Link href="/#faq"><span className={`${styles.menu_item_text} ${pathname.includes("#faq") ? styles.menu_item_text_active : ""}`}>{t("FAQ")}</span></Link>
+                    <Link href="/#faq" onClick={(e) => {
+                        e.preventDefault();
+                        scrollToBuySell('faq');
+                    }}><span className={`${styles.menu_item_text} ${pathname.includes("#faq") ? styles.menu_item_text_active : ""}`}>{t("FAQ")}</span></Link>
                 </div>
                 {pathname.includes("#faq") ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
