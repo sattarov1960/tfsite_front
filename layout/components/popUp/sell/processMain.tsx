@@ -164,7 +164,6 @@ export const Process: FC = () => {
                         store_product.setProductTicketUSD(newItem)
                         break
                 }
-                continue
             }
             else if (!response.data.status){
                 alert(response.data.err)
