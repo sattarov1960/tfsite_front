@@ -6,11 +6,11 @@ import {getTitle} from "@/utilities/Meta";
 import {YandexMetrika} from "@/layout/components/yandex_metrika/metrika";
 
 export function generateStaticParams() {
-    return [{locale: 'en'}, {locale: 'de'}];
+    return [{locale: 'en'}, {locale: 'ru'}, {locale: 'ua'}];
 }
 
 export const metadata: Metadata = {
-    generator: 'Next.js',
+    metadataBase: new URL('https://tf2key.ru'),
     applicationName: 'TF2 Key',
     title: getTitle("автоматическая покупка и продажа ключей TF2."),
     description: 'Сайт для покупки и продажи ключей TF2 по самой выгодной цене. Принимаем и переводим на QiWi, банковские карты и USDT. Быстро, легко, надёжно. Поддержка работает 24 на 7.',
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: 'TF2 key',
+        title: 'TF2KEY',
         description: 'Покупка и продажа ключей TF2. Принимаем QiWi, банковские переводы любого банка через систему быстрых платежей, а также USDT.',
         url: 'https://tf2key.ru',
-        siteName: 'Next.js',
+        siteName: 'TF2KEY.RU',
         images: [
             {
-                url: 'https://tf2key.ru/images/tild6536-3537-4337-a533-343232346665__tf2key1.jpg',
+                url: '/images/tild6536-3537-4337-a533-343232346665__tf2key1.jpg',
                 width: 800,
                 height: 600,
                 alt: 'TF 2 KEY',

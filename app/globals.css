@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@media screen and (min-width: 1536px) {
+  body {
+    @apply bg-[#0D1220];
+    zoom: 80%;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  body {
+    @apply bg-[#0D1220];
+    zoom: 100%;
+  }
+}
+
 body {
   @apply bg-[#0D1220];
 }

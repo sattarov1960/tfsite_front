@@ -23,7 +23,7 @@ export const Main: FC = () => {
             alert("Примите условие трейда")
             return
         }
-        if (store.amount === 0){
+        if (!store.amount){
             alert("Ошибка кол-ва")
             return
         }

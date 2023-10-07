@@ -40,6 +40,22 @@ export const StoreInitializerProducts: FC<{keyRUB: ProductI,
     }
     return null
 }
+export const StoreInitializerTransactions: FC<{
+    viewTransactions: TransactionI[],
+    transactions: TransactionI[],
+    amount: number
+}> = ({viewTransactions, transactions, amount}) => {
+    const initialized = useRef(false)
+    if (!initialized.current){
+        useStoreTransactions.setState({
+            viewTransactions: viewTransactions,
+            transactions: transactions,
+            amount: amount
+        })
+        initialized.current = true
+    }
+    return null
+}
 export const StoreInitializerSELL: FC<{
     offers: OfferI[],
     amount: number

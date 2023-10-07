@@ -8,7 +8,7 @@
     @apply hover:animate-bounce w-[20px] lg:w-auto h-[20px] lg:h-auto absolute bottom-[10px] lg:bottom-[40px] right-0 left-0 mx-auto cursor-pointer;
 }
 .main_part {
-    @apply flex items-start justify-between pt-[100px] lg:pt-[270px] px-[20px] md:px-[262px];
+    @apply flex items-start justify-between pt-[100px] lg:pt-[200px] 4xl:pt-[270px] px-[20px] md:px-[262px];
 }
 .main_part_leftBlock {
     @apply mx-auto xl:mx-0;
