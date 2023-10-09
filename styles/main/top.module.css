@@ -2,7 +2,7 @@
     @apply h-[477px] md:h-[548px] lg:h-[1016px] bg-[url('/main_bg.png')] bg-no-repeat bg-cover relative bg-top lg:bg-center;
 }
 .for_background_line {
-    @apply 4xl:hidden absolute -bottom-[5px] right-0 left-0 mx-auto -rotate-[0.8deg];
+    @apply hidden absolute -bottom-[5px] right-0 left-0 mx-auto -rotate-[0.8deg];
 }
 .for_background_arrow {
     @apply hover:animate-bounce w-[20px] lg:w-auto h-[20px] lg:h-auto absolute bottom-[10px] lg:bottom-[40px] right-0 left-0 mx-auto cursor-pointer;
