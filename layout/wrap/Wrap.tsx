@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import React, {FC, PropsWithChildren} from "react";
 import Header from "@/layout/components/header/header";
 import Footer from "@/layout/components/footer/footer";

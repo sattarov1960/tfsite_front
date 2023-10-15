@@ -1,9 +1,9 @@
-import {FC} from "react";
-import styles from "@/styles/footer/footer.module.css"
+import { FC, useEffect } from "react";
+import styles from "@/styles/footer/footer.module.css";
 import Image from "next/image";
 import Navigate from "@/layout/components/footer/navigate";
-import Privacy from "@/layout/components/footer/privace";
 import SocialNetworks from "@/layout/components/footer/socialNetworks";
+import Privacy from "@/layout/components/footer/privace";
 
 const Footer: FC = () => {
     return (
@@ -18,12 +18,12 @@ const Footer: FC = () => {
                         className={styles.sub_footer_logo}
                     />
                 </div>
-                <Navigate/>
-                <SocialNetworks/>
+                <Navigate />
+                <SocialNetworks />
             </div>
-            <Privacy/>
+            <Privacy />
         </footer>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;
