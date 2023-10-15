@@ -10,7 +10,7 @@ module.exports = withNextIntl({
         api: process.env.NODE_ENV === 'production' ? 'https://tf2key.ru/api' : 'http://127.0.0.1:8001',
         current: process.env.NODE_ENV === 'production' ? 'https://tf2key.ru' : 'http://127.0.0.1:3000',
         localhost_api: process.env.NODE_ENV === 'production' ? 'http://127.0.0.1:8000' : 'http://127.0.0.1:8001',
-        ws: process.env.NODE_ENV === 'production' ? 'ws://tf2key.ru/ws' : 'ws://127.0.0.1:8001/ws',
+        ws: process.env.NODE_ENV === 'production' ? 'wss://tf2key.ru/api/ws' : 'ws://127.0.0.1:8001/ws',
         use_yandex_metrika: true,
         yandex_metrika_id: 89718128,
     },
