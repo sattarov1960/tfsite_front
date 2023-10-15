@@ -26,7 +26,7 @@ const Privacy: FC = () => {
             try{
                 let full_data = JSON.parse(message) as { command: string, data: { count?: number } };
                 if (full_data.command === "count active users" && full_data.data) {
-                    setCount(full_data.data.count);
+                    setCount(full_data.data.count || count);
                 }
             }
             catch (e) {
