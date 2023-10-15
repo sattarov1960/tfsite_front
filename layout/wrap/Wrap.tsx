@@ -31,7 +31,7 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
     const cookieStore = cookies()
     const access = cookieStore.get("access_token_cookie")?.value
     const refresh = cookieStore.get("refresh_token_cookie")?.value
-    const cookie = access && refresh ? `access_token_cookie=${access};refresh_token_cookie=${refresh};` : ''
+    const cookie = `access_token_cookie=${access};refresh_token_cookie=${refresh};`
     const axiosClient = axios.create({headers: {Cookie: cookie}});
     try {
         const response = await axiosClient.get(`${process.env.localhost_api}/user`);
@@ -60,8 +60,8 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
             const data: ProductI = product.data
             switch (item) {
                 case "Mann Co. Supply Crate Key RUB":
-                        useStoreProducts.setState({"Mann Co. Supply Crate Key RUB": data})
-                break
+                    useStoreProducts.setState({"Mann Co. Supply Crate Key RUB": data})
+                    break
                 case "Mann Co. Supply Crate Key USD":
                     useStoreProducts.setState({"Mann Co. Supply Crate Key USD": data})
                     break
@@ -91,10 +91,10 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
     return (
         <>
             <StoreInitializerUser auth={useStoreUser.getState().auth}
-                              registration={useStoreUser.getState().registration}
-                              steam={useStoreUser.getState().steam}
-                              balance_usd={useStoreUser.getState().balance_usd}
-                              balance_rub={useStoreUser.getState().balance_rub}/>
+                                  registration={useStoreUser.getState().registration}
+                                  steam={useStoreUser.getState().steam}
+                                  balance_usd={useStoreUser.getState().balance_usd}
+                                  balance_rub={useStoreUser.getState().balance_rub}/>
             <StoreInitializerProducts
                 ticketUSD={useStoreProducts.getState()["Tour of Duty Ticket USD"]}
                 ticketRUB={useStoreProducts.getState()["Tour of Duty Ticket RUB"]}

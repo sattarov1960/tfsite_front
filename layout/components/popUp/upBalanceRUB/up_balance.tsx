@@ -10,6 +10,8 @@ import {useStoreUpBalanceRUB, useStoreUser} from "@/store/user";
 export const UpBalanceRUB: FC = () => {
     const storeUpBalance = useStoreUpBalanceRUB()
     const storeUser = useStoreUser()
+
+    
     if (storeUser.auth){
         return (
             <Transition appear show={storeUpBalance.isOpen} as={Fragment}>
