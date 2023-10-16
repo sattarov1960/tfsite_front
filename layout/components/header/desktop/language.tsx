@@ -57,9 +57,9 @@ const Language: FC = () => {
                                             alt="Flag"
                                             className={styles.menu_language_iconFlag}
                                         />
-                                        <Link href={`${process.env.current}/${item.name}`}>
+                                        <a href={`${process.env.current}/${item.name}`}>
                                             <span className={selected ? styles.menu_language_text_active : styles.menu_language_text}>{item.name}</span>
-                                        </Link>
+                                        </a>
                                     </div>
                                 )}
                             </Listbox.Option>
