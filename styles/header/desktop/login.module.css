@@ -1,5 +1,5 @@
 .login_btn{
-    @apply max-2xl:mt-[30px] max-2xl:ml-[24px] w-[151px] h-[34px] space-x-[6px] 2xl:w-[256px] 2xl:h-[50px] bg-[#FF7710] flex justify-center items-center 2xl:space-x-[11px] rounded-[7px]
+    @apply max-2xl:mt-[30px] max-2xl:ml-[24px] w-[151px] h-[34px] space-x-[6px] lg:w-[206px] lg:h-[40px] 2xl:w-[256px] 2xl:h-[50px] bg-[#FF7710] flex justify-center items-center 2xl:space-x-[11px] rounded-[7px]
 }
 
 .login_btn_text{

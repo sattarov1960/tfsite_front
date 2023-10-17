@@ -1,14 +1,14 @@
 .sub_header {
-    @apply hidden 2xl:flex items-center justify-between h-[90px] pl-[105px] pr-[120px];
+    @apply hidden lg:flex items-center justify-between h-[90px] pl-[105px] pr-[120px];
 }
 .logo {
-    @apply ml-[10px] 2xl:ml-0;
+    @apply ml-[10px] lg:ml-0;
 }
 .sub_header_item {
     @apply flex items-center
 }
 .sub_header_mobile {
-    @apply flex 2xl:hidden items-center justify-between h-[70px] lg:h-[90px] pl-[20px] pr-[20px];
+    @apply flex lg:hidden items-center justify-between h-[70px] lg:h-[90px] pl-[20px] pr-[20px];
 }
 .sub_header_mobile_leftBlock {
     @apply flex items-center;

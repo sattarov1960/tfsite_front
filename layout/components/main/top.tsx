@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from "react";
 import styles from "@/styles/main/top.module.css"
 import Image from "next/image";
@@ -6,17 +8,16 @@ import Link from "next/link";
 
 
 export const Top: FC = () => {
+    const scrollToBuySell = (name: string) => {
+        const buySellSection = document.getElementById(name);
+        if (buySellSection) {
+            buySellSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     const t = useTranslations()
     return (
         <section className={styles.for_background}>
-            <Image
-                src="/curved_line.svg"
-                width={1498}
-                height={112}
-                alt="Line"
-                className={styles.for_background_line}
-            />
-            <Link href="#buy-sell">
+            <Link href="#buy-sell"  onClick={(e) => {e.preventDefault();scrollToBuySell('buy-sell');}}>
                 <Image
                     src="/arrow_mainPart.svg"
                     width={40}
