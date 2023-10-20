@@ -244,6 +244,24 @@ export const RUBMain: FC = () => {
         };
     }
 
+    function getWalletPrompt(
+        activePlatform: string,
+        cards: string[],
+        t: (text: string) => string
+    ): string {
+        if (activePlatform.includes("aifory")) {
+            return "Введите номер карты"
+        }
+        else if (activePlatform.includes("card")) {
+            if (cards.length) {
+                return t("Enter your wallet number");
+            } else {
+                return "";
+            }
+        } else {
+            return t("Enter your wallet number");
+        }
+    }
     return (
         <section className={styles.withdraw_wrap}>
             <div className={styles.withdraw_wrap_left}>
@@ -373,9 +391,9 @@ export const RUBMain: FC = () => {
                         <div className={styles.withdraw_input_wrap}>
                             <input
                                 type="text"
-                                placeholder={store_withdraw.activePlatform.includes("card") ?
-                                    (store_withdraw.cards.length ? t("Enter your wallet number") : "")
-                                    : t("Enter your wallet number")}
+                                placeholder={getWalletPrompt(store_withdraw.activePlatform,
+                                                             store_withdraw.cards,
+                                                             t)}
                                 onBlur={() => checkWallet()}
                                 tabIndex={6}
                                 value={store_withdraw.wallet}
