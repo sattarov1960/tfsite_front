@@ -1,6 +1,6 @@
 "use client"
 
-import {FC, useEffect} from "react";
+import {FC, useEffect, useState} from "react";
 import {useTranslations} from "next-intl";
 import styles from "@/styles/popUp/sell/main.module.css"
 import Image from "next/image";
@@ -15,9 +15,52 @@ export const Main: FC = () => {
     const store_product = useStoreProducts()
     const store_user = useStoreUser()
     const start = false
+    const [countItems, setCountItems] = useState(undefined)
     useEffect(() => {
         store.setTradeLink(getCookie("tradeLink"))
     }, [start])
+
+    useEffect(() => {
+        // @ts-ignore
+        let searchItem = store_product[store.activeItem].item.replace("RUB", "").replace("USD", "").trimEnd()
+        if (isValidTradeLink(store.tradeLink)) {
+            loadCountItems(searchItem, store.tradeLink, "440").then((data) => {
+                if (data.error){
+                    console.log("Ошибка получения инвентаря пользователя")
+                }
+                else{
+                    setCountItems(data.count_search_items)
+                }
+            })
+        }
+
+
+    }, [store.tradeLink])
+
+    const loadCountItems = async (search: string, tradeLink: string, appId: string) => {
+        const response = await axios.post(`${process.env.api}/get_inventory`, {
+            app_id: appId,
+            search: search,
+            tradeLink: tradeLink
+        }, {withCredentials: true});
+        return response.data
+    }
+
+    const isValidTradeLink = (tradeLink: string): boolean => {
+        try{
+            const url = new URL(tradeLink);
+            const params = new URLSearchParams(url.search);
+
+            if (params.get("token") === null || params.get("partner") === null){
+                return false
+            }
+        }
+        catch (e) {
+            return false
+        }
+        return true
+    }
+
     const createTrade = async () => {
         if (!store.checkBox){
             alert("Примите условие трейда")
@@ -27,17 +70,8 @@ export const Main: FC = () => {
             alert("Ошибка кол-ва")
             return
         }
-        try{
-            const url = new URL(store.tradeLink);
-            const params = new URLSearchParams(url.search);
-
-            if (params.get("token") === null || params.get("partner") === null){
-                alert("Ссылка не валидна")
-                return
-            }
-        }
-        catch (e) {
-            alert("Ссылка не валидна")
+        if (!isValidTradeLink(store.tradeLink)){
+            alert("Ошибка, некорректная трейд ссылка")
             return
         }
         store.Close()
@@ -121,11 +155,17 @@ export const Main: FC = () => {
                         <div className={styles.popUp_sub_mainBlock_bottomPart_leftBlock}>
                             <div className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextGray_wrap}>
                                 <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextGray}>{t("Steam account:")}</span>
+                                {countItems ? <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGrayDesktop}>{t("in inventory")}:</span> : null}
                                 <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGrayDesktop}>{t("Funds will go to")}:</span>
                                 <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGray_mobile}>{t("Payment method:")}</span>
                             </div>
                             <div className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock}>
                                 <p className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextWhite}>{store_user.steam.personaname}</p>
+                                {countItems ?
+                                <p className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textViolet_start}>
+                                    <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextWhite}>{countItems}</span>
+                                    <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textAddGray}>{t("(pcs)")}</span>
+                                </p> : null}
                                 <p className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textViolet}>
                                     {t("Site balance")}
                                     <span /*
