@@ -2,16 +2,15 @@
 
 import {FC, Fragment} from "react";
 import {Dialog, Transition} from "@headlessui/react";
-import {useStoreErrorBalanceWithdraw, useStoreWithdrawUSDT} from "@/store/user";
+import {useStoreErrorBalanceWithdraw} from "@/store/user";
 import styles from "@/styles/popUp/withdraw/popUp.module.css"
-import {USDTMain} from "@/layout/components/popUp/withdraw/usdt_main";
+import {BalanceMain} from "@/layout/components/popUp/withdraw/balanceMain";
 
-export const USDT: FC = () => {
-    const store = useStoreWithdrawUSDT()
-    const store_balance_error = useStoreErrorBalanceWithdraw()
+export const BalancePaymentSystem: FC = () => {
+    const store = useStoreErrorBalanceWithdraw()
     return (
         <Transition appear show={store.isOpen} as={Fragment}>
-            <Dialog as="div" className={styles.dialog} onClose={() => store_balance_error.isOpen ? null: store.reset()}>
+            <Dialog as="div" className={styles.dialog} onClose={() => store.Close()}>
                 <div className={styles.dialog_div_wrap}>
                     <div className={styles.dialog_div}>
                         <Transition.Child
@@ -24,13 +23,14 @@ export const USDT: FC = () => {
                             leaveTo="opacity-0 scale-95"
                         >
                             <Dialog.Panel>
-                            <USDTMain/>
-                        </Dialog.Panel>
-                    </Transition.Child>
+                                <BalanceMain/>
+                            </Dialog.Panel>
+                        </Transition.Child>
+                    </div>
                 </div>
-            </div>
-        </Dialog>
-</Transition>
+            </Dialog>
+        </Transition>
 )
 }
-export default USDT
+
+export default Error

@@ -8,7 +8,7 @@ import {
     ProductsI,
     Trade, Transactions,
     UpBalance,
-    UpBalanceUSD, Withdraw, WithdrawRub
+    UpBalanceUSD, useStoreRubPSInterface, Withdraw, WithdrawErrorBalance, WithdrawRub
 } from "@/interface/auth";
 
 export const useStoreUser = create<UserI & userStore>((set) => ({
@@ -344,4 +344,22 @@ export const useStoreSuccessWithdraw = create<Popup>((set) => ({
     isOpen: false,
     Open: () => set({ isOpen: true }),
     Close: () => set({ isOpen: false }),
+}))
+export const useStoreErrorBalanceWithdraw = create<WithdrawErrorBalance>((set) => ({
+    isOpen: false,
+    wallet: "",
+    balance: 0,
+    currency: "",
+    setCurrency: (currency) => set({ currency: currency }),
+    setBalance: (balance) => set({ balance: balance }),
+    setWallet: (wallet) => set({ wallet: wallet }),
+    Open: () => set({ isOpen: true }),
+    Close: () => set({ isOpen: false }),
+}))
+
+export const useStoreRubPS = create<useStoreRubPSInterface>((set) => ({
+    balanceGM: 0,
+    balanceAIFORY: 0,
+    setBalanceGM: (balance) => set({ balanceGM: balance }),
+    setBalanceAIFORY: (balance) => set({ balanceAIFORY: balance }),
 }))

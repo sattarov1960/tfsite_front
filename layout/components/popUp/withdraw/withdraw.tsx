@@ -6,6 +6,7 @@ import RUB from "@/layout/components/popUp/withdraw/rub";
 import Success from "@/layout/components/popUp/withdraw/success";
 import Error from "@/layout/components/popUp/withdraw/error";
 import {useStoreUser} from "@/store/user";
+import {BalancePaymentSystem} from "@/layout/components/popUp/withdraw/balance";
 
 export const Withdraw: FC = () => {
     const store_user = useStoreUser()
@@ -14,6 +15,7 @@ export const Withdraw: FC = () => {
         <>
             <Error/>
             <Success/>
+            <BalancePaymentSystem/>
             <USDT/>
             <RUB/>
         </>

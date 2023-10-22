@@ -1,8 +1,16 @@
-import {FC, useEffect} from "react";
+"use client"
+
+import {FC, useEffect, useState} from "react";
 import styles from "@/styles/popUp/withdraw/withdraw.module.css"
 import Image from "next/image";
 import {useTranslations} from "next-intl";
-import {useStoreErrorWithdraw, useStoreSuccessWithdraw, useStoreUser, useStoreWithdrawUSDT} from "@/store/user";
+import {
+    useStoreErrorBalanceWithdraw,
+    useStoreErrorWithdraw,
+    useStoreSuccessWithdraw,
+    useStoreUser,
+    useStoreWithdrawUSDT
+} from "@/store/user";
 import {validateBinanceId, validateTronAddress} from "@/utilities/usdt";
 import axios from "axios";
 
@@ -12,16 +20,42 @@ export const USDTMain: FC = () => {
     const store_withdraw = useStoreWithdrawUSDT()
     const store_error = useStoreErrorWithdraw()
     const store_success = useStoreSuccessWithdraw()
+    const store_error_balance = useStoreErrorBalanceWithdraw()
     let start = false
+    const [usdtBalance, setUsdtBalance] = useState(undefined)
+
+    const getBalancePaymentSystem = async () => {
+        const usdt_response = await axios.get(`${process.env.api}/balance_usdt`, {withCredentials: true});
+        if (!usdt_response.data.status){
+            console.log("Ошибка при получении баланса платежной системы")
+        }
+        else{
+            setUsdtBalance(usdt_response.data.balance)
+            if (store_withdraw.amount > usdt_response.data.balance
+                || store_withdraw.amountView > usdt_response.data.balance
+                || store_user.balance_usd > usdt_response.data.balance){
+                store_withdraw.setAmount(Number(usdt_response.data.balance))
+                store_withdraw.setAmountView(String(usdt_response.data.balance))
+                store_error_balance.setBalance(usdt_response.data.balance)
+            }
+        }
+    }
 
     const createWithdraw = async () => {
         // const emailError = !checkEmail()
         const walletError = !checkWallet()
         const amountError = !checkAmount()
+        if (usdtBalance){
+            if (store_withdraw.amount > usdtBalance){
+                store_error_balance.setWallet("USDT")
+                store_error_balance.setCurrency("$")
+                store_error_balance.Open()
+                store_withdraw.setAmountError(true)
+                return true
+            }
+        }
         try{
-            // if (emailError && walletError && amountError){
             if (walletError && amountError){
-
                 const newBalance = Number((store_user.balance_usd - store_withdraw.amount).toFixed(2))
                 store_user.setUserBalanceUSD(newBalance)
                 // setCookie("withdrawEmail", store_withdraw.email, 360)
@@ -87,6 +121,7 @@ export const USDTMain: FC = () => {
     useEffect(() => {
         store_withdraw.setAmount(store_user.balance_usd)
         store_withdraw.setAmountView(`${store_user.balance_usd}`)
+        getBalancePaymentSystem()
         // const defEmail = getCookie("withdrawEmail")
         // if (defEmail){
         //     store_withdraw.setEmail(defEmail)
@@ -149,7 +184,7 @@ export const USDTMain: FC = () => {
                                className={`${styles.withdraw_wrap_right_input} ${styles.withdraw_wrap_right_input_frst}`}
                                tabIndex={3}/>
                         { store_withdraw.amountError ?
-                            <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Maximum withdrawal amount")} {store_user.balance_usd.toFixed(2)} $</p> : null}
+                            <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Maximum withdrawal amount")} {usdtBalance && usdtBalance > store_user.balance_usd ? store_user.balance_usd.toFixed(2) : usdtBalance} $</p> : null}
                     </div>
                     <div className={styles.withdraw_wrap_right_data_wrap}>
                         <p className={styles.withdraw_wrap_right_data_wrap_text}>{t("Enter your contact information")}</p>

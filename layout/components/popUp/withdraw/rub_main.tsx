@@ -1,10 +1,16 @@
 "use client"
 
-import {FC, useEffect} from "react";
+import {FC, useEffect, useState} from "react";
 import styles from "@/styles/popUp/withdraw/withdraw.module.css"
 import Image from "next/image";
 import {useTranslations} from "next-intl";
-import {useStoreErrorWithdraw, useStoreSuccessWithdraw, useStoreUser, useStoreWithdrawRUB} from "@/store/user";
+import {
+    useStoreErrorBalanceWithdraw,
+    useStoreErrorWithdraw, useStoreRubPS,
+    useStoreSuccessWithdraw,
+    useStoreUser,
+    useStoreWithdrawRUB
+} from "@/store/user";
 import {validateCardNumber, validatePhoneNumber} from "@/utilities/rub";
 import axios from "axios";
 import Link from "next/link";
@@ -18,6 +24,8 @@ export const RUBMain: FC = () => {
     const store_success = useStoreSuccessWithdraw()
     let start = false
     let activePlatformView = ""
+    const store_error_balance = useStoreErrorBalanceWithdraw()
+    const store_rub_PS = useStoreRubPS()
 
     useEffect(() => {
         store_withdraw.setAmount(store_user.balance_rub)
@@ -26,7 +34,25 @@ export const RUBMain: FC = () => {
         //     store_withdraw.setEmail(defEmail)
         // }
         loadLastWalletQiwi()
+        getBalancePaymentSystem()
     }, [start])
+
+    const getBalancePaymentSystem = async () => {
+        for (const i of ["balance_aifory", "balance_gm"]) {
+            const usdt_response = await axios.get(`${process.env.api}/${i}`, {withCredentials: true});
+            if (!usdt_response.data.status){
+                console.log("Ошибка при получении баланса платежной системы")
+            }
+            else{
+                if (i.includes("aifory")){
+                    store_rub_PS.setBalanceAIFORY(usdt_response.data.balance)
+                }
+                else if (i.includes("gm")){
+                    store_rub_PS.setBalanceGM(usdt_response.data.balance)
+                }
+            }
+        }
+    }
 
     useEffect(() => {
         checkAmount()
@@ -51,6 +77,30 @@ export const RUBMain: FC = () => {
         // const emailError = !checkEmail()
         const walletError = !checkWallet()
         const amountError = !checkAmount()
+        // @ts-ignore
+        let balance_ps = 0
+        if (store_withdraw.activePlatform === "qiwi" ||store_withdraw.activePlatform === "card"){
+            balance_ps = store_rub_PS.balanceGM
+        }
+        else if (store_withdraw.activePlatform === "aifory"){
+            balance_ps = store_rub_PS.balanceAIFORY
+        }
+        if (balance_ps < store_withdraw.amount){
+            store_error_balance.setBalance(balance_ps)
+            store_error_balance.setCurrency("₽")
+            switch (store_withdraw.activePlatform) {
+                case "qiwi":
+                    store_error_balance.setWallet("Qiwi")
+                    break
+                case "aifory":
+                    store_error_balance.setWallet("Card")
+                    break
+                case "card":
+                    store_error_balance.setWallet("Card 2")
+            }
+            store_error_balance.Open()
+            return
+        }
         try {
             // if (emailError && walletError && amountError){
             if (walletError && amountError){

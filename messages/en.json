@@ -185,6 +185,9 @@
   "We started our journey": "We started our journey on January 30, 2021.\nDuring this time, the number of users of\nour service exceeded 10,000\nusers, and thanks to you,\nwe continue to grow and develop!",
   "We are always in touch with our clients": "We are always in touch with\nour clients, so you will receive a response within a couple of hours",
   "Enter card number": "Enter card number",
-  "in inventory": "In inventory:"
+  "in inventory": "In inventory:",
+  "Payment system balance": "Payment system balance",
+  "Wallet balance": "Wallet balance:",
+  "The entered withdrawal amount must be less than": "The entered withdrawal amount must be less\nor equal to the balance of the\npayment system you have chosen!"
 
 }

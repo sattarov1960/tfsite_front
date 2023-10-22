@@ -153,3 +153,20 @@ export interface WithdrawRub extends Withdraw{
     setCards: (cards: string[]) => void
     setLinkAddCard: (link: string) => void
 }
+
+export interface WithdrawErrorBalance extends Popup{
+    wallet: string
+    balance: number
+    currency: string
+    setCurrency: (currency: string) => void
+    setWallet: (wallet: string) => void
+    setBalance: (wallet: number) => void
+}
+
+
+export interface useStoreRubPSInterface {
+    balanceGM: number
+    balanceAIFORY: number
+    setBalanceGM: (balance: number) => void
+    setBalanceAIFORY: (balance: number) => void
+}

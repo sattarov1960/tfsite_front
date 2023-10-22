@@ -2,15 +2,16 @@
 
 import {FC, Fragment} from "react";
 import {Dialog, Transition} from "@headlessui/react";
-import {useStoreWithdrawRUB} from "@/store/user";
+import {useStoreErrorBalanceWithdraw, useStoreWithdrawRUB} from "@/store/user";
 import styles from "@/styles/popUp/withdraw/popUp.module.css"
 import {RUBMain} from "@/layout/components/popUp/withdraw/rub_main";
 
 export const RUB: FC = () => {
     const store = useStoreWithdrawRUB()
+    const store_balance_error = useStoreErrorBalanceWithdraw()
     return (
         <Transition appear show={store.isOpen} as={Fragment}>
-            <Dialog as="div" className={styles.dialog} onClose={() => store.Close()}>
+            <Dialog as="div" className={styles.dialog} onClose={() => store_balance_error.isOpen ? null : store.Close()}>
                 <div className={styles.dialog_div_wrap}>
                     <div className={styles.dialog_div}>
                         <Transition.Child

@@ -259,10 +259,13 @@
 
 
 .popUp_wrap{
-    @apply rounded-[8px] lg:rounded-[10px] flex flex-col items-center bg-[#111729] w-[335px] h-[196px] lg:w-[545px] lg:h-[280px] pt-[20px] lg:pt-[32px] relative
+    @apply rounded-[8px] lg:rounded-[10px] flex flex-col items-center bg-[#111729] w-[335px] h-[306px] lg:w-[545px] lg:h-[306px] pt-[20px] lg:pt-[32px] relative
 }
 .popUp_wrap_err{
     @apply rounded-[8px] lg:rounded-[10px] flex flex-col items-center bg-[#111729] w-[335px] h-[328px] lg:w-[545px] lg:h-[335px] pt-[20px] lg:pt-[32px] relative
+}
+.popUp_wrap_text_header{
+    @apply text-[22px] leading-[22px] text-[#F2F1F8] font-medium text-center
 }
 .popUp_hr{
     @apply border-[#161E35] w-full mt-[11px] lg:mt-[16px]
@@ -284,4 +287,23 @@
 }
 .popUp_desc_grey_sad{
     @apply text-[#F2F1F899] text-[14px] leading-[20px] mt-[10px]
+}
+
+.popUp_text_white{
+    @apply text-[22px] leading-[30px] text-[#F2F1F8] font-normal
+}
+.popUp_text_orange{
+    @apply text-[22px] leading-[32px] text-[#FF7610] font-medium
+}
+.popUp_text_orange_bold{
+    @apply font-bold
+}
+.popUp_text_wrap{
+    @apply flex items-center mt-[20px] space-x-[20px]
+}
+.popUp_info_img{
+    @apply w-[40px] h-[40px] mt-[20px]
+}
+.popUp_info_text{
+    @apply text-[16px] leading-[22px] text-white font-normal opacity-60 mt-[16px] whitespace-pre-line
 }
