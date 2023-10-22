@@ -8,8 +8,7 @@ export const Statistics: FC = () => {
     const t = useTranslations()
     return (
         <section className={styles.statistic_part_wrap}>
-            <div className={styles.statistic_part}>
-                <div className={styles.statistic_part_items_wrap}>
+            <div className={styles.statistic_part_items_wrap}>
                     <ul className={styles.statistic_part_items}>
                         <li className={`${styles.statistic_part_item} ${styles.statistic_part_frstItem}`}>
                             <div className={styles.statistic_part_itemHeader}>
@@ -73,7 +72,6 @@ export const Statistics: FC = () => {
                         </li>
                     </ul>
                 </div>
-            </div>
         </section>
     )
 }

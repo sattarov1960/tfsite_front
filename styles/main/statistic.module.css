@@ -1,14 +1,11 @@
-.statistic_part {
-    @apply pt-[40px] lg:pt-[110px] px-[120px];
-}
 .statistic_part_wrap {
-    @apply w-full flex justify-center;
+    @apply w-full;
 }
 .statistic_part_items {
-    @apply flex items-center justify-between flex-wrap 2xl:w-[1680px];
+    @apply flex max-lg:flex-col items-center justify-between flex-wrap 2xl:w-[1680px];
 }
 .statistic_part_items_wrap {
-    @apply 2xl:flex 2xl:justify-center 2xl:items-center 2xl:w-full;
+    @apply pt-[40px] lg:pt-[110px] lg:px-[120px] flex justify-center items-center w-full;
 }
 .statistic_part_item {
     @apply w-[260px] lg:w-[405px] h-[80px] lg:h-[160px] rounded-[6px] lg:rounded-[12px] py-[14px] lg:py-[33px];
