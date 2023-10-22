@@ -111,6 +111,9 @@
 .popUp_sub_mainBlock_bottomPart_sub_leftBlock_textViolet {
     @apply text-[14px] text-[#919CFB] font-[600] leading-[20px] mt-[6px] md:mt-[12px];
 }
+.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textViolet_start {
+    @apply text-[14px] text-[#919CFB] font-[600] leading-[20px] mt-[6px] md:mt-[12px] text-start;
+}
 .popUp_sub_mainBlock_bottomPart_sub_leftBlock_textAddGray {
     @apply ml-[5px] text-[14px] text-[#F2F1F899] font-[500] leading-[20px];
 }

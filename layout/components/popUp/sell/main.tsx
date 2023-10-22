@@ -25,11 +25,14 @@ export const Main: FC = () => {
         let searchItem = store_product[store.activeItem].item.replace("RUB", "").replace("USD", "").trimEnd()
         if (isValidTradeLink(store.tradeLink)) {
             loadCountItems(searchItem, store.tradeLink, "440").then((data) => {
-                if (data.error){
+                if (!data.status){
                     console.log("Ошибка получения инвентаря пользователя")
                 }
                 else{
                     setCountItems(data.count_search_items)
+                    if (store.amount === 1){
+                        store.setNumber(Number(data.count_search_items))
+                    }
                 }
             })
         }
