@@ -189,5 +189,9 @@
   "in inventory": "У інвентарі:",
   "Payment system balance": "Баланс платіжної системи:",
   "Wallet balance": "Баланс гаманця:",
-  "The entered withdrawal amount must be less than": "Введена сума виведення повинна бути меншою\nабо дорівнює балансу обраної вами\nплатіжної системи!"
+  "The entered withdrawal amount must be less than": "Введена сума виведення повинна бути меншою\nабо дорівнює балансу обраної вами\nплатіжної системи!",
+  "Your account is blocked!": "Ваш обліковий запис заблоковано!",
+  "Your account is temporarily blocked": "Ваш обліковий запис\nтимчасово заблоковано",
+  "We apologize! To unblock, write to us in Telegram": "Ми вибачаємося!\nЩоб розблокувати, напишіть нам у Telegram",
+  "Link to Telegram TF2 key": "Посилання на ключ Telegram TF2"
 }

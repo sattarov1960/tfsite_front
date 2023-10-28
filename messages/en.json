@@ -188,6 +188,10 @@
   "in inventory": "In inventory:",
   "Payment system balance": "Payment system balance",
   "Wallet balance": "Wallet balance:",
-  "The entered withdrawal amount must be less than": "The entered withdrawal amount must be less\nor equal to the balance of the\npayment system you have chosen!"
+  "The entered withdrawal amount must be less than": "The entered withdrawal amount must be less\nor equal to the balance of the\npayment system you have chosen!",
+  "Your account is blocked!": "Your account is blocked!",
+  "Your account is temporarily blocked": "Your account\nis temporarily blocked",
+  "We apologize! To unblock, write to us in Telegram": "We apologize!\nTo unblock, write to us in Telegram.",
+  "Link to Telegram TF2 key": "Link to Telegram TF2 key"
 
 }

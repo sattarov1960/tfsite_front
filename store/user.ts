@@ -25,6 +25,7 @@ export const useStoreUser = create<UserI & userStore>((set) => ({
     balance_usd: 0,
     registration: "",
     menu: false,
+    is_banned: false,
     setlogOut: () => set({ auth: false }),
     OpenMenu: () => set({ menu: true }),
     CloseMenu: () => set({ menu: false }),

@@ -10,14 +10,16 @@ export const StoreInitializerUser: FC<UserI> = ({balance_rub,
                                              balance_usd,
                                              auth,
                                              registration,
-                                             steam}) => {
+                                             steam,
+                                             is_banned}) => {
     const initialized = useRef(false)
     if (!initialized.current){
         useStoreUser.setState({balance_usd: balance_usd,
                                      balance_rub: balance_rub,
                                      auth: auth,
                                      steam: steam,
-                                     registration: registration})
+                                     registration: registration,
+                                     is_banned: is_banned})
         initialized.current = true
     }
     return null

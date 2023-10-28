@@ -1,0 +1,25 @@
+.account_blocked_wrap{
+    @apply w-[335px] h-[280px] lg:w-[545px] lg:h-[370px] lg:rounded-[10px] rounded-[8px] bg-[#111729] pt-[14px] lg:pt-[30px];
+}
+.account_blocked_h1{
+    @apply text-[#F2F1F8] text-center text-[16px] lg:text-[22px] leading-[22px] lg:leading-[32px] font-medium;
+}
+.account_blocked_content_wrap{
+    @apply flex flex-col items-center justify-center;
+}
+.account_blocked_content_img{
+    @apply w-[50px] h-[50px] lg:w-[64px] lg:h-[64px] rounded-full mt-[20px];
+}
+.account_blocked_content_hr{
+    @apply w-full h-[1px] bg-[#151D34] mt-[10px] lg:mt-[20px];
+}
+.account_blocked_content_h2{
+    @apply text-[#F2F1F8] text-[14px] leading-[20px] lg:text-[22px] lg:leading-[30px] lg:mt-[17px] mt-[20px] whitespace-pre-wrap;
+}
+.account_blocked_content_p{
+    @apply text-[#989AA5] text-[12px] leading-[18px] lg:text-[16px] lg:leading-[22px] lg:mt-[15px] mt-[16px] whitespace-pre-wrap;
+}
+
+.account_blocked_content_link {
+    @apply text-[#F2F1F8] text-[12px] leading-[18px] lg:text-[16px] lg:leading-[22px] mt-[10px] border-transparent focus:border-transparent focus:ring-0 !outline-none;
+}

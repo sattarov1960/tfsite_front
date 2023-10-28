@@ -189,5 +189,9 @@
   "in inventory": "В инвентаре:",
   "Payment system balance": "Баланс платежной системы",
   "Wallet balance": "Баланс {wallet} кошелька:",
-  "The entered withdrawal amount must be less than": "Вводимая сумма вывода должна быть меньше\nили равна балансу выбранной вами\nплатежной системы!"
+  "The entered withdrawal amount must be less than": "Вводимая сумма вывода должна быть меньше\nили равна балансу выбранной вами\nплатежной системы!",
+  "Your account is blocked!": "Ваш аккаунт заблокирован!",
+  "Your account is temporarily blocked": "Ваш аккаунт\nвременно заблокирован",
+  "We apologize! To unblock, write to us in Telegram": "Приносим свои извинения!\nДля разблокировки напишите нам в Телеграмм.",
+  "Link to Telegram TF2 key": "Ссылка на Телеграмм TF2 key."
 }

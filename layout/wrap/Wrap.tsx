@@ -15,6 +15,7 @@ import SuccessUpBalanceUSD from "@/layout/components/popUp/upBalanceUSD/success"
 import Buy from "@/layout/components/popUp/buy/buy";
 import Sell from "@/layout/components/popUp/sell/sell";
 import Withdraw from "@/layout/components/popUp/withdraw/withdraw";
+import Ban from "@/layout/components/popUp/ban/ban";
 //
 // const Auth = dynamic(() => import("@/layout/components/popUp/auth/auth"), {loading: () => <p>Loading...</p>});
 // const Logout = dynamic(() => import("@/layout/components/popUp/logout/logout"), {loading: () => <p>Loading...</p>});
@@ -47,7 +48,9 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                 trade_link: data.steam.trade_link,
                 visibility: data.steam.visibility,
             },
-            registration: data.registration})
+            registration: data.registration,
+            is_banned: data.is_banned
+        })
     }
     catch (e) {
         useStoreUser.getState().reset()
@@ -93,7 +96,9 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                                   registration={useStoreUser.getState().registration}
                                   steam={useStoreUser.getState().steam}
                                   balance_usd={useStoreUser.getState().balance_usd}
-                                  balance_rub={useStoreUser.getState().balance_rub}/>
+                                  balance_rub={useStoreUser.getState().balance_rub}
+                                    is_banned={useStoreUser.getState().is_banned}
+            />
             <StoreInitializerProducts
                 ticketUSD={useStoreProducts.getState()["Tour of Duty Ticket USD"]}
                 ticketRUB={useStoreProducts.getState()["Tour of Duty Ticket RUB"]}
@@ -114,6 +119,7 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
             <Buy/>
             <Auth/>
             <Logout/>
+            <Ban/>
             <Header/>
             {children}
             <Footer/>
