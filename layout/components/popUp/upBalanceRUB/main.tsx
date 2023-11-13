@@ -45,14 +45,13 @@ export const Main: FC = () => {
                 window.location.href = `${process.env.api}/create_invoice_gm`;
                 return
             }
-            alert("Данная платежная система временно не работает")
-            // const response = await axios.get(`${process.env.api}/create_invoice_aifory?amount=${store.balance}`, { withCredentials: true });
-            // if (response.data.status){
-            //     window.location.href = response.data.paymentURL;
-            // }
-            // else{
-            //     alert("Ошибка при создании invoice")
-            // }
+            const response = await axios.get(`${process.env.api}/create_invoice_aifory?amount=${store.balance}`, { withCredentials: true });
+            if (response.data.status){
+                window.location.href = response.data.paymentURL;
+            }
+            else{
+                alert("Ошибка при создании invoice")
+            }
         }
     }
     return (
