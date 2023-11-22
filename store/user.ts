@@ -63,7 +63,7 @@ export const useStoreLogout = create<Popup>((set) => ({
 export const useStoreUpBalanceRUB = create<UpBalance>((set) => ({
     isOpen: false,
     active: "CardAIFORY",
-    balance: 100,
+    balance: 300,
     email: "",
     errorEmail: false,
     isOpenMenu: false,

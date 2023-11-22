@@ -39,7 +39,7 @@ export const Main: FC = () => {
     const createUp = async () => {
         // const errorEmail = checkEmail()
         // if (!errorEmail && store.balance >= 100){
-        if (store.balance >= 100){
+        if (store.balance >= 300){
             // setCookie("upEmailRUB", store.email, 360)
             if (store.active === "CardGM" || store.active === "QiwiGM" || store.active === "BtcGM" || store.active === "EthGM"){
                 window.location.href = `${process.env.api}/create_invoice_gm`;
@@ -83,7 +83,7 @@ export const Main: FC = () => {
                                 placeholder="Введите сумму:"
                                 tabIndex={1}
                             />
-                            {store.balance < 100 ?
+                            {store.balance < 300 ?
                                 <span className={styles.popUp_sub_main_warningText}>{t("Minimum top-up amount - ")}{paymentData[store.active].min} р</span>
                                 : null}
 
