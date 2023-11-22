@@ -11,7 +11,7 @@ import {getCookie, setCookie} from "@/utilities/Cookies";
 import Link from "next/link";
 
 const paymentData: PaymentDataI = {
-    "CardAIFORY": {coms: 1.035, comsView: 3.5, min: 100, name: "Card"},
+    "CardAIFORY": {coms: 1.035, comsView: 3.5, min: 300, name: "Card"},
     "CardGM": {coms: 1.045, comsView: 4.5, min: 25, name: "Card"},
     "QiwiGM": {coms: 1.075, comsView: 7.5, name: "Qiwi"},
     "BtcGM": {coms: 1.02, comsView: 2, name: "BTC"},
