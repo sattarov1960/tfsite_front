@@ -11,7 +11,6 @@ import { useSearchParams } from 'next/navigation'
 export const Login: FC = () => {
     const searchParams = useSearchParams()
     const rValue = searchParams.get('r')
-    console.log(rValue)
     const t = useTranslations()
     return (
         <button>
