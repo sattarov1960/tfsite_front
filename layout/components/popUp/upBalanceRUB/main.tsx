@@ -105,7 +105,7 @@ export const Main: FC = () => {
                                     <p className={styles.popUp_sub_main_card_mainText}>Cards</p>
                                     <span className={styles.popUp_sub_main_card_subText}>MasterCard, VISA, etc.</span>
                                 </div>
-                                <span className={styles.popUp_sub_main_card_percent}>2.5%</span>
+                                <span className={styles.popUp_sub_main_card_percent}>3.5%</span>
                             </div>
                             <div tabIndex={3} onKeyPress={(e) => e.key === 'Enter' ? store.setActive("CardGM") : null} onClick={() => store.setActive("CardGM")} className={`${styles.popUp_sub_main_card} ${store.active === "CardGM" ? styles.popUp_sub_main_card_active : null}`}>
                                 <Image
