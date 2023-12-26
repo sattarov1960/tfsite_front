@@ -6,9 +6,11 @@ import {usePathname} from "next/navigation";
 import styles from "@/styles/header/desktop/navigate.module.css"
 import Image from 'next/image'
 import Link from "next/link";
+import {useStoreUser} from "@/store/user";
 
 
 const Navigate: FC = () => {
+    const storeUser = useStoreUser()
     const scrollToBuySell = (name: string) => {
         const buySellSection = document.getElementById(name);
         if (buySellSection) {
@@ -63,7 +65,7 @@ const Navigate: FC = () => {
                 </div>
                 {pathname.includes("#faq") ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
-            <li className={styles.menu_item}>
+            {storeUser.auth ? <li className={styles.menu_item}>
                 <div className={styles.sub_menu_item}>
                     <Image
                         src="/icon_transactions_gray.svg"
@@ -74,7 +76,7 @@ const Navigate: FC = () => {
                     <Link href="/transactions"><span className={`${styles.menu_item_text} ${pathname.includes("transactions") ? styles.menu_item_text_active : ""}`}>{t("Transactions")}</span></Link>
                 </div>
                 {pathname.includes("/transactions") ? <hr className={styles.menu_item_active_border}/> : null}
-            </li>
+            </li> : null}
         </ul>
     )
 }
