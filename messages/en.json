@@ -149,7 +149,7 @@
   "When will the keys appear on the site": "When will the keys appear on the site?",
   "Keys appear on the site": "Keys appear on the site as users sell them, usually keys appear within 6 hours.",
   "What is the commission and withdrawal time": "What is the commission and withdrawal time?",
-  "It all depends on the method you choose": "It all depends on the method you choose:\nCards 1 - 2% (from 1050 rubles.) 20-180 minutes.\nCards 2 - 3.5% +50r. (from 100 rubles.) 5-40 minutes.\nQiwi - 3% 5-40 minutes.\nUsdt - 0% up to 24 hours.\nIf the money has not arrived within the specified time, write to support https://t.me/MannCoSupplyCrateKey.",
+  "It all depends on the method you choose": "It all depends on the method you choose:\nCards 1 - 2% (from 1050 rubles.) 20-180 minutes.\nCards 2 - 3.5% +50r. (from 200 rubles.) 5-40 minutes.\nQiwi - 3% 5-40 minutes.\nUsdt - 0% up to 24 hours.\nIf the money has not arrived within the specified time, write to support https://t.me/MannCoSupplyCrateKey.",
   "The site does not send exchanges, you cannot accept it": "The site does not send exchanges, you cannot accept it?",
   "Check if your profile is hidden": "Check if your profile (or inventory) is hidden, if hidden, open it.\n\nYou have recently linked your phone authenticator to your account, or changed your password - try to offer an exchange to one of your friends, you will be given a reason why you cannot make an exchange and how long you need to wait.\n\nThe Team Fortress 2 inventory has 50 slots by default.\nSolution options:\nDelete items you don’t need inside the game\nExpand your inventory using an in-game purchase, for this buy an expander inventory via this link (http:store.steampowered.combuyitem4405050)\nPurchasing an item through the Stream marketplace is not considered an in-game purchase, so you need to buy the item inside the game (or from the link above) (after the purchase there will be 300 slots in the inventory) .\nYou can also try to re-create the exchange link and change it in the \"Profile\" section.\n\nIt is also worth paying attention to such factors - problems with Steam servers, recent phone change, authenticator reset, VAC ban in the TF2 Game.\n\nIf none of these solutions helped you, contact support (https://t.me/MannCoSupplyCrateKey).",
   "Users trust us": "Users trust\nus",
@@ -188,6 +188,11 @@
   "in inventory": "In inventory:",
   "Payment system balance": "Payment system balance",
   "Wallet balance": "Wallet balance:",
-  "The entered withdrawal amount must be less than": "The entered withdrawal amount must be less\nor equal to the balance of the\npayment system you have chosen!"
+  "The entered withdrawal amount must be less than": "The entered withdrawal amount must be less\nor equal to the balance of the\npayment system you have chosen!",
+  "Your account is blocked!": "Your account is blocked!",
+  "Your account is temporarily blocked": "Your account\nis temporarily blocked",
+  "We apologize! To unblock, write to us in Telegram": "We apologize!\nTo unblock, write to us in Telegram.",
+  "Link to Telegram TF2 key": "Link to Telegram TF2 key",
+  "swap": "Exchange"
 
 }

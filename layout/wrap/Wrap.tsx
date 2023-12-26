@@ -3,9 +3,14 @@ import Header from "@/layout/components/header/header";
 import Footer from "@/layout/components/footer/footer";
 import { cookies } from 'next/headers'
 import axios from "axios";
-import {useStoreUser, useStoreProducts, useStoreTransactions} from "@/store/user";
-import {StoreInitializerUser, StoreInitializerProducts, StoreInitializerTransactions} from "@/store/StoreInitializer";
-import {ProductI} from "@/interface/auth";
+import {useStoreUser, useStoreProducts, useStoreTransactions, useStoreAllOrders} from "@/store/user";
+import {
+    StoreInitializerUser,
+    StoreInitializerProducts,
+    StoreInitializerTransactions,
+    StoreInitializerAllOrders
+} from "@/store/StoreInitializer";
+import {Item, ProductI} from "@/interface/auth";
 import Auth from "@/layout/components/popUp/auth/auth";
 import Logout from "@/layout/components/popUp/logout/logout";
 import UpBalanceRUB from "@/layout/components/popUp/upBalanceRUB/up_balance";
@@ -15,6 +20,8 @@ import SuccessUpBalanceUSD from "@/layout/components/popUp/upBalanceUSD/success"
 import Buy from "@/layout/components/popUp/buy/buy";
 import Sell from "@/layout/components/popUp/sell/sell";
 import Withdraw from "@/layout/components/popUp/withdraw/withdraw";
+import Ban from "@/layout/components/popUp/ban/ban";
+import BuyOrder from "@/layout/components/popUp/buyOrder/buyOrder";
 //
 // const Auth = dynamic(() => import("@/layout/components/popUp/auth/auth"), {loading: () => <p>Loading...</p>});
 // const Logout = dynamic(() => import("@/layout/components/popUp/logout/logout"), {loading: () => <p>Loading...</p>});
@@ -47,7 +54,9 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                 trade_link: data.steam.trade_link,
                 visibility: data.steam.visibility,
             },
-            registration: data.registration})
+            registration: data.registration,
+            is_banned: data.is_banned
+        })
     }
     catch (e) {
         useStoreUser.getState().reset()
@@ -87,13 +96,30 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
     catch (e) {
         useStoreTransactions.getState().reset()
     }
+    try{
+        const response = await axios.get(`${process.env.localhost_api}/get_all_orders`)
+        const data: {status: boolean, orders: Item[]} = response.data
+        if (data.status){
+            useStoreAllOrders.setState({
+                sellOrders: data.orders.filter(({typeOrder}) => typeOrder === "sell"),
+                buyOrders: data.orders.filter(({typeOrder}) => typeOrder === "buy"),
+            })
+        }
+        else{
+            console.log("error loading orders buy/sell")
+        }}
+    catch (e){
+        useStoreAllOrders.getState().reset()
+    }
     return (
         <>
             <StoreInitializerUser auth={useStoreUser.getState().auth}
                                   registration={useStoreUser.getState().registration}
                                   steam={useStoreUser.getState().steam}
                                   balance_usd={useStoreUser.getState().balance_usd}
-                                  balance_rub={useStoreUser.getState().balance_rub}/>
+                                  balance_rub={useStoreUser.getState().balance_rub}
+                                    is_banned={useStoreUser.getState().is_banned}
+            />
             <StoreInitializerProducts
                 ticketUSD={useStoreProducts.getState()["Tour of Duty Ticket USD"]}
                 ticketRUB={useStoreProducts.getState()["Tour of Duty Ticket RUB"]}
@@ -105,6 +131,10 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                 viewTransactions={useStoreTransactions.getState().viewTransactions}
                 amount={useStoreTransactions.getState().amount}
             />
+            <StoreInitializerAllOrders
+                buyOrders={useStoreAllOrders.getState().buyOrders}
+                sellOrders={useStoreAllOrders.getState().sellOrders}
+            />
             <UpBalanceRUB/>
             <UpBalanceUSD/>
             <ErrorUpBalanceUSD/>
@@ -114,6 +144,8 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
             <Buy/>
             <Auth/>
             <Logout/>
+            <BuyOrder/>
+            <Ban/>
             <Header/>
             {children}
             <Footer/>

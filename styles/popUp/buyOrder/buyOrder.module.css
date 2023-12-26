@@ -1,0 +1,25 @@
+.popup_wrap{
+    @apply w-[343px] h-[217px] lg:w-[700px] lg:h-[386px] bg-[#242637] relative rounded-[10px] lg:pb-[40px] pb-[30px] lg:pt-[50px] pt-[33px];
+}
+.popup_close{
+    @apply absolute top-[10px] right-[10px] cursor-pointer w-[24px] h-[24px] lg:w-[30px] lg:h-[30px];
+}
+.popup_item{
+    @apply w-full flex justify-between items-center pl-[16px] pr-[6px] lg:pl-[40px] lg:pr-[20px]
+}
+.popup_item_select{
+    @apply w-[51px] h-[16px] lg:w-[120px] lg:h-[40px] bg-[#35394D] text-[rgba(255,255,255,0.95)] text-right pr-[10px] lg:pr-[20px] text-[12px] lg:text-[20px] max-lg:leading-[16px] font-semibold
+}
+.popup_item_left_text{
+    @apply text-[12px] max-lg:leading-[16px] lg:text-[20px] font-medium text-[rgba(255,255,255,0.70)]
+}
+.popup_item_scnd{
+    @apply mt-[10px] lg:mt-[28px]
+}
+.popup_hr{
+    @apply w-full h-[2px] bg-[rgba(145,156,251,0.10)] mt-[20px] lg:mt-[40px]
+}
+.popup_btn_wrap{
+    @apply mt-[30px] lg:mt-[40px] w-[311px] lg:w-[620px] ml-[16px] h-[36px] lg:ml-[40px] lg:h-[56px] rounded-[10px] lg:rounded-[16px] flex justify-center items-center bg-[#FF7710];
+    box-shadow: 0px 9px 12px 0px rgba(255, 255, 255, 0.23) inset, 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
+}

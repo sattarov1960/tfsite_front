@@ -24,7 +24,6 @@ export const Main: FC = () => {
                     <span>{t("Logout")}</span>
                 </button>
             </Link>
-
         </div>
     )
 }

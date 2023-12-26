@@ -4,11 +4,18 @@ import {
     AccordionI,
     Currency,
     OfferI,
-    Popup, ProductI,
+    Popup,
+    ProductI,
     ProductsI,
-    Trade, Transactions,
+    Trade,
+    Transactions,
     UpBalance,
-    UpBalanceUSD, useStoreRubPSInterface, Withdraw, WithdrawErrorBalance, WithdrawRub
+    UpBalanceUSD, useStoreAllOrdersInterface,
+    useStoreBuyOrderInterface, useStoreMyOrdersInterface,
+    useStoreRubPSInterface,
+    Withdraw,
+    WithdrawErrorBalance,
+    WithdrawRub
 } from "@/interface/auth";
 
 export const useStoreUser = create<UserI & userStore>((set) => ({
@@ -25,6 +32,7 @@ export const useStoreUser = create<UserI & userStore>((set) => ({
     balance_usd: 0,
     registration: "",
     menu: false,
+    is_banned: false,
     setlogOut: () => set({ auth: false }),
     OpenMenu: () => set({ menu: true }),
     CloseMenu: () => set({ menu: false }),
@@ -62,7 +70,7 @@ export const useStoreLogout = create<Popup>((set) => ({
 export const useStoreUpBalanceRUB = create<UpBalance>((set) => ({
     isOpen: false,
     active: "CardAIFORY",
-    balance: 100,
+    balance: 300,
     email: "",
     errorEmail: false,
     isOpenMenu: false,
@@ -362,4 +370,54 @@ export const useStoreRubPS = create<useStoreRubPSInterface>((set) => ({
     balanceAIFORY: 0,
     setBalanceGM: (balance) => set({ balanceGM: balance }),
     setBalanceAIFORY: (balance) => set({ balanceAIFORY: balance }),
+}))
+
+
+export const useStoreBuyOrder = create<useStoreBuyOrderInterface>((set) => ({
+    orderId: "",
+    orderCount: 0,
+    orderPrice: 0,
+    isOpen: false,
+    maxOrderCount: 0,
+    Close: () => set({isOpen: false}),
+    Open: () => set({isOpen: true}),
+    setOrderId: (orderId) => set({orderId: orderId}),
+    setOrderCount: (orderCount) => set({orderCount: orderCount}),
+    setOrderPrice: (orderPrice) => set({orderPrice: orderPrice}),
+    setMaxOrderCount: (maxOrderCount) => set({maxOrderCount: maxOrderCount}),
+}))
+
+
+export const useStoreAllOrders = create<useStoreAllOrdersInterface>((set) => ({
+    buyOrders: [],
+    sellOrders: [],
+    setBuyOrders: (orders) => set({buyOrders: orders}),
+    setSellOrders: (orders) => set({sellOrders: orders}),
+    reset: () => set({
+        buyOrders: [],
+        sellOrders: [],
+    }),
+    deleteOrder: (orderId) => set((state) => {
+        const buyOrders = state.buyOrders.filter((item) => item.orderId !== orderId)
+        const sellOrders = state.sellOrders.filter((item) => item.orderId !== orderId)
+        return {buyOrders, sellOrders}
+    }),
+    addOrder: (order) => set((state) => {
+        if (order.typeOrder === "buy"){
+            const buyOrders = [...state.buyOrders, order]
+            return {buyOrders}
+        }
+        else if (order.typeOrder === "sell"){
+            const sellOrders = [...state.sellOrders, order]
+            return {sellOrders}
+        }
+        else {
+            return state
+        }
+    })
+}))
+
+export const useStoreMyOrders = create<useStoreMyOrdersInterface>((set) => ({
+    rerender: false,
+    setRerender: (rerender) => set({rerender: rerender}),
 }))

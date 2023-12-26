@@ -255,7 +255,7 @@ export const Process: FC = () => {
                                         height={40}
                                         alt="trust smile"
                                     />
-                                    <span className={styles.popUp_sub_main_rightBlock_error_span}>{t("Error creating exchange")}!</span>
+                                    <span className={styles.popUp_sub_main_rightBlock_error_span}>{t("Error creating swap")}!</span>
                                     <span className={styles.popUp_sub_main_rightBlock_loader_span_description}>{store.errMsg}</span>
                                 </div> :
                                 store.offers.map((item, index) => <Item key={index} statusCode={item.statusCode} steamOfferId={item.steamOfferId} offerId={item.offerId} bot={item.bot} status={item.status}/>)}

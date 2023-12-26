@@ -11,7 +11,7 @@ import {getCookie, setCookie} from "@/utilities/Cookies";
 import Link from "next/link";
 
 const paymentData: PaymentDataI = {
-    "CardAIFORY": {coms: 1.025, comsView: 2.5, min: 100, name: "Card"},
+    "CardAIFORY": {coms: 1.035, comsView: 3.5, min: 300, name: "Card"},
     "CardGM": {coms: 1.045, comsView: 4.5, min: 25, name: "Card"},
     "QiwiGM": {coms: 1.075, comsView: 7.5, name: "Qiwi"},
     "BtcGM": {coms: 1.02, comsView: 2, name: "BTC"},
@@ -39,7 +39,7 @@ export const Main: FC = () => {
     const createUp = async () => {
         // const errorEmail = checkEmail()
         // if (!errorEmail && store.balance >= 100){
-        if (store.balance >= 100){
+        if (store.balance >= 300){
             // setCookie("upEmailRUB", store.email, 360)
             if (store.active === "CardGM" || store.active === "QiwiGM" || store.active === "BtcGM" || store.active === "EthGM"){
                 window.location.href = `${process.env.api}/create_invoice_gm`;
@@ -83,7 +83,7 @@ export const Main: FC = () => {
                                 placeholder="Введите сумму:"
                                 tabIndex={1}
                             />
-                            {store.balance < 100 ?
+                            {store.balance < 300 ?
                                 <span className={styles.popUp_sub_main_warningText}>{t("Minimum top-up amount - ")}{paymentData[store.active].min} р</span>
                                 : null}
 
@@ -105,7 +105,7 @@ export const Main: FC = () => {
                                     <p className={styles.popUp_sub_main_card_mainText}>Cards</p>
                                     <span className={styles.popUp_sub_main_card_subText}>MasterCard, VISA, etc.</span>
                                 </div>
-                                <span className={styles.popUp_sub_main_card_percent}>2.5%</span>
+                                <span className={styles.popUp_sub_main_card_percent}>3.5%</span>
                             </div>
                             <div tabIndex={3} onKeyPress={(e) => e.key === 'Enter' ? store.setActive("CardGM") : null} onClick={() => store.setActive("CardGM")} className={`${styles.popUp_sub_main_card} ${store.active === "CardGM" ? styles.popUp_sub_main_card_active : null}`}>
                                 <Image

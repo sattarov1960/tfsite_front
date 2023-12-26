@@ -170,3 +170,38 @@ export interface useStoreRubPSInterface {
     setBalanceGM: (balance: number) => void
     setBalanceAIFORY: (balance: number) => void
 }
+
+export interface useStoreBuyOrderInterface extends Popup{
+    orderId: string
+    orderCount: number
+    orderPrice: number
+    maxOrderCount: number
+    setOrderId: (orderId: string) => void
+    setOrderCount: (orderCount: number) => void
+    setOrderPrice: (orderPrice: number) => void
+    setMaxOrderCount: (maxOrderCount: number) => void
+}
+
+
+export interface Item {
+    count: number
+    price: number
+    orderId: string
+    typeOrder: string
+    symbol: string
+}
+
+export interface useStoreAllOrdersInterface {
+    buyOrders: Item[]
+    sellOrders: Item[]
+    setBuyOrders: (buyOrders: Item[]) => void
+    setSellOrders: (sellOrders: Item[]) => void
+    reset: () => void,
+    deleteOrder: (orderId: string) => void,
+    addOrder: (order: Item) => void,
+}
+
+export interface useStoreMyOrdersInterface {
+    rerender: boolean
+    setRerender: (rerender: boolean) => void
+}

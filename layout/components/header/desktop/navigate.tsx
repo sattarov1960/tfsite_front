@@ -37,6 +37,18 @@ const Navigate: FC = () => {
             <li className={styles.menu_item}>
                 <div className={styles.sub_menu_item}>
                     <Image
+                        src="/exchange.svg"
+                        width={20}
+                        height={20}
+                        alt="exchange"
+                        className={`${styles.hover_navigate} ${pathname.includes("swap") ? "" : styles.menu_item_icon_active}`}/>
+                    <Link href="/swap"><span className={`${styles.menu_item_text} ${pathname.includes("swap") ? styles.menu_item_text_active : ""}`}>{t("swap")}</span></Link>
+                </div>
+                {pathname.includes("/swap") ? <hr className={styles.menu_item_active_border}/> : null}
+            </li>
+            <li className={styles.menu_item}>
+                <div className={styles.sub_menu_item}>
+                    <Image
                         src="/icon_dollar_gray.svg"
                         width={22}
                         height={22}

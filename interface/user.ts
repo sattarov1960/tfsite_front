@@ -6,6 +6,7 @@ export interface UserI {
     balance_rub: number
     balance_usd: number
     registration: string
+    is_banned: boolean
 
 }
 
