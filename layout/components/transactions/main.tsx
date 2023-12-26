@@ -147,7 +147,6 @@ export const Transactions: FC = () => {
         <main>
             <section>
                 <div className={styles.transactions}>
-                    <h2 className={styles.transactions_mainText}>{t("Transactions")}</h2>
                     <div className={styles.transactions_mainBlock}>
                         <div className={styles.transactions_mainBlock_inputBlock}>
                             <Image

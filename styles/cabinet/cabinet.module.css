@@ -1,0 +1,124 @@
+.article_cabinet_wrap{
+    @apply max-lg:justify-center flex gap-x-[20px] flex-wrap mt-[30px] lg:mt-[136px]
+}
+.left_section_wrap{
+    @apply w-[355px] h-[1010px] lg:w-[971px] lg:h-[500px] rounded-[10px] bg-[#191B2D] pb-[50px] pt-[20px] lg:pt-[30px] pl-[27px] pr-[28px] lg:pl-[30px] lg:pr-[63px]
+}
+.left_section_top_wrap{
+    @apply w-[400px]
+}
+.left_section_top_left_p{
+    @apply text-[#F2F1F8] lg:text-[18px] font-semibold leading-[22px] max-lg:mt-[40px]
+}
+.left_section_top_btn_wrap{
+    @apply flex gap-x-[20px] mt-[22px] flex-wrap
+}
+.left_section_top_left_img{
+    @apply w-[60px] h-[60px] lg:w-[100px] lg:h-[100px] rounded-[8px]
+}
+.left_section_top_left_right_span{
+    @apply text-white opacity-50 text-[14px] leading-[20px] font-normal
+}
+.left_section_top_left_right_span_orange{
+    @apply text-[#FF7710] text-[14px] leading-[20px] font-normal
+}
+.left_section_top_left_hr{
+    @apply mt-[3px] w-[280px] h-[1px] bg-[rgba(145,156,251,0.10)] rounded-full
+}
+.left_section_top_right_wrap{
+    @apply mt-[28px]
+}
+.left_section_top_right_item_wrap{
+    @apply w-[280px] lg:hidden flex flex-col justify-center mt-[10px]
+}
+.left_section_top_right_item_wrap_top{
+    @apply w-full flex justify-between
+}
+.left_section_top_right_item_wrap_lg{
+    @apply max-lg:hidden w-[380px] flex justify-between items-center mt-[10px]
+}
+.left_section_top_right_item_left_span{
+    @apply text-white opacity-50 text-[14px] leading-[20px] font-normal
+}
+.left_section_top_right_item_right_span{
+    @apply text-[#FFF] text-[14px] leading-[20px] font-normal
+}
+.left_section_top_right_item_span_orange{
+    @apply text-[#FF7710] text-[14px] leading-[20px] font-normal
+}
+.left_section_top_right_item_right_span{
+    @apply text-white opacity-50 text-[14px] leading-[20px] font-normal
+}
+.left_section_top_right_item_hr{
+    @apply w-[280px] lg:w-[380px] h-[1px] rounded-full bg-[rgba(145,156,251,0.10)] mt-[3px]
+}
+.left_section_btn_wrap{
+    @apply w-full flex  mt-[105px]
+}
+.left_section_btn_wrap{
+    @apply w-full flex flex-col
+}
+.left_section_btn_item_hr{
+    @apply lg:w-[866px] w-[277px] h-[1px]  bg-[rgba(145,156,251,0.10)] rounded-full mt-[4px]
+}
+.left_section_btn_item_right_span{
+    @apply cursor-pointer text-[#FFF] text-[14px] leading-[20px] font-normal lg:ml-[15px]
+}
+.left_section_btn_item_right_span_grey{
+    @apply cursor-pointer text-[#FFF] text-[14px] leading-[20px] font-normal opacity-50 ml-[95px] lg:ml-[50px]
+}
+.left_section_btn_item_right_span_orange{
+    @apply ml-[28px] text-[#FF7710] text-[14px] leading-[20px] font-normal
+}
+.left_section_btn_item_input{
+    @apply max-lg:mt-[10px] lg:ml-[34px] pl-[15px] w-[277px] lg:w-[521px] h-[32px] bg-[#20223A] rounded-[5px]
+}
+.left_section_btn_item{
+    @apply mt-[20px]
+}
+.right_section_wrap{
+    @apply max-md:mt-[20px] lg:px-[20px] w-[355px] lg:w-[405px] lg:h-[500px] h-[335px] rounded-[10px] bg-[#191B2D] flex flex-col items-start justify-start
+}
+.right_section_p{
+    @apply ml-[30px] mt-[30px] text-[#F2F1F8] text-[18px] font-semibold leading-[26px]
+}
+.right_section_span{
+    @apply ml-[30px] text-[#FFF] text-[14px] leading-[20px] font-normal mt-[30px]
+}
+.right_section_btn_wrap{
+    @apply ml-[30px]  flex w-full items-center mt-[30px]
+}
+.right_section_btn_text_gray{
+    @apply text-[#FFF] text-[14px] leading-[20px] font-normal opacity-50
+}
+.right_section_btn_text_orange{
+    @apply ml-[14px] text-[#FF7710] text-[14px] leading-[20px] font-normal
+}
+.right_section_btn_img{
+    @apply w-[22px] h-[22px] ml-[4px]
+}
+.cabinet_main_wrap{
+    @apply flex gap-x-[20px] w-full justify-center flex-wrap
+}
+.left_section_top_two_wrap{
+    @apply w-full flex justify-between flex-wrap
+}
+.left_section_top_left_btn_wrap{
+    @apply mt-[20px] lg:mt-[30px]
+}
+.left_section_top_left_right_item{
+    @apply flex w-full justify-between mt-[10px]
+}
+.right_section_no_auth_top_wrap{
+    @apply flex ml-[30px] mt-[22px]
+}
+.right_section_no_auth_btn_untie_wrap{
+    @apply mt-[118px] lg:mt-[207px] flex items-center justify-center w-[295px] lg:w-[325px] h-[36px] lg:h-[56px] lg:rounded-[16px] rounded-[10px] bg-[#FF7710];
+    box-shadow: 0px 9px 12px 0px rgba(255, 255, 255, 0.23) inset, 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
+}
+.right_section_no_auth_btn_untie_wrap_wrap{
+    @apply w-full flex justify-center;
+}
+.right_section_no_auth_top_right_wrap{
+    @apply ml-[20px] h-full flex flex-col justify-center gap-y-[14px]
+}

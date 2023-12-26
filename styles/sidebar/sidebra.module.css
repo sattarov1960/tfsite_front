@@ -1,0 +1,18 @@
+.sidebar_text_top{
+    @apply text-[#F2F1F8] leading-[22px] mt-[50px] lg:leading-[36px] lg:mt-[50px] text-[16px] lg:text-[32px] font-semibold
+}
+.sidebar_items_wrap{
+    @apply flex flex-col gap-y-[10px] mt-[30px] lg:mt-[50px]
+}
+.sidebar_item_wrap{
+    @apply w-[335px] lg:w-[263px] pl-[30px] h-[50px] rounded-[5px] bg-[#20223A] gap-x-[10px] flex items-center justify-start
+}
+.sidebar_item_wrap_inactive{
+    @apply  pl-[30px] w-[335px] lg:w-[263px] h-[50px] rounded-[5px] bg-[#20223A] gap-x-[10px] flex items-center justify-start opacity-30
+}
+.sidebar_item_h2{
+    @apply text-[16px] text-[#F2F1F8] font-normal leading-[22px]
+}
+.sidebar_item_img{
+    @apply w-[28px] h-[28px]
+}

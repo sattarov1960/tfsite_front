@@ -1,5 +1,5 @@
 .transactions {
-    @apply mt-[30px] lg:mt-[57px] mx-[20px] lg:mx-[120px];
+    @apply mt-[30px] lg:mt-[136px] w-[100vw] max-w-[1397px];
 }
 .transactions_mainText {
     @apply text-[16px] lg:text-[32px] text-[#F2F1F8] font-[600] leading-[22px] lg:leading-[36px];
