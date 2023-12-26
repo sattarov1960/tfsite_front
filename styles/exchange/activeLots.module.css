@@ -1,0 +1,66 @@
+.section_active_lot{
+    @apply px-[18px] lg:px-[99px] mt-[120px] flex flex-col items-center w-full
+}
+.section_active_lot_header{
+    @apply self-start 3xl:ml-[11%] 4xl:ml-[13.5%] text-[rgba(255,255,255,0.95)] text-[16px] lg:text-[26px] leading-[20px] lg:leading-[32px] font-semibold
+}
+.active_lots_wrap{
+    @apply relative overflow-y-auto rounded-[10px] w-full max-w-[976px] lg:min-w-[752px] lg:max-w-[1720px] h-[1720px] flex flex-col gap-y-[10px] lg:gap-y-[20px] border-[rgba(145,156,251,0.40)] border-[2px] bg-[rgba(145,156,251,0.05)] p-[10px] lg:p-[50px] mt-[20px]
+}
+.active_lot_wrap{
+    @apply max-lg:flex-col rounded-[6px] w-full flex justify-between items-center bg-[#2E3149] h-[186px] lg:h-[100px] pt-[10px] pb-[20px] lg:pt-[14px] lg:pb-[14px] px-[30px];
+    box-shadow: 8px 4px 20px rgba(0, 0, 0, 0.12);
+}
+.active_lot_button{
+    @apply max-lg:mt-[22px] max-lg:mx-[10px] bg-[#ff7710] rounded-[10px] lg:rounded-2xl w-full h-[36px] lg:w-[179px] lg:h-14;
+    box-shadow: 0px 6px 5px 0px rgba(255, 255, 255, 0.23) inset, 0px 4px 6px 0px rgba(0, 0, 0, 0.20);
+}
+.active_lot_text_gray{
+    @apply text-[rgba(255,255,255,0.70)] text-[12px] leading-[16px] font-medium lg:text-base lg:font-normal lg:leading-normal
+}
+.active_lot_text_white{
+    @apply text-[rgba(255,255,255,0.95)] text-[12px] leading-[16px] font-semibold lg:text-xl lg:font-medium lg:leading-normal
+}
+.active_lot_text_white_mobile{
+    @apply max-lg:text-[20px] max-lg:font-medium !important
+}
+.active_lot_text_gray_mobile{
+    @apply max-lg:text-[16px] max-lg:font-normal !important
+}
+.active_lot_img{
+    @apply rounded lg:w-[73px] w-[60px] lg:h-[72px] h-[60px]
+}
+.active_lot_frst_wrap{
+    @apply flex flex-col gap-y-[6px]
+}
+.active_frst_part{
+    @apply max-lg:w-full max-lg:justify-start items-center flex gap-x-[9px] lg:gap-x-[20px]
+}
+.active_count_price_mobile{
+    @apply max-lg:mt-[20px] max-lg:flex max-lg:w-full max-lg:justify-start max-lg:gap-x-[40px] lg:contents
+}
+.test{
+    @apply w-full
+}
+
+.active_lots_wrap::-webkit-scrollbar {
+    width: 4px;
+    background-color: rgba(145, 156, 251, 10%);
+}
+
+/* ползунок скроллбара */
+.active_lots_wrap::-webkit-scrollbar-thumb {
+    width: 4px;
+    background-color: rgba(145, 156, 251, 30%);
+    border-radius: 6px;
+}
+.active_lots_wrap::-webkit-scrollbar-button:vertical:start:decrement {
+    background-color: transparent;
+    height: 50px;
+}
+
+.active_lots_wrap::-webkit-scrollbar-button:vertical:end:increment {
+    height: 50px;
+    background-color: transparent;
+
+}

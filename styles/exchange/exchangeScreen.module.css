@@ -1,0 +1,6 @@
+.main{
+    @apply bg-[url('/bg_exchange.webp')] bg-cover bg-no-repeat pb-[100px] w-full flex flex-col items-center
+}
+.faq_wrap{
+    @apply w-full max-w-[1920px] mb-[150px]
+}

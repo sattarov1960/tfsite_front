@@ -1,5 +1,5 @@
 .popUp_authorizationRequest {
-    @apply w-[335px] sm:w-[545px] h-[196px] sm:h-[326px] bg-[#111729] border-[1px] sm:border-[2px] border-[#242836] rounded-[8px] sm:rounded-[10px];
+    @apply z-50 w-[335px] sm:w-[545px] h-[196px] sm:h-[326px] bg-[#111729] border-[1px] sm:border-[2px] border-[#242836] rounded-[8px] sm:rounded-[10px];
 }
 .popUp_header {
     @apply relative;

@@ -1,0 +1,56 @@
+.section_wrap{
+    @apply w-full flex justify-center gap-[60px] mt-[120px] flex-wrap
+}
+.card_top_header{
+    @apply text-[rgba(255,255,255,0.95)] text-left font-['Montserrat-SemiBold',_sans-serif] text-[16px] lg:text-[26px] leading-[20px] lg:leading-8 font-semibold
+}
+.card_wrap{
+    @apply flex flex-col items-center mt-[20px] w-[343px] h-[178px] lg:w-[700px] lg:h-[304px] bg-[#242637] rounded-[10px] pt-[32px];
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.10);
+}
+.card_inner_wrap{
+    @apply w-full flex flex-col items-center gap-[5px] lg:gap-[20px]
+}
+.card_item_wrap{
+    @apply w-full flex justify-between pl-[40px] pr-[20px]
+}
+.card_item_wrap_bottom{
+    @apply mt-[10px]
+}
+.card_item_p{
+    @apply text-[rgba(255,255,255,0.70)] text-[12px] lg:text-[20px] font-medium
+}
+.card_item_input{
+    @apply bg-[#35394d] w-[120px] h-10 pr-[20px] flex justify-end items-center
+}
+.card_item_input_text{
+    @apply text-[rgba(255,255,255,0.95)] text-xl font-semibold
+}
+.card_item_total{
+    @apply mr-[20px] text-[rgba(255,255,255,0.95)] text-right text-[12px] lg:text-xl font-semibold
+}
+.card_item_hr{
+    @apply h-[2px] bg-[rgba(145,156,251,0.10)] w-full mt-[20px]
+}
+.card_item_hr_no_lots{
+    @apply h-[2px] bg-[rgba(145,156,251,0.10)] w-full mt-[23px]
+}
+.card_item_button{
+    @apply bg-[#ff7710] rounded-[16px] lg:rounded-2xl w-[311px] lg:w-[620px] h-[36px] lg:h-14 mt-[10px] lg:mt-[40px]
+}
+.card_item_button_text{
+    @apply text-[rgba(255,255,255,0.95)] text-center leading-8 font-bold text-[16px] leading-[32px]
+}
+.card_item_button_inactive{
+    @apply opacity-50
+}
+.section_card_wrap_no_lots{
+    @apply h-[178px] w-[343px] lg:w-[700px] lg:h-[304px] bg-[#242637] rounded-[10px] pt-[20px] lg:pt-[40px] flex flex-col items-center mt-[20px];
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.10);
+}
+.section_card_no_lots_h2{
+    @apply text-[rgba(255,255,255,0.95)] text-[12px] lg:text-[20px] leading-[16px] lg:leading-normal font-semibold;
+}
+.section_card_no_lots_p{
+    @apply text-[rgba(255,255,255,0.70)] text-[12px] lg:text-[16px] leading-[16px] lg:leading-normal font-normal mt-[20px] text-center
+}

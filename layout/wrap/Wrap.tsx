@@ -3,9 +3,14 @@ import Header from "@/layout/components/header/header";
 import Footer from "@/layout/components/footer/footer";
 import { cookies } from 'next/headers'
 import axios from "axios";
-import {useStoreUser, useStoreProducts, useStoreTransactions} from "@/store/user";
-import {StoreInitializerUser, StoreInitializerProducts, StoreInitializerTransactions} from "@/store/StoreInitializer";
-import {ProductI} from "@/interface/auth";
+import {useStoreUser, useStoreProducts, useStoreTransactions, useStoreAllOrders} from "@/store/user";
+import {
+    StoreInitializerUser,
+    StoreInitializerProducts,
+    StoreInitializerTransactions,
+    StoreInitializerAllOrders
+} from "@/store/StoreInitializer";
+import {Item, ProductI} from "@/interface/auth";
 import Auth from "@/layout/components/popUp/auth/auth";
 import Logout from "@/layout/components/popUp/logout/logout";
 import UpBalanceRUB from "@/layout/components/popUp/upBalanceRUB/up_balance";
@@ -16,6 +21,7 @@ import Buy from "@/layout/components/popUp/buy/buy";
 import Sell from "@/layout/components/popUp/sell/sell";
 import Withdraw from "@/layout/components/popUp/withdraw/withdraw";
 import Ban from "@/layout/components/popUp/ban/ban";
+import BuyOrder from "@/layout/components/popUp/buyOrder/buyOrder";
 //
 // const Auth = dynamic(() => import("@/layout/components/popUp/auth/auth"), {loading: () => <p>Loading...</p>});
 // const Logout = dynamic(() => import("@/layout/components/popUp/logout/logout"), {loading: () => <p>Loading...</p>});
@@ -90,6 +96,21 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
     catch (e) {
         useStoreTransactions.getState().reset()
     }
+    try{
+        const response = await axios.get(`${process.env.localhost_api}/get_all_orders`)
+        const data: {status: boolean, orders: Item[]} = response.data
+        if (data.status){
+            useStoreAllOrders.setState({
+                sellOrders: data.orders.filter(({typeOrder}) => typeOrder === "sell"),
+                buyOrders: data.orders.filter(({typeOrder}) => typeOrder === "buy"),
+            })
+        }
+        else{
+            console.log("error loading orders buy/sell")
+        }}
+    catch (e){
+        useStoreAllOrders.getState().reset()
+    }
     return (
         <>
             <StoreInitializerUser auth={useStoreUser.getState().auth}
@@ -110,6 +131,10 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                 viewTransactions={useStoreTransactions.getState().viewTransactions}
                 amount={useStoreTransactions.getState().amount}
             />
+            <StoreInitializerAllOrders
+                buyOrders={useStoreAllOrders.getState().buyOrders}
+                sellOrders={useStoreAllOrders.getState().sellOrders}
+            />
             <UpBalanceRUB/>
             <UpBalanceUSD/>
             <ErrorUpBalanceUSD/>
@@ -119,6 +144,7 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
             <Buy/>
             <Auth/>
             <Logout/>
+            <BuyOrder/>
             <Ban/>
             <Header/>
             {children}

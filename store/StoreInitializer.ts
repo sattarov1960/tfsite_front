@@ -1,9 +1,16 @@
 "use client";
 
 import {FC, useRef} from "react"
-import {useStoreBUY, useStoreProducts, useStoreSELL, useStoreTransactions, useStoreUser} from "@/store/user"
+import {
+    useStoreAllOrders,
+    useStoreBUY,
+    useStoreProducts,
+    useStoreSELL,
+    useStoreTransactions,
+    useStoreUser
+} from "@/store/user"
 import {UserI} from "@/interface/user";
-import {OfferI, ProductI, ProductsI} from "@/interface/auth";
+import {Item, OfferI, ProductI, ProductsI} from "@/interface/auth";
 import {TransactionI, TransactionItemsI} from "@/interface/transactions";
 
 export const StoreInitializerUser: FC<UserI> = ({balance_rub,
@@ -82,6 +89,23 @@ export const StoreInitializerBUY: FC<{
         useStoreBUY.setState({
             offers: offers,
             amount: amount
+        })
+        initialized.current = true
+    }
+    return null
+}
+
+
+
+export const StoreInitializerAllOrders: FC<{
+    buyOrders: Item[],
+    sellOrders: Item[],
+}> = ({buyOrders, sellOrders}) => {
+    const initialized = useRef(false)
+    if (!initialized.current){
+        useStoreAllOrders.setState({
+            buyOrders: buyOrders,
+            sellOrders: sellOrders,
         })
         initialized.current = true
     }

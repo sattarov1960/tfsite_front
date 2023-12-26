@@ -1,0 +1,6 @@
+.video_wrap{
+    @apply w-full flex justify-center
+}
+.iframe {
+    @apply w-[343px] h-[197px] lg:w-[1720px] lg:h-[968px];
+}
