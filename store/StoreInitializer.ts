@@ -18,7 +18,17 @@ export const StoreInitializerUser: FC<UserI> = ({balance_rub,
                                              auth,
                                              registration,
                                              steam,
-                                             is_banned}) => {
+                                             is_banned,
+                                             countTrades,
+                                             email,
+                                             phone,
+                                             telegramCodeActivate,
+                                             telegramAddress,
+                                             telegramEnable,
+                                             telegramName,
+                                             steamApiKey,
+                                             steamTradeUrl,
+                                             telegramAvatar}) => {
     const initialized = useRef(false)
     if (!initialized.current){
         useStoreUser.setState({balance_usd: balance_usd,
@@ -26,7 +36,17 @@ export const StoreInitializerUser: FC<UserI> = ({balance_rub,
                                      auth: auth,
                                      steam: steam,
                                      registration: registration,
-                                     is_banned: is_banned})
+                                     is_banned: is_banned,
+                                     countTrades: countTrades,
+                                     telegramName: telegramName,
+                                     telegramEnable: telegramEnable,
+                                     telegramAddress: telegramAddress,
+                                     phone: phone,
+                                     email: email,
+                                     telegramCodeActivate: telegramCodeActivate,
+                                     steamApiKey: steamApiKey,
+                                     steamTradeUrl: steamTradeUrl,
+                                     telegramAvatar: telegramAvatar})
         initialized.current = true
     }
     return null

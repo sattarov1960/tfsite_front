@@ -193,6 +193,18 @@
   "Your account is temporarily blocked": "Your account\nis temporarily blocked",
   "We apologize! To unblock, write to us in Telegram": "We apologize!\nTo unblock, write to us in Telegram.",
   "Link to Telegram TF2 key": "Link to Telegram TF2 key",
-  "swap": "Exchange"
-
+  "swap": "Exchange",
+  "Personal Area": "Cabinet",
+  "Registration": "Registration",
+  "Exchange": "Exchange",
+  "Contact Information": "Contact Information",
+  "Apply": "Apply",
+  "Telephone": "Telephone:",
+  "Get the link": "Get the link",
+  "Get the key": "Get the key",
+  "Alerts will be sent": "Alerts will be sent:",
+  "Unlink account": "Unlink account",
+  "To enable alerts": "To enable notifications about the sale of items, send our bot an authorization code.",
+  "Your authorization code": "Your authorization code:",
+  "Link account": "Link account"
 }

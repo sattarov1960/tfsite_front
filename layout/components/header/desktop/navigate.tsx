@@ -77,18 +77,7 @@ const Navigate: FC = () => {
                 </div>
                 {pathname.includes("#faq") ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
-            {storeUser.auth ? <li className={styles.menu_item}>
-                <div className={styles.sub_menu_item}>
-                    <Image
-                        src="/icon_transactions_gray.svg"
-                        width={20}
-                        height={20}
-                        alt="Transactions"
-                        className={`${styles.hover_navigate} ${pathname.includes("transactions") ? "" : styles.menu_item_icon_active}`}/>
-                    <Link href="/transactions"><span className={`${styles.menu_item_text} ${pathname.includes("transactions") ? styles.menu_item_text_active : ""}`}>{t("Transactions")}</span></Link>
-                </div>
-                {pathname.includes("/transactions") ? <hr className={styles.menu_item_active_border}/> : null}
-            </li> : null}
+
         </ul>
     )
 }

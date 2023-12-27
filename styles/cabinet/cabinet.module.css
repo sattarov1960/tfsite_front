@@ -67,6 +67,9 @@
 .left_section_btn_item_right_span_grey{
     @apply cursor-pointer text-[#FFF] text-[14px] leading-[20px] font-normal opacity-50 ml-[95px] lg:ml-[50px]
 }
+.left_section_btn_item_right_two_span_grey{
+    @apply cursor-pointer text-[14px] leading-[20px] font-normal opacity-50 ml-[95px] lg:ml-[60px]
+}
 .left_section_btn_item_right_span_orange{
     @apply ml-[28px] text-[#FF7710] text-[14px] leading-[20px] font-normal
 }
@@ -86,16 +89,16 @@
     @apply ml-[30px] text-[#FFF] text-[14px] leading-[20px] font-normal mt-[30px]
 }
 .right_section_btn_wrap{
-    @apply ml-[30px]  flex w-full items-center mt-[30px]
+    @apply ml-[30px]  flex w-full items-center mt-[2x]
 }
 .right_section_btn_text_gray{
-    @apply text-[#FFF] text-[14px] leading-[20px] font-normal opacity-50
+    @apply text-[#FFF] text-[14px] leading-[20px] font-normal opacity-50  mt-[30px] ml-[30px]
 }
 .right_section_btn_text_orange{
-    @apply ml-[14px] text-[#FF7710] text-[14px] leading-[20px] font-normal
+    @apply text-[#FF7710] text-[14px] leading-[20px] font-normal
 }
 .right_section_btn_img{
-    @apply w-[22px] h-[22px] ml-[4px]
+    @apply w-[22px] h-[22px] ml-[4px] cursor-pointer
 }
 .cabinet_main_wrap{
     @apply flex gap-x-[20px] w-full justify-center flex-wrap
@@ -114,6 +117,10 @@
 }
 .right_section_no_auth_btn_untie_wrap{
     @apply mt-[118px] lg:mt-[207px] flex items-center justify-center w-[295px] lg:w-[325px] h-[36px] lg:h-[56px] lg:rounded-[16px] rounded-[10px] bg-[#FF7710];
+    box-shadow: 0px 9px 12px 0px rgba(255, 255, 255, 0.23) inset, 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
+}
+.right_section_auth_btn_untie_wrap{
+    @apply cursor-pointer mt-[66px] lg:mt-[155px] flex items-center justify-center w-[295px] lg:w-[325px] h-[36px] lg:h-[56px] lg:rounded-[16px] rounded-[10px] bg-[#FF7710];
     box-shadow: 0px 9px 12px 0px rgba(255, 255, 255, 0.23) inset, 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
 }
 .right_section_no_auth_btn_untie_wrap_wrap{

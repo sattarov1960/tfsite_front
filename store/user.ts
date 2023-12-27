@@ -20,6 +20,16 @@ import {
 
 export const useStoreUser = create<UserI & userStore>((set) => ({
     auth: false,
+    telegramAvatar: "",
+    steamApiKey: "",
+    steamTradeUrl: "",
+    telegramAddress: "",
+    telegramCodeActivate: "",
+    telegramEnable: false,
+    telegramName: "",
+    email: "",
+    phone: "",
+    countTrades: 0,
     steam: {
         steamid: "",
         avatarhash: "",
@@ -36,8 +46,13 @@ export const useStoreUser = create<UserI & userStore>((set) => ({
     setlogOut: () => set({ auth: false }),
     OpenMenu: () => set({ menu: true }),
     CloseMenu: () => set({ menu: false }),
+    setSteamTradeUrl: (data) => set({ steamTradeUrl: data }),
+    setSteamApiKey: (data) => set({ steamApiKey: data }),
     setUserBalanceRUB: (data) => set({ balance_rub: data }),
     setUserBalanceUSD: (data) => set({ balance_usd: data }),
+    setEmail: (data) => set({ email: data }),
+    setPhone: (data) => set({ phone: data }),
+    setTelegramEnable: (data) => set({ telegramEnable: data }),
     reset: () => set({
         auth: false,
         steam: {
@@ -52,6 +67,16 @@ export const useStoreUser = create<UserI & userStore>((set) => ({
         balance_usd: 0,
         registration: "",
         menu: false,
+        is_banned: false,
+        countTrades: 0,
+        email: "",
+        phone: "",
+        telegramEnable: false,
+        telegramCodeActivate: "",
+        telegramName: "",
+        telegramAddress: "",
+        steamTradeUrl: "",
+        steamApiKey: "",
     }),
 }))
 

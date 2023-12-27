@@ -5,9 +5,18 @@ export interface UserI {
     auth: boolean,
     balance_rub: number
     balance_usd: number
-    registration: string
+    registration: string,
+    countTrades: number
     is_banned: boolean
-
+    email: string
+    phone: string
+    telegramEnable: boolean
+    telegramCodeActivate: string
+    telegramName: string
+    telegramAddress: string
+    telegramAvatar: string
+    steamTradeUrl: string
+    steamApiKey: string
 }
 
 export interface userStore {
@@ -15,7 +24,12 @@ export interface userStore {
     setlogOut: () => void
     OpenMenu: () => void
     CloseMenu: () => void
+    setTelegramEnable: (data: boolean) => void
     setUserBalanceRUB: (data: number) => void
     setUserBalanceUSD: (data: number) => void
+    setSteamTradeUrl: (data: string) => void
+    setSteamApiKey: (data: string) => void
+    setEmail: (data: string) => void
+    setPhone: (data: string) => void
     reset: () => void
 }

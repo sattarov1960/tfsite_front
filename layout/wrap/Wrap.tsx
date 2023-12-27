@@ -55,7 +55,17 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                 visibility: data.steam.visibility,
             },
             registration: data.registration,
-            is_banned: data.is_banned
+            is_banned: data.is_banned,
+            countTrades: data.countTrades,
+            steamTradeUrl: data.steamTradeUrl,
+            steamApiKey: data.steamApiKey,
+            telegramAddress: data.telegramAddress,
+            telegramCodeActivate: data.telegramCodeActivate,
+            telegramEnable: data.telegramEnable,
+            telegramName: data.telegramName,
+            phone: data.phone,
+            email: data.email,
+            telegramAvatar: data.telegramAvatar
         })
     }
     catch (e) {
@@ -119,6 +129,17 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                                   balance_usd={useStoreUser.getState().balance_usd}
                                   balance_rub={useStoreUser.getState().balance_rub}
                                     is_banned={useStoreUser.getState().is_banned}
+                                  countTrades={useStoreUser.getState().countTrades}
+                                  email={useStoreUser.getState().email}
+                                  phone={useStoreUser.getState().phone}
+                                  telegramAddress={useStoreUser.getState().telegramAddress}
+                                  telegramCodeActivate={useStoreUser.getState().telegramCodeActivate}
+                                  telegramEnable={useStoreUser.getState().telegramEnable}
+                                  telegramName={useStoreUser.getState().telegramName}
+                                  steamApiKey={useStoreUser.getState().steamApiKey}
+                                  steamTradeUrl={useStoreUser.getState().steamTradeUrl}
+                                  telegramAvatar={useStoreUser.getState().telegramAvatar}
+
             />
             <StoreInitializerProducts
                 ticketUSD={useStoreProducts.getState()["Tour of Duty Ticket USD"]}

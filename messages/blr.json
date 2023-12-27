@@ -194,5 +194,18 @@
   "Your account is temporarily blocked": "Ваш уліковы запіс\nчасова заблакіраваны",
   "We apologize! To unblock, write to us in Telegram": "Прыносім прабачэнні!\nКаб разблакіраваць, напішыце нам у Telegram",
   "Link to Telegram TF2 key": "Спасылка на ключ Telegram TF2",
-  "swap": "Біржа"
+  "swap": "Біржа",
+  "Personal Area": "Асабісты кабінет",
+  "Registration": "Рэгістрацыя",
+  "Exchange": "Абмен",
+  "Contact Information": "Кантактная інфармацыя",
+  "Apply": "Ужыць",
+  "Telephone": "Тэлефон:",
+  "Get the link": "Атрымаць спасылку",
+  "Get the key": "Атрымаць ключ",
+  "Alerts will be sent": "Абвесткі будуць паступаць:",
+  "Unlink account": "Адвязаць акаўнт",
+  "To enable alerts": "Для ўключэння абвестак аб продажы прадметаў дашліце нашаму боту код для аўтарызацыі.",
+  "Your authorization code": "Ваш код для аўтарызацыі:",
+  "Link account": "Прывязаць акаўнт"
 }
