@@ -8,13 +8,13 @@
     @apply text-[12px] lg:text-[18px] text-[#F2F1F8] font-[600] leading-[18px] lg:leading-[22px];
 }
 .menu_profile_out {
-    @apply flex items-center justify-end;
+    @apply flex items-center justify-end opacity-50 hover:opacity-100;
 }
 .menu_profile_out_icon {
     @apply w-[14px] lg:w-[20px] h-[14px] lg:h-[20px] cursor-pointer;
 }
 .menu_profile_out_text {
-    @apply text-[10px] lg:text-[14px] text-[#f2f1f866] font-[500] leading-[16px] lg:leading-[22px] block ml-[2px] lg:ml-[3px] cursor-pointer duration-150 hover:text-white;
+    @apply text-[10px] lg:text-[14px] text-[#f2f1f866] font-[500] leading-[16px] lg:leading-[22px] block ml-[2px] lg:ml-[3px] cursor-pointer duration-150 text-white;
 }
 .user {
     @apply w-[40px] rounded-[6px] lg:w-[50px] h-[40px] lg:h-[50px];

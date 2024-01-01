@@ -1,5 +1,5 @@
 .article_cabinet_wrap{
-    @apply max-lg:justify-center flex gap-x-[20px] flex-wrap mt-[30px] lg:mt-[136px]
+    @apply max-2xl:justify-center flex gap-x-[20px] flex-wrap mt-[30px] lg:mt-[136px]
 }
 .left_section_wrap{
     @apply w-[355px] h-[1010px] lg:w-[971px] lg:h-[500px] rounded-[10px] bg-[#191B2D] pb-[50px] pt-[20px] lg:pt-[30px] pl-[27px] pr-[28px] lg:pl-[30px] lg:pr-[63px]
@@ -31,23 +31,29 @@
 .left_section_top_right_item_wrap{
     @apply w-[280px] lg:hidden flex flex-col justify-center mt-[10px]
 }
+.left_section_top_right_item_wrap{
+    @apply w-[280px] lg:hidden flex flex-col justify-center mt-[10px]
+}
 .left_section_top_right_item_wrap_top{
     @apply w-full flex justify-between
 }
 .left_section_top_right_item_wrap_lg{
     @apply max-lg:hidden w-[380px] flex justify-between items-center mt-[10px]
 }
+.left_section_top_right_item_wrap_lg_btn{
+    @apply max-lg:hidden w-[380px] flex justify-start items-center mt-[10px] gap-x-[30px]
+}
 .left_section_top_right_item_left_span{
     @apply text-white opacity-50 text-[14px] leading-[20px] font-normal
 }
 .left_section_top_right_item_right_span{
-    @apply text-[#FFF] text-[14px] leading-[20px] font-normal
+    @apply text-[14px] leading-[20px] font-normal cursor-pointer
 }
 .left_section_top_right_item_span_orange{
     @apply text-[#FF7710] text-[14px] leading-[20px] font-normal
 }
 .left_section_top_right_item_right_span{
-    @apply text-white opacity-50 text-[14px] leading-[20px] font-normal
+    @apply text-[14px] leading-[20px] font-normal
 }
 .left_section_top_right_item_hr{
     @apply w-[280px] lg:w-[380px] h-[1px] rounded-full bg-[rgba(145,156,251,0.10)] mt-[3px]
@@ -65,22 +71,28 @@
     @apply cursor-pointer text-[#FFF] text-[14px] leading-[20px] font-normal lg:ml-[15px]
 }
 .left_section_btn_item_right_span_grey{
-    @apply cursor-pointer text-[#FFF] text-[14px] leading-[20px] font-normal opacity-50 ml-[95px] lg:ml-[50px]
+    @apply cursor-pointer text-[14px] leading-[20px] font-normal ml-[95px] lg:ml-[50px]
 }
 .left_section_btn_item_right_two_span_grey{
-    @apply cursor-pointer text-[14px] leading-[20px] font-normal opacity-50 ml-[95px] lg:ml-[60px]
+    @apply cursor-pointer text-[14px] leading-[20px] font-normal ml-[95px] lg:ml-[60px]
 }
 .left_section_btn_item_right_span_orange{
     @apply ml-[28px] text-[#FF7710] text-[14px] leading-[20px] font-normal
 }
+.left_section_btn_item_input_top{
+    @apply w-[130px] px-[15px] lg:w-[185px] h-[26px] bg-[#20223A] rounded-[5px]
+}
 .left_section_btn_item_input{
-    @apply max-lg:mt-[10px] lg:ml-[34px] pl-[15px] w-[277px] lg:w-[521px] h-[32px] bg-[#20223A] rounded-[5px]
+    @apply max-lg:mt-[10px] lg:ml-[34px] px-[15px] w-[277px] lg:w-[521px] h-[32px] bg-[#20223A] rounded-[5px]
+}
+.left_section_btn_item_input_two{
+    @apply max-lg:mt-[10px] lg:ml-[46px] px-[15px] w-[277px] lg:w-[521px] h-[32px] bg-[#20223A] rounded-[5px]
 }
 .left_section_btn_item{
     @apply mt-[20px]
 }
 .right_section_wrap{
-    @apply max-md:mt-[20px] lg:px-[20px] w-[355px] lg:w-[405px] lg:h-[500px] h-[335px] rounded-[10px] bg-[#191B2D] flex flex-col items-start justify-start
+    @apply max-xl:mt-[20px] lg:px-[20px] w-[355px] lg:w-[405px] lg:h-[500px] h-[335px] rounded-[10px] bg-[#191B2D] flex flex-col items-start justify-start
 }
 .right_section_p{
     @apply ml-[30px] mt-[30px] text-[#F2F1F8] text-[18px] font-semibold leading-[26px]

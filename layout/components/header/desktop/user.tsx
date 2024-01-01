@@ -25,7 +25,6 @@ export const User: FC = () => {
                                     height={20}
                                     alt="personal Area"
                                     className={styles.sub_menu_balance_top_icon}
-                                    onClick={() => store.Open()}
                                 />
                                 <u className={styles.menu_profile_out_text}>
                                     {t("Personal Area")}

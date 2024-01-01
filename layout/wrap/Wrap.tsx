@@ -40,7 +40,7 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
     const cookie = `access_token_cookie=${access};refresh_token_cookie=${refresh};`
     const axiosClient = axios.create({headers: {Cookie: cookie}});
     try {
-        const response = await axiosClient.get(`${process.env.localhost_api}/user`);
+        const response = await axiosClient.get(`${process.env.localhost_api}/user`, {timeout: 2 * 1000});
         const data = response.data
         useStoreUser.setState({
             auth: data.auth,
@@ -74,7 +74,7 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
 
     try{
         for (const item of ["Mann Co. Supply Crate Key RUB", "Mann Co. Supply Crate Key USD", "Tour of Duty Ticket RUB", "Tour of Duty Ticket USD"]) {
-            const product = await axiosClient.get(`${process.env.localhost_api}/price`, { params: { search_item: item } })
+            const product = await axiosClient.get(`${process.env.localhost_api}/price`, { params: { search_item: item }, timeout: 2 * 1000 })
             const data: ProductI = product.data
             switch (item) {
                 case "Mann Co. Supply Crate Key RUB":
@@ -95,7 +95,7 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
     }
     catch (e){}
     try {
-        const response = await axiosClient.get(`${process.env.localhost_api}/transactions?start=${useStoreTransactions.getState().start}&offset=15`);
+        const response = await axiosClient.get(`${process.env.localhost_api}/transactions?start=${useStoreTransactions.getState().start}&offset=15`, {timeout: 2 * 1000});
         const data = response.data
         useStoreTransactions.setState({
             transactions: data.transactions,

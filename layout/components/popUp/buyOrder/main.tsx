@@ -29,7 +29,7 @@ export const Main: FC = () => {
             return
         }
         store_user.setUserBalanceRUB(roundTo(store_user.balance_rub - store_buy_order.orderPrice * store_buy_order.orderCount, 2))
-        axios.post(`${process.env.api}/buy_order`, {orderID: store_buy_order.orderId, count: store_buy_order.orderCount}, {withCredentials: true}).then((response) => {
+        axios.post(`${process.env.api}/buy_order`, {orderId: store_buy_order.orderId, count: store_buy_order.orderCount}, {withCredentials: true}).then((response) => {
             const data: {status: boolean, error: string | undefined} = response.data
             if (data.status){
                 toast.success("Заявка на покупку успешно создана", {
@@ -47,9 +47,10 @@ export const Main: FC = () => {
                     "Items count can't be 0": "Количество предметов не может быть 0",
                     "Not enough money": "Недостаточно средств для покупки",
                     "Order is not active": "Заявка не активна",
-                    "You need to set trade url": "Вы должны установить трейд ссылку",
+                    "You need to set trade url": "Установите трейд ссылку в личном кабинете",
                     "Incorrect order": "Некорректная заявка",
-                    "You already reserved this order": "Вы уже зарезервировали эту заявку"
+                    "You already reserved this order": "Вы уже зарезервировали эту заявку",
+                    "Seller need download extension and login in steam": "Продавцу необходимо скачать расширение и войти в Steam."
                 }
                 toast.error(data.error ? answer[data.error as keyof typeof answer] : "Ошибка при создании заявки", {
                     position: toast.POSITION.BOTTOM_RIGHT

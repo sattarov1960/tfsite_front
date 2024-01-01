@@ -33,8 +33,8 @@ export function SetOrders(){
     const getMinimumPriceSellOrder = () => {
         let minimumPrice = 0
         for (let i = 0; i < sellOrders.length; i++){
-            if (buyOrders[i].price > minimumPrice){
-                minimumPrice = buyOrders[i].price
+            if (sellOrders[i].price > minimumPrice){
+                minimumPrice = sellOrders[i].price
             }
         }
         return minimumPrice
@@ -76,7 +76,10 @@ export function SetOrders(){
         let data = {
             price: action === "sell" ? sellPrice : buyPrice,
             count: action === "sell" ? sellCount : buyCount,
-            type: action
+            type: action,
+            appId: "440",
+            market_hash_name: "Mann Co. Supply Crate Key",
+            symbol: "RUB"
         }
         const toastId = toast("Создаем заявку", {
             position: "bottom-right",
@@ -97,7 +100,7 @@ export function SetOrders(){
                     orderId: data.orderId,
                     count: action === "sell" ? sellCount : buyCount,
                     symbol: "RUB",
-                    price: action === "sell" ? sellPrice : buyPrice,
+                    price: action === "sell" ? sellPrice : buyPrice
                 })
                 setRerender(true)
                 toast.update(toastId, {
@@ -115,14 +118,17 @@ export function SetOrders(){
                     "price must be greater than 0": "Цена должна быть больше 0",
                     "count must be integer": "Количество должно быть целым числом",
                     "you already have an active order": "У вас уже есть активная заявка",
-                    "you need to set trade url": "Вам нужно установить ссылку на обмен",
+                    "you need to set trade url": "Вам нужно установить ссылку на обмен в личном кабинете",
                     "insufficient funds": "Недостаточно средств",
                     "you need to set steam api key": "Вам нужно установить steam api key",
-                    "you need to set telegram": "Вам нужно установить telegram",
+                    "you need to set telegram": "Вам нужно установить telegram в личном кабинете",
                     "Error getting inventory, may be profile hidden": "Ошибка получения инвентаря, возможно профиль скрыт",
                     "you don't have enough items": "У вас недостаточно предметов",
                     "profile is private": "Профиль скрыт",
                     "steam id does not match the registered one": "Steam id не совпадает с зарегистрированным",
+                    "appId must be 440": "appId должен быть 440",
+                    "market_hash_name must be Mann Co. Supply Crate Key": "market_hash_name должен быть Mann Co. Supply Crate Key",
+                    "Seller need download extension and login in steam": "Вам необходимо скачать расширение и войти в Steam."
                 }
                 toast.update(toastId, {
                     render: data.error ? answer[data.error as keyof typeof answer] : "Ошибка при создании заявки",

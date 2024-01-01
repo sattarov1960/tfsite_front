@@ -8,11 +8,19 @@ import Image from 'next/image'
 import {useStoreUser} from "@/store/user";
 import axios from "axios";
 import {toast} from "react-toastify";
+import {validateTradeLink} from "@/utilities/trradeLink";
+import {validateEmail} from "@/utilities/email";
+import {validateTelegram} from "@/utilities/telegram";
+import {validatePhone} from "@/utilities/phone";
+import {validateApiKey} from "@/utilities/apiKey";
 
 export const Cabinet: FC = () => {
     const user = useStoreUser()
     const [apikey, setApikey] = useState(user.steamApiKey)
     const [tradeUrl, setTradeUrl] = useState(user.steamTradeUrl)
+    const [email, setEmail] = useState(user.email)
+    const [phone, setPhone] = useState(user.phone)
+    const [telegram, setTelegram] = useState(user.telegramAddress)
     const t = useTranslations()
     const delTelegram = async () => {
         const toastId = toast("Отвязываем аккаунт", {
@@ -84,6 +92,61 @@ export const Cabinet: FC = () => {
         }
     }
 
+    const setData = async (argSave: string, value: string) => {
+        const toastId = toast("Сохраняем данные", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            isLoading: true
+        });
+        let error: { [key: string]: [(value: string) => boolean, (value: string) => void] } = {
+            "API KEY": [validateApiKey, user.setSteamApiKey],
+            "trade link": [validateTradeLink, user.setSteamTradeUrl],
+            "email": [validateEmail, user.setEmail],
+            "phone": [validatePhone, user.setPhone]
+        }
+        if (!error[argSave][0](value)){
+            toast.update(toastId, {
+                render: t(`Invalid ${argSave}`),
+                type: toast.TYPE.ERROR,
+                isLoading: false
+            })
+            return
+        }
+        else{
+            error[argSave][1](value)
+        }
+        axios.post(`${process.env.api}/set_user_data`, {updateValue: value, updateName: argSave}, {withCredentials: true}).then(res => {
+            const data = res.data
+            if (data.status){
+                toast.update(toastId, {
+                    render: "Данные успешно сохранены",
+                    type: toast.TYPE.SUCCESS,
+                    isLoading: false
+                });
+                user.setSteamApiKey(apikey)
+                user.setSteamTradeUrl(tradeUrl)
+            }
+            else{
+                toast.update(toastId, {
+                    render: "Ошибка сохранения данных",
+                    type: toast.TYPE.ERROR,
+                    isLoading: false
+                })
+            }
+        }).catch(err => {
+            toast.update(toastId, {
+                render: `Ошибка сохранения данных ${err}`,
+                type: toast.TYPE.ERROR,
+                isLoading: false
+            })
+        })
+    }
     return (
         <article className={styles.article_cabinet_wrap}>
             <section className={styles.left_section_wrap}>
@@ -114,46 +177,53 @@ export const Cabinet: FC = () => {
                             <div className={styles.left_section_top_right_item_wrap}>
                                 <div className={styles.left_section_top_right_item_wrap_top}>
                                     <span className={styles.left_section_top_right_item_left_span}>E-mail:</span>
-                                    <span className={styles.left_section_top_right_item_right_span}>{t("Apply")}</span>
+                                    <input placeholder="Email:" type="text" value={email}
+                                           onChange={(e) => setEmail(e.target.value)}
+                                           className={styles.left_section_btn_item_input_top}/>
+                                    <span className={styles.left_section_top_right_item_right_span} style={{
+                                        color: user.email !== email ? "white" : "#8C8D96"
+                                    }} onClick={() => setData("email", email)}>{t("Apply")}</span>
                                 </div>
-                                <span
-                                    className={styles.left_section_top_right_item_span_orange}>{user.email}</span>
                             </div>
                             <div className={styles.left_section_top_right_item_wrap_lg}>
                                 <span className={styles.left_section_top_right_item_left_span}>E-mail:</span>
-                                <span
-                                    className={styles.left_section_top_right_item_span_orange}>{user.email}</span>
-                                <span className={styles.left_section_top_right_item_right_span}>{t("Apply")}</span>
+                                <input  style={{marginLeft: "14px"}} placeholder="Email:" type="text" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.left_section_btn_item_input_top}/>
+                                <span className={styles.left_section_top_right_item_right_span} style={{
+                                    color: user.email !== email ? "white" : "#8C8D96"
+                                }} onClick={() => setData("email", email)}>{t("Apply")}</span>
                             </div>
                             <div className={styles.left_section_top_right_item_hr}/>
                             <div className={styles.left_section_top_right_item_wrap}>
                                 <div className={styles.left_section_top_right_item_wrap_top}>
-                                    <span className={styles.left_section_top_right_item_left_span}>{t("Telephone")}</span>
-                                    <span className={styles.left_section_top_right_item_right_span}>{t("Apply")}</span>
+                                    <span
+                                        className={styles.left_section_top_right_item_left_span}>{t("Telephone")}</span>
+                                    <input placeholder="Phone:" type="text" value={phone}
+                                           onChange={(e) => setPhone(e.target.value)}
+                                           className={styles.left_section_btn_item_input_top}/>
+                                    <span className={styles.left_section_top_right_item_right_span} style={{
+                                        color: user.phone !== phone ? "white" : "#8C8D96"
+                                    }} onClick={() => setData("phone", phone)}>{t("Apply")}</span>
                                 </div>
-                                <span
-                                    className={styles.left_section_top_right_item_span_orange}>{user.phone}</span>
                             </div>
                             <div className={styles.left_section_top_right_item_wrap_lg}>
                                 <span className={styles.left_section_top_right_item_left_span}>{t("Telephone")}</span>
-                                <span
-                                    className={styles.left_section_top_right_item_span_orange}>{user.phone}</span>
-                                <span className={styles.left_section_top_right_item_right_span}>{t("Apply")}</span>
+                                <input placeholder="Phone:" type="text" value={phone}
+                                       onChange={(e) => setPhone(e.target.value)}
+                                       className={styles.left_section_btn_item_input_top}/>
+                                <span className={styles.left_section_top_right_item_right_span} style={{
+                                    color: user.phone !== phone ? "white" : "#8C8D96"
+                                }} onClick={() => setData("phone", phone)}>{t("Apply")}</span>
                             </div>
                             <div className={styles.left_section_top_right_item_hr}/>
                             <div className={styles.left_section_top_right_item_wrap}>
                                 <div className={styles.left_section_top_right_item_wrap_top}>
                                     <span className={styles.left_section_top_right_item_left_span}>Telegram:</span>
-                                    <span className={styles.left_section_top_right_item_right_span}>{t("Apply")}</span>
                                 </div>
-                                <span
-                                    className={styles.left_section_top_right_item_span_orange}>@{user.telegramEnable ? user.telegramAddress : ""}</span>
+                                <span className={styles.left_section_top_right_item_span_orange}>{user.telegramEnable ? `@${user.telegramAddress}` : ""}</span>
                             </div>
-                            <div className={styles.left_section_top_right_item_wrap_lg}>
+                            <div className={styles.left_section_top_right_item_wrap_lg_btn}>
                                 <span className={styles.left_section_top_right_item_left_span}>Telegram:</span>
-                                <span
-                                    className={styles.left_section_top_right_item_span_orange}>@{user.telegramEnable ? user.telegramAddress : ""}</span>
-                                <span className={styles.left_section_top_right_item_right_span}>{t("Apply")}</span>
+                                <span className={styles.left_section_top_right_item_span_orange}>{user.telegramEnable ? `@${user.telegramAddress}` : ""}</span>
                             </div>
                             <div className={styles.left_section_top_right_item_hr}/>
                         </div>
@@ -162,22 +232,28 @@ export const Cabinet: FC = () => {
                 <div className={styles.left_section_btn_wrap}>
                     <div className={styles.left_section_btn_item}>
                         <span className={styles.left_section_top_left_right_span}>Trade link:</span>
-                        <input value={tradeUrl} type="text" className={styles.left_section_btn_item_input} placeholder="Trade link:" onChange={(e) => setTradeUrl(e.target.value)}/>
+                        <input value={tradeUrl} type="text" className={styles.left_section_btn_item_input}
+                               placeholder="Trade link:" onChange={(e) => setTradeUrl(e.target.value)}/>
                         <a href="https://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url"
                            target="_blank">
                             <span className={styles.left_section_btn_item_right_span}>{t("Get the link")}</span>
                         </a>
-                        <span className={styles.left_section_btn_item_right_span_grey}>{t("Apply")}</span>
+                        {user.steamTradeUrl !== tradeUrl  ?
+                            <span className={styles.left_section_btn_item_right_span_grey} style={{
+                                color: user.steamTradeUrl !== tradeUrl ? "white" : "#8C8D96"
+                            }} onClick={() => setData("trade link", tradeUrl)}>{t("Apply")}</span> : null}
                     </div>
                     <div className={styles.left_section_btn_item_hr}/>
                     <div className={styles.left_section_btn_item}>
                         <span className={styles.left_section_top_left_right_span}>API KEY:</span>
-                        <input value={apikey} type="text" className={styles.left_section_btn_item_input} placeholder="API-ключ:" onChange={(e) => setApikey(e.target.value)}/>
+                        <input value={apikey} type="text" className={styles.left_section_btn_item_input_two} placeholder="API-KEY:" onChange={(e) => setApikey(e.target.value)}/>
                         <a href="https://steamcommunity.com/dev/apikey" target="_blank">
                             <span className={styles.left_section_btn_item_right_span}>{t("Get the key")}</span>
                         </a>
-                        <span className={styles.left_section_btn_item_right_two_span_grey} style={{color:
-                        user.steamApiKey !== apikey ? "white" : "#FFF"}}>{t("Apply")}</span>
+                        {user.steamApiKey !== apikey ?
+                            <span className={styles.left_section_btn_item_right_two_span_grey} style={{
+                                color: user.steamApiKey !== apikey ? "white" : "#8C8D96"}} onClick={() => setData("API KEY", apikey)}>{t("Apply")}</span>: null}
+
                     </div>
                     <div className={styles.left_section_btn_item_hr}/>
                     <div className={styles.left_section_btn_item}>

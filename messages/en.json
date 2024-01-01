@@ -206,5 +206,11 @@
   "Unlink account": "Unlink account",
   "To enable alerts": "To enable notifications about the sale of items, send our bot an authorization code.",
   "Your authorization code": "Your authorization code:",
-  "Link account": "Link account"
+  "Link account": "Link account",
+  "Invalid API KEY": "Invalid API key",
+  "Invalid trade link": "Invalid trade link",
+  "Invalid email": "Invalid email",
+  "Invalid telegram": "Invalid telegram",
+  "Invalid phone": "Invalid phone",
+  "Edit": "Edit"
 }

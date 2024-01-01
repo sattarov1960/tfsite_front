@@ -207,5 +207,11 @@
   "Unlink account": "Отвязать аккаунт",
   "To enable alerts": "Для включения оповещений о продаже предметов пришлите нашему боту код для авторизации.",
   "Your authorization code": "Ваш код для авторизации:",
-  "Link account": "Привязать аккаунт"
+  "Link account": "Привязать аккаунт",
+  "Invalid API KEY": "Неправильный API ключ",
+  "Invalid trade link": "Неправильная трейд ссылка",
+  "Invalid email": "Неправильный email",
+  "Invalid telegram": "Неправильный telegram",
+  "Invalid phone": "Неправильный телефон",
+  "Edit": "Редактировать"
 }

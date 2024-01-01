@@ -207,5 +207,11 @@
   "Unlink account": "Адвязаць акаўнт",
   "To enable alerts": "Для ўключэння абвестак аб продажы прадметаў дашліце нашаму боту код для аўтарызацыі.",
   "Your authorization code": "Ваш код для аўтарызацыі:",
-  "Link account": "Прывязаць акаўнт"
+  "Link account": "Прывязаць акаўнт",
+  "Invalid API KEY": "Няверны API-ключ",
+  "Invalid trade link": "Няверны trade link",
+  "Invalid email": "Няверны email",
+  "Invalid telegram": "Няверны telegram",
+  "Invalid phone": "Няверны тэлефон",
+  "Edit": "Рэдагаваць"
 }
