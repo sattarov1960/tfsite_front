@@ -213,5 +213,8 @@
   "Invalid email": "Неправильный email",
   "Invalid telegram": "Неправильный telegram",
   "Invalid phone": "Неправильный телефон",
-  "Edit": "Редактировать"
+  "Edit": "Редактировать",
+  "Engineering works": "Технические работы!",
+  "The site is undergoing technical work": "На сайте ведутся\nтехнические работы!",
+  "We apologize": "Приносим свои извинения!\nПопробуйте зайти на сайт позже."
 }

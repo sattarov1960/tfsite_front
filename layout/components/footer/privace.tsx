@@ -4,10 +4,14 @@ import {useTranslations} from "next-intl";
 import styles from "@/styles/footer/privacy_policy.module.css"
 import Image from "next/image";
 import Link from "next/link";
+import {useStoreAllOrders} from "@/store/user";
+import axios from "axios";
+import {Item} from "@/interface/auth";
 
 
 const Privacy: FC = () => {
     const [count, setCount] = useState(0);
+    const sellOrders = useStoreAllOrders()
     useEffect(() => {
         const ws_url = process.env.ws as string;
         const ws = new WebSocket(ws_url);
@@ -19,6 +23,19 @@ const Privacy: FC = () => {
 
         ws.addEventListener("message", (event) => {
             let message = event.data
+            if (message === "update orders"){
+                console.log("update orders")
+                axios.get(`${process.env.api}/get_all_orders`).then((resp) => {
+                    const data: {status: boolean, orders: Item[]} = resp.data
+                    if (data.status){
+                        sellOrders.setSellOrders(data.orders.filter(({typeOrder}) => typeOrder === "sell"))
+                        sellOrders.setBuyOrders(data.orders.filter(({typeOrder}) => typeOrder === "buy"))
+                    }
+                    else{
+                        console.log("error loading orders buy/sell")
+                    }
+                })
+            }
             if (message === "ping"){
                 ws.send("pong")
                 return

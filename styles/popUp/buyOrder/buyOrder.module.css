@@ -23,3 +23,43 @@
     @apply mt-[30px] lg:mt-[40px] w-[311px] lg:w-[620px] ml-[16px] h-[36px] lg:ml-[40px] lg:h-[56px] rounded-[10px] lg:rounded-[16px] flex justify-center items-center bg-[#FF7710];
     box-shadow: 0px 9px 12px 0px rgba(255, 255, 255, 0.23) inset, 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
 }
+
+.popup_wrap_pending{
+    @apply lg:pb-[50px] pb-[30px] lg:pt-[40px] pt-[30px] items-center w-[335px] h-[196px] rounded-[8px] lg:w-[545px] lg:h-[264px] lg:rounded-[10px] bg-[#111729] flex flex-col relative;
+}
+.popup_wrap_accept_btn_pending{
+    @apply h-[280px] !important
+}
+.popup_header_text_pending{
+    @apply max-w-[70%] mt-[20px] text-[#F2F1F8] text-[16px] lg:text-[22px] font-medium lg:leading-[32px] leading-[22px]
+}
+
+.popup_desc_text_pending{
+    @apply max-w-[70%] mt-[10px] lg:mt-[14px] lg:text-[16px] font-normal lg:leading-[22px] text-[12px] leading-[18px];
+    color: rgba(242, 241, 248, 0.60);
+}
+.popup_icon_success_pending{
+    @apply lg:w-[64px] lg:h-[64px] w-[50px] h-[50px]
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.popup_icon_rotate_pending {
+    @apply lg:w-[62px] lg:h-[64px] w-[48px] h-[48px];
+    animation: rotate 2s linear infinite;
+}
+.popup_icon_close_pending{
+    @apply lg:w-[64px] lg:h-[64px] w-[50px] h-[50px]
+
+}
+.popup_button_pending{
+    @apply mt-[30px] lg:mt-[50px] w-[256px] h-[50px] rounded-[7px] bg-[#FF7710]
+}
+.popup_button_text_pending{
+    @apply text-[#F2F1F8] text-[16px] font-semibold leading-[20px]
+}

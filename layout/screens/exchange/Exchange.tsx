@@ -9,6 +9,7 @@ import {ExchangeTop} from "@/layout/components/exchange/exchangeTop";
 import styles from "@/styles/exchange/exchangeScreen.module.css"
 
 const ExchangeScreen: FC = () => {
+
     return (
         <Wrap>
             <main className={styles.main}>

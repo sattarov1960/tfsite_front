@@ -513,6 +513,7 @@ export const RUBMain: FC = () => {
                         </div>
                     </div>
                     <div className={styles.withdraw_wrap_right_bottom_wrap_btn}
+                         style={{opacity: store_withdraw.amountError || store_withdraw.commissionError ? 0.5 : 1}}
                          tabIndex={7}
                          onClick={() => createWithdraw()}
                          onKeyPress={(e) => e.key === 'Enter' ? createWithdraw() : null}>

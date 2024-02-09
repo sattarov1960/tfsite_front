@@ -16,6 +16,7 @@ export function SetOrders(){
     const addOrder = useStoreAllOrders(state => state.addOrder)
     const buyOrders = useStoreAllOrders(state => state.buyOrders)
     const sellOrders = useStoreAllOrders(state => state.sellOrders)
+    let IsCreate = false
     const [buyPrice, setBuyPrice] = useState(150)
     const [buyCount, setBuyCount] = useState(1)
     const [sellPrice, setSellPrice] = useState(150)
@@ -51,6 +52,12 @@ export function SetOrders(){
         if (replaceSymbol){
             value = value.replace(replaceSymbol, "")
         }
+        if (!/^\d+$/.test(value) && value !== ""){
+            return
+        }
+        if (value[-1] === "."){
+            value += "0"
+        }
         const number = Number(value)
         if (action === "sell"){
             setSellPrice(number)
@@ -60,6 +67,12 @@ export function SetOrders(){
         }
     }
     const inputCount = (value: string, action: string) => {
+        if (!/^\d+$/.test(value) && value !== ""){
+            return
+        }
+        if (value[-1] === "."){
+            value += "0"
+        }
         const number = Number(value)
         if (action === "sell"){
             setSellCount(number)
@@ -73,6 +86,22 @@ export function SetOrders(){
             store_auth.Open()
             return
         }
+        if (IsCreate){
+            toast("Вы уже создаете заявку, если это не так обновите страницу", {
+                position: "bottom-right",
+                type: toast.TYPE.INFO,
+                isLoading: false,
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return
+        }
+        IsCreate = true
         let data = {
             price: action === "sell" ? sellPrice : buyPrice,
             count: action === "sell" ? sellCount : buyCount,
@@ -125,10 +154,12 @@ export function SetOrders(){
                     "Error getting inventory, may be profile hidden": "Ошибка получения инвентаря, возможно профиль скрыт",
                     "you don't have enough items": "У вас недостаточно предметов",
                     "profile is private": "Профиль скрыт",
+                    "Invalid steam refresh steam or steam id": "Перезайдите в расширение и авторизуйтесь в steam",
                     "steam id does not match the registered one": "Steam id не совпадает с зарегистрированным",
                     "appId must be 440": "appId должен быть 440",
                     "market_hash_name must be Mann Co. Supply Crate Key": "market_hash_name должен быть Mann Co. Supply Crate Key",
-                    "Seller need download extension and login in steam": "Вам необходимо скачать расширение и войти в Steam."
+                    "Seller need download extension and login in steam": "Вам необходимо скачать расширение и войти в Steam.",
+                    "trade url invalid": "Ссылка на обмен не работает обновите ее в личном кабинете",
                 }
                 toast.update(toastId, {
                     render: data.error ? answer[data.error as keyof typeof answer] : "Ошибка при создании заявки",
@@ -146,6 +177,7 @@ export function SetOrders(){
                 autoClose: 5000
             });
         })
+        IsCreate = false
     }
     return (
         <section className={styles.section_wrap}>
@@ -172,7 +204,7 @@ export function SetOrders(){
                         <div className={styles.card_item_hr}></div>
                     </div>
                     <button className={styles.card_item_button} onClick={() => createOrder("buy")}>
-                        <span>Создать</span>
+                        <span className={styles.card_item_button_span}>Купить</span>
                     </button>
                 </div>
             </div>
@@ -197,7 +229,7 @@ export function SetOrders(){
                         <div className={styles.card_item_hr}></div>
                     </div>
                     <button className={styles.card_item_button} onClick={() => createOrder("sell")}>
-                        <span>Создать</span>
+                        <span className={styles.card_item_button_span}>Продать</span>
                     </button>
                 </div>
             </div>

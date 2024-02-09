@@ -3,12 +3,12 @@ import Header from "@/layout/components/header/header";
 import Footer from "@/layout/components/footer/footer";
 import { cookies } from 'next/headers'
 import axios from "axios";
-import {useStoreUser, useStoreProducts, useStoreTransactions, useStoreAllOrders} from "@/store/user";
+import {useStoreUser, useStoreProducts, useStoreTransactions, useStoreAllOrders, useStoreEngineeringWorks} from "@/store/user";
 import {
     StoreInitializerUser,
     StoreInitializerProducts,
     StoreInitializerTransactions,
-    StoreInitializerAllOrders
+    StoreInitializerAllOrders, StoreInitializerEngWork
 } from "@/store/StoreInitializer";
 import {Item, ProductI} from "@/interface/auth";
 import Auth from "@/layout/components/popUp/auth/auth";
@@ -22,6 +22,7 @@ import Sell from "@/layout/components/popUp/sell/sell";
 import Withdraw from "@/layout/components/popUp/withdraw/withdraw";
 import Ban from "@/layout/components/popUp/ban/ban";
 import BuyOrder from "@/layout/components/popUp/buyOrder/buyOrder";
+import EngineeringWorks from "@/layout/components/popUp/engineeringWorks/engineeringWorks";
 //
 // const Auth = dynamic(() => import("@/layout/components/popUp/auth/auth"), {loading: () => <p>Loading...</p>});
 // const Logout = dynamic(() => import("@/layout/components/popUp/logout/logout"), {loading: () => <p>Loading...</p>});
@@ -39,6 +40,19 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
     const refresh = cookieStore.get("refresh_token_cookie")?.value
     const cookie = `access_token_cookie=${access};refresh_token_cookie=${refresh};`
     const axiosClient = axios.create({headers: {Cookie: cookie}});
+    let startTime = Date.now();
+    try{
+        const response = await axiosClient.get(`${process.env.localhost_api}/commissions`, {timeout: 2 * 1000})
+        useStoreEngineeringWorks.setState({
+            isOpen: false
+        })
+    }
+    catch (e){
+        console.log(`Ошибка загрузки комиссий: ${e}`)
+        useStoreEngineeringWorks.setState({
+            isOpen: true
+        })
+    }
     try {
         const response = await axiosClient.get(`${process.env.localhost_api}/user`, {timeout: 2 * 1000});
         const data = response.data
@@ -76,6 +90,8 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
         for (const item of ["Mann Co. Supply Crate Key RUB", "Mann Co. Supply Crate Key USD", "Tour of Duty Ticket RUB", "Tour of Duty Ticket USD"]) {
             const product = await axiosClient.get(`${process.env.localhost_api}/price`, { params: { search_item: item }, timeout: 2 * 1000 })
             const data: ProductI = product.data
+            data.can_buy = data.can_buy < 0 ? 0 : data.can_buy
+            data.can_sell = data.can_sell < 0 ? 0 : data.can_sell
             switch (item) {
                 case "Mann Co. Supply Crate Key RUB":
                     useStoreProducts.setState({"Mann Co. Supply Crate Key RUB": data})
@@ -121,6 +137,8 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
     catch (e){
         useStoreAllOrders.getState().reset()
     }
+    let elapsedTime = Date.now() - startTime;
+    console.log(`Elapsed time in milliseconds is ${elapsedTime}`);
     return (
         <>
             <StoreInitializerUser auth={useStoreUser.getState().auth}
@@ -156,12 +174,16 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                 buyOrders={useStoreAllOrders.getState().buyOrders}
                 sellOrders={useStoreAllOrders.getState().sellOrders}
             />
+            <StoreInitializerEngWork
+                isOpen={useStoreEngineeringWorks.getState().isOpen}
+            />
             <UpBalanceRUB/>
             <UpBalanceUSD/>
             <ErrorUpBalanceUSD/>
             <SuccessUpBalanceUSD/>
             <Withdraw/>
             <Sell/>
+            <EngineeringWorks/>
             <Buy/>
             <Auth/>
             <Logout/>

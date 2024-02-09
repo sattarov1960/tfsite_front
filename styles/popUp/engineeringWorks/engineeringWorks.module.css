@@ -1,0 +1,34 @@
+.popup_wrap{
+    @apply w-[545px] h-[344px] rounded-[10px] flex flex-col items-center pt-[30px] pb-[40px];
+    background: rgb(17, 23, 41);
+}
+.popup_close_icon{
+    @apply absolute w-[40px] h-[40px] right-[20px] top-[20px]
+}
+.popup_header{
+    @apply text-[22px] font-medium leading-[32px];
+    color: rgb(242, 241, 248);
+}
+.popup_center_icon{
+    @apply w-[64px] h-[64px] mt-[20px]
+}
+.popup_desc_text{
+    @apply text-[22px] leading-[30px] mt-[20px] whitespace-pre-wrap;
+    color: rgb(242, 241, 248);
+}
+.popup_desc_text_gray{
+    @apply text-[16px] leading-[22px] mt-[18px] whitespace-pre-wrap;
+    color: rgba(242, 241, 248, 0.6);
+}
+.account_blocked_content_hr{
+    @apply w-full h-[1px] bg-[#151D34] mt-[10px] lg:mt-[20px];
+}
+.dialog{
+    @apply relative z-10;
+}
+.dialog_div_wrap{
+    @apply fixed inset-0 overflow-y-auto bg-opacity-40 bg-black;
+}
+.dialog_div{
+    @apply flex min-h-full items-center justify-center p-4 text-center;
+}

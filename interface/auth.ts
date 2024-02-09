@@ -173,13 +173,30 @@ export interface useStoreRubPSInterface {
 
 export interface useStoreBuyOrderInterface extends Popup{
     orderId: string
+    pending: boolean
     orderCount: number
     orderPrice: number
     maxOrderCount: number
+    operationId: string
+    timeWait: number
+    icon: string
+    desc: string
+    name: string
+    finish: boolean
+    steamOfferId: string
     setOrderId: (orderId: string) => void
     setOrderCount: (orderCount: number) => void
     setOrderPrice: (orderPrice: number) => void
     setMaxOrderCount: (maxOrderCount: number) => void
+    setOperationId: (operationId: string) => void
+    setPending: (pending: boolean) => void
+    setTimeWait: (timeWait: number) => void
+    setIcon: (icon: string) => void
+    setDesc: (desc: string) => void
+    setName: (name: string) => void
+    setSteamOfferId: (steamOfferId: string) => void
+    setFinish: (finish: boolean) => void
+    reset: () => void
 }
 
 

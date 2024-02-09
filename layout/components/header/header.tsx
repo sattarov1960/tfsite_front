@@ -1,3 +1,4 @@
+"use client"
 import { FC } from "react";
 import styles from "@/styles/header/header.module.css"
 
@@ -15,7 +16,8 @@ import Sidebar from "@/layout/components/header/mobile/sidebar/sidebar";
 
 
 export const Header: FC = () => {
-    if (useStoreUser.getState().auth){
+    const user = useStoreUser()
+    if (user.auth){
         return (
             <>
                 <section className={styles.sub_header} id="header">

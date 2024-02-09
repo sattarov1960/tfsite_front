@@ -30,6 +30,7 @@ export const useStoreUser = create<UserI & userStore>((set) => ({
     email: "",
     phone: "",
     countTrades: 0,
+    engineeringWorks: true,
     steam: {
         steamid: "",
         avatarhash: "",
@@ -404,12 +405,41 @@ export const useStoreBuyOrder = create<useStoreBuyOrderInterface>((set) => ({
     orderPrice: 0,
     isOpen: false,
     maxOrderCount: 0,
+    operationId: "",
+    pending: false,
+    desc: "",
+    icon: "",
+    name: "",
+    steamOfferId: "",
+    finish: false,
+    reset: () => set({
+        orderId: "",
+        orderCount: 0,
+        orderPrice: 0,
+        isOpen: false,
+        maxOrderCount: 0,
+        operationId: "",
+        pending: false,
+        desc: "",
+        icon: "",
+        name: "",
+        steamOfferId: "",
+    }),
+    setFinish: (finish) => set({finish: finish}),
     Close: () => set({isOpen: false}),
     Open: () => set({isOpen: true}),
     setOrderId: (orderId) => set({orderId: orderId}),
     setOrderCount: (orderCount) => set({orderCount: orderCount}),
     setOrderPrice: (orderPrice) => set({orderPrice: orderPrice}),
     setMaxOrderCount: (maxOrderCount) => set({maxOrderCount: maxOrderCount}),
+    setOperationId: (operationId) => set({operationId: operationId}),
+    setPending: (pending) => set({pending: pending}),
+    setDesc: (desc) => set({desc: desc}),
+    setIcon: (icon) => set({icon: icon}),
+    setName: (name) => set({name: name}),
+    setTimeWait: (timeWait) => set({timeWait: timeWait}),
+    timeWait: 0,
+    setSteamOfferId: (steamOfferId) => set({steamOfferId: steamOfferId}),
 }))
 
 
@@ -446,3 +476,11 @@ export const useStoreMyOrders = create<useStoreMyOrdersInterface>((set) => ({
     rerender: false,
     setRerender: (rerender) => set({rerender: rerender}),
 }))
+
+
+export const useStoreEngineeringWorks = create<Popup>((set) => ({
+    isOpen: false,
+    Open: () => set({ isOpen: true }),
+    Close: () => set({ isOpen: false })
+}))
+

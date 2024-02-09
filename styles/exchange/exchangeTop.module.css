@@ -18,7 +18,7 @@
     text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.30);
 }
 .exchange_right_top_wrap_span_frst{
-    @apply lg:ml-[230px] whitespace-nowrap text-[#F4F4F4] text-[16px] lg:text-[20px] font-medium leading-[32px] lg:leading-[22px];
+    @apply lg:ml-[550px] whitespace-nowrap text-[#F4F4F4] text-[16px] lg:text-[20px] font-medium leading-[32px] lg:leading-[22px];
 }
 .exchange_right_top_wrap_span_scnd{
     @apply text-[#FF7610] text-[26px] lg:text-[32px] font-bold leading-[30px] lg:leading-[34px];

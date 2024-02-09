@@ -3,15 +3,15 @@
 import {FC} from "react";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import {Main} from "@/layout/components/popUp/buyOrder/main";
-import styles from "@/styles/popUp/logout/logout.module.css"
-import { useStoreBuyOrder } from "@/store/user";
+import {Main} from "@/layout/components/popUp/engineeringWorks/main";
+import styles from "@/styles/popUp/engineeringWorks/engineeringWorks.module.css"
+import {useStoreEngineeringWorks} from "@/store/user";
 
-export const BuyOrder: FC = () => {
-    const store = useStoreBuyOrder()
+export const EngineeringWorks: FC = () => {
+    const store = useStoreEngineeringWorks()
     return (
         <Transition appear show={store.isOpen} as={Fragment}>
-            <Dialog as="div" className={styles.dialog} onClose={() => {store.Close(); store.reset()}}>
+            <Dialog as="div" className={styles.dialog} onClose={() => null}>
                 <div className={styles.dialog_div_wrap}>
                     <div className={styles.dialog_div}>
                         <Transition.Child
@@ -34,4 +34,4 @@ export const BuyOrder: FC = () => {
     )
 }
 
-export default BuyOrder;
+export default EngineeringWorks;

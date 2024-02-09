@@ -18,10 +18,25 @@ interface Item {
 }
 
 function Order({price, symbol, count, typeOrder}: Item){
+    const getSymbol = (symbol: string) => {
+        let symbolName = ""
+        switch (symbol){
+            case "USD":
+                symbolName = "$"
+                break
+            case "RUB":
+                symbolName = "₽"
+                break
+            default:
+                symbolName = symbol
+                break
+        }
+        return symbolName
+    }
     return (
         <>
             <div className={`${styles.order_item_wrap} ${typeOrder === "buy" ? styles.order_left : null}`}>{typeOrder === "buy" ? count : null}</div>
-            <div className={`${styles.order_item_wrap} ${styles.order_center}`}>{price} {symbol}</div>
+            <div className={`${styles.order_item_wrap} ${styles.order_center}`}>{price} {getSymbol(symbol)}</div>
             <div className={`${styles.order_item_wrap} ${typeOrder === "sell" ? styles.order_right : null}`}>{typeOrder === "sell" ? count : null}</div>
         </>
     )
@@ -53,7 +68,7 @@ export function ExchangeTop() {
                     <div className={styles.exchange_right_top_wrap}>
                         <div className={styles.exchange_right_top_wrap}>
                             <h1 className={styles.exchange_right_top_wrap_h1}>Ключ от ящика Манн Ко</h1>
-                            <span className={styles.exchange_right_top_wrap_span_frst}>Цена в Steam <span className={styles.exchange_right_top_wrap_span_scnd}>$ 1000.292</span></span>
+                            <span className={styles.exchange_right_top_wrap_span_frst}><span className={styles.exchange_right_top_wrap_span_scnd}></span></span>
                         </div>
                     </div>
                     <p className={styles.exchange_right_p}>(Mann Co Supply Crate Key)</p>

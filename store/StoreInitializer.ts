@@ -3,7 +3,7 @@
 import {FC, useRef} from "react"
 import {
     useStoreAllOrders,
-    useStoreBUY,
+    useStoreBUY, useStoreEngineeringWorks,
     useStoreProducts,
     useStoreSELL,
     useStoreTransactions,
@@ -126,6 +126,18 @@ export const StoreInitializerAllOrders: FC<{
         useStoreAllOrders.setState({
             buyOrders: buyOrders,
             sellOrders: sellOrders,
+        })
+        initialized.current = true
+    }
+    return null
+}
+
+
+export const StoreInitializerEngWork: FC<{isOpen: boolean}> = ({isOpen}) => {
+    const initialized = useRef(false)
+    if (!initialized.current){
+        useStoreEngineeringWorks.setState({
+            isOpen: isOpen
         })
         initialized.current = true
     }

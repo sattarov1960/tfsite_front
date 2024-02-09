@@ -32,6 +32,9 @@
 .card_item_button{
     @apply bg-[#ff7710] rounded-[10px] lg:rounded-2xl w-[311px] h-[36px] mt-[30px] lg:w-[620px] lg:h-14 lg:mt-[40px]
 }
+.card_item_button_span{
+    @apply text-[10px] leading-[14px] lg:text-[18px] lg:leading-[32px] font-semibold
+}
 .card_item_button_text{
     @apply text-[rgba(255,255,255,0.95)] text-center leading-8 font-bold text-[16px] leading-[32px]
 }
