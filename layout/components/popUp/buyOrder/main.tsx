@@ -192,6 +192,7 @@ export const Main: FC = () => {
             }
             let state: {name: string; desc: string; icon: string; timeWait: number;};
             if (statusOffer in states) {
+                // @ts-ignore
                 state = states[statusOffer as keyof typeof states];
             }
             else {

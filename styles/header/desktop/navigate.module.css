@@ -8,13 +8,13 @@
     @apply flex items-center;
 }
 .menu_item_text {
+    @apply text-[#F2F1F866] text-[16px] leading-[20px] font-[400] ml-[7px] duration-150 whitespace-nowrap hover:duration-150 hover:text-white;
+}
+.menu_item_text_inactive {
     @apply text-[#F2F1F866] text-[16px] leading-[20px] font-[400] ml-[7px] duration-150 whitespace-nowrap;
 }
 .sub_menu_item:hover .hover_navigate {
     @apply duration-150 opacity-100
-}
-.sub_menu_item:hover .menu_item_text {
-    @apply duration-150 text-white
 }
 .menu_item_icon_active{
     @apply opacity-40

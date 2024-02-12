@@ -1,5 +1,5 @@
 .section_wrap{
-    @apply w-full flex justify-center gap-[30px] lg:gap-[60px] mt-[50px] lg:mt-[70px] flex-wrap
+    @apply lg:mt-[120px]  w-full flex justify-center gap-[30px] lg:gap-[60px] mt-[50px] flex-wrap
 }
 .card_top_header{
     @apply text-[rgba(255,255,255,0.95)] text-left font-['Montserrat-SemiBold',_sans-serif] text-[16px] lg:text-[26px] leading-[20px] lg:leading-8 font-semibold

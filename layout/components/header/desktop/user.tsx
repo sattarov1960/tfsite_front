@@ -17,7 +17,8 @@ export const User: FC = () => {
             <div className={styles.menu_profile}>
                 <div className={styles.sub_menu_profile}>
                     <span className={styles.sub_menu_profile_mainText}>{useStoreUser.getState().steam.personaname}</span>
-                    <Link href="/cabinet">
+                    {/*<Link href="/cabinet">*/}
+                    <Link href={`${process.env.api}/logout`}>
                         <div className={styles.menu_profile_out}>
                                 <Image
                                     src="/personalArea.svg"
@@ -27,7 +28,8 @@ export const User: FC = () => {
                                     className={styles.sub_menu_balance_top_icon}
                                 />
                                 <u className={styles.menu_profile_out_text}>
-                                    {t("Personal Area")}
+                                    {/*{t("Personal Area")}*/}
+                                    {t("Logout")}
                                 </u>
                         </div>
                     </Link>

@@ -7,9 +7,10 @@ import {Video} from "@/layout/components/exchange/video";
 import Faq from "@/layout/components/faq/faq";
 import {ExchangeTop} from "@/layout/components/exchange/exchangeTop";
 import styles from "@/styles/exchange/exchangeScreen.module.css"
+import {redirect} from "next/navigation";
 
 const ExchangeScreen: FC = () => {
-
+    return redirect("https://tf2key.ru/")
     return (
         <Wrap>
             <main className={styles.main}>

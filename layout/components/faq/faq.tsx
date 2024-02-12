@@ -6,11 +6,13 @@ import styles from "@/styles/faq/faq.module.css"
 import {useTranslations} from "next-intl";
 import {useStoreAccordion} from "@/store/user";
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
 
 
 export const FAQ: FC = () => {
     const t = useTranslations()
     const store = useStoreAccordion()
+    const pathname = usePathname()
     return (
         <section>
             <div className={styles.ticketsKeys_FAQ_part} id="faq">
@@ -19,19 +21,89 @@ export const FAQ: FC = () => {
                 </h2>
                 <div className={styles.ticketsKeys_FAQ_part_accordionReviews}>
                     <div className={styles.ticketsKeys_FAQ_part_accordionItems}>
-                        <div>
-                            <div className={styles.ticketsKeys_FAQ_part_accordion_subItem} onClick={() => store.setActive(store.active === 1 ? null : 1)}>
+                        {pathname.includes("swap") &&
+                            <>
+                                <div>
+                                    <div className={styles.ticketsKeys_FAQ_part_accordion_subItem}
+                                         onClick={() => store.setActive(store.active === 5 ? null : 5)}>
+                                        <Image
+                                            src="/accrodion_cross.svg"
+                                            width={40}
+                                            height={40}
+                                            alt="Cross"
+                                            className={`${styles.ticketsKeys_FAQ_part_accordionItem_icon} ${store.active === 5 ?
+                                                styles.ticketsKeys_FAQ_part_accordionItem_icon_open :
+                                                styles.ticketsKeys_FAQ_part_accordionItem_icon_close}`}
+
+                                        />
+                                        <span
+                                            className={styles.ticketsKeys_FAQ_part_accordionItem_text}>{t("How to buy")}</span>
+                                    </div>
+                                    {store.active === 5 ?
+                                        <>
+                                            <div className={styles.ticketsKeys_FAQ_part_accordionItem_getOut}>
+                                        <span className={styles.ticketsKeys_FAQ_part_accordionItem_getOut_text}>
+                            {t("Answer How Buy")}
+                        </span>
+                                            </div>
+                                            <div className={styles.ticketsKeys_FAQ_part_accordionItem_getOut_mobile}>
+                                        <span className={styles.ticketsKeys_FAQ_part_accordionItem_getOut_text}>
+                            {t("Answer How Buy")}
+                        </span>
+                                            </div>
+                                        </>
+                                        : null}
+                                    <hr className={styles.ticketsKeys_FAQ_part_accordionItem_underline}/>
+                                </div>
+                                <div className={styles.ticketsKeys_FAQ_part_accordionItem}>
+                                    <div className={styles.ticketsKeys_FAQ_part_accordion_subItem}
+                                         onClick={() => store.setActive(store.active === 6 ? null : 6)}>
+                                        <Image
+                                            src="/accrodion_cross.svg"
+                                            width={40}
+                                            height={40}
+                                            alt="Cross"
+                                            className={`${styles.ticketsKeys_FAQ_part_accordionItem_icon} ${store.active === 6 ?
+                                                styles.ticketsKeys_FAQ_part_accordionItem_icon_open :
+                                                styles.ticketsKeys_FAQ_part_accordionItem_icon_close}`}
+
+                                        />
+                                        <span
+                                            className={styles.ticketsKeys_FAQ_part_accordionItem_text}>{t("How to sell")}</span>
+                                    </div>
+                                    {store.active === 6 ?
+                                        <>
+                                            <div className={styles.ticketsKeys_FAQ_part_accordionItem_getOut}>
+                                        <span className={styles.ticketsKeys_FAQ_part_accordionItem_getOut_text}>
+                            {t("Answer How Seller")}
+                        </span>
+                                            </div>
+                                            <div className={styles.ticketsKeys_FAQ_part_accordionItem_getOut_mobile}>
+                                        <span className={styles.ticketsKeys_FAQ_part_accordionItem_getOut_text}>
+                            {t("Answer How Seller")}
+                        </span>
+                                            </div>
+                                        </>
+                                        : null}
+                                    <hr className={styles.ticketsKeys_FAQ_part_accordionItem_underline}/>
+                                </div>
+                            </>
+                        }
+                        <div className={`${pathname.includes("swap") && styles.ticketsKeys_FAQ_part_accordionItem}`}>
+                            <div className={styles.ticketsKeys_FAQ_part_accordion_subItem}
+                                 onClick={() => store.setActive(store.active === 1 ? null : 1)}>
                                 <Image
                                     src="/accrodion_cross.svg"
                                     width={40}
                                     height={40}
                                     alt="Cross"
-                                    className={`${styles.ticketsKeys_FAQ_part_accordionItem_icon} ${store.active === 1 ? 
-                                        styles.ticketsKeys_FAQ_part_accordionItem_icon_open : 
+                                    className={`${styles.ticketsKeys_FAQ_part_accordionItem_icon} ${store.active === 1 ?
+                                        styles.ticketsKeys_FAQ_part_accordionItem_icon_open :
                                         styles.ticketsKeys_FAQ_part_accordionItem_icon_close}`}
 
                                 />
-                                <span className={styles.ticketsKeys_FAQ_part_accordionItem_text}>{t("How to top up your Steam balance using TF2 keys")}</span>
+                                <span
+                                    className={styles.ticketsKeys_FAQ_part_accordionItem_text}>{t("How to top up your Steam balance using TF2 keys")}</span>
                             </div>
                             {store.active === 1 ?
                                 <>
@@ -46,22 +118,24 @@ export const FAQ: FC = () => {
                         </span>
                                     </div>
                                 </>
-                                 : null}
+                                : null}
                             <hr className={styles.ticketsKeys_FAQ_part_accordionItem_underline}/>
                         </div>
                         <div className={styles.ticketsKeys_FAQ_part_accordionItem}>
-                            <div className={styles.ticketsKeys_FAQ_part_accordion_subItem} onClick={() => store.setActive(store.active === 2 ? null : 2)}>
+                            <div className={styles.ticketsKeys_FAQ_part_accordion_subItem}
+                                 onClick={() => store.setActive(store.active === 2 ? null : 2)}>
                                 <Image
                                     src="/accrodion_cross.svg"
                                     width={40}
                                     height={40}
                                     alt="Cross"
-                                    className={`${styles.ticketsKeys_FAQ_part_accordionItem_icon} ${store.active === 2 ? 
-                                        styles.ticketsKeys_FAQ_part_accordionItem_icon_open : 
+                                    className={`${styles.ticketsKeys_FAQ_part_accordionItem_icon} ${store.active === 2 ?
+                                        styles.ticketsKeys_FAQ_part_accordionItem_icon_open :
                                         styles.ticketsKeys_FAQ_part_accordionItem_icon_close}`}
 
                                 />
-                                <span className={styles.ticketsKeys_FAQ_part_accordionItem_text}>{t("When will the keys appear on the site")}</span>
+                                <span
+                                    className={styles.ticketsKeys_FAQ_part_accordionItem_text}>{t("When will the keys appear on the site")}</span>
                             </div>
                             {store.active === 2 ?
                                 <>
@@ -76,7 +150,7 @@ export const FAQ: FC = () => {
                         </span>
                                     </div>
                                 </>
-                                 : null}
+                                : null}
                             <hr className={styles.ticketsKeys_FAQ_part_accordionItem_underline}/>
                         </div>
                         <div className={styles.ticketsKeys_FAQ_part_accordionItem}>

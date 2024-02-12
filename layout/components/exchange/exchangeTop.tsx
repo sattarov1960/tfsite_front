@@ -99,12 +99,6 @@ export function ExchangeTop() {
                     </div>
                 </div>
             </section>
-            <div className={styles.exchange_desc_wrap}>
-                <p className={styles.exchange_top_desc_scnd}>
-                    <span className={styles.exchange_top_desc_frst}>Какой-то текст о продаже и покупке</span>
-                    - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-                    massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            </div>
         </>
     )
 }

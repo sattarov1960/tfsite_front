@@ -41,8 +41,10 @@ const Navigate: FC = () => {
                         width={20}
                         height={20}
                         alt="exchange"
-                        className={`${styles.hover_navigate} ${pathname.includes("swap") ? "" : styles.menu_item_icon_active}`}/>
-                    <Link href="/swap"><span className={`${styles.menu_item_text} ${pathname.includes("swap") ? styles.menu_item_text_active : ""}`}>{t("swap")}</span></Link>
+                        style={{opacity: "40%"}}/>
+                        {/*className={`${styles.hover_navigate} ${pathname.includes("swap") ? "" : styles.menu_item_icon_active}`}/>*/}
+                    {/*<Link href="/swap"><span className={`${styles.menu_item_text} ${pathname.includes("swap") ? styles.menu_item_text_active : ""}`}>{t("swap")}</span></Link>*/}
+                    <Link href="/"><span className={`${styles.menu_item_text_inactive} ${pathname.includes("swap") ? styles.menu_item_text_active : ""}`}>{t("swap")}</span></Link>
                 </div>
                 {pathname.includes("/swap") ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
