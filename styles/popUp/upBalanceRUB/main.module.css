@@ -49,6 +49,9 @@
 .popUp_sub_main_card_nextIcon {
     @apply w-[32px] h-[32px];
 }
+.popUp_sub_main_card_nextIcon_sbp {
+    @apply w-[32px] h-[32px] ml-[13px];
+}
 .popUp_sub_main_sub_card {
     @apply ml-[8px];
 }
@@ -70,11 +73,24 @@
 .popUp_sub_main_card_percent {
     @apply text-[10px] text-[#919CFB] font-[700] leading-[12px] absolute right-[4px] top-[4px];
 }
+.popUp_sub_main_card_percent_red {
+    @apply text-[10px] font-[700] leading-[12px] absolute right-[4px] top-[4px];
+    color: rgb(217, 26, 61);
+}
 .popUp_sub_main_inputBlock {
     @apply mt-[20px] sm:mt-[30px];
 }
 .popUp_sub_main_footer {
     @apply mt-[20px] sm:mt-[30px] bg-[#04050A] h-[210px] px-[20px] pb-[30px];
+}
+.popUp_sub_main_footer_withdraw {
+    @apply mt-[20px] sm:mt-[30px] bg-[#04050A] h-[300px] xl:h-[210px] px-[20px] pb-[30px] pt-[20px];
+}
+.popUp_sub_main_footer_withdraw_text{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
 }
 .popUp_sub_main_footer_mini {
     @apply h-[180px];
