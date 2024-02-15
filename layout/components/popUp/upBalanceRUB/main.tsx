@@ -347,7 +347,7 @@ export const Main: FC = () => {
                             <p className={styles.popUp_sub_main_footer_withdraw_text} style={{color: "#FFFFFF80"}}>Вы можете пополнить баланс сайта обычным переводом по<br/>СБП на номер выданной поддержкой.<br/>На данный момент минимальная сумма пополнения <span style={{color: "#FFFFFFFF"}}>1480 Р</span>.<br/><br/>Для
                                 получения реквизитов для перевода напишите на наш аккаунт поддержки: <Link target="_blank" href={"https://t.me/MannCoSupplyCrateKey"} style={{color: "#FF7610"}}>@MannCoSupplyCrateKey</Link><br/><br/>Шаблон: <span style={{color: "#FFFFFF", cursor: "pointer"}} onClick={() =>
                                     copyToClipboard("Привет, хочу пополнить баланс tf2key.ru на ")
-                                }>Привет, хочу пополнить баланс truekeys.shop на сумму:</span></p>
+                                }>Привет, хочу пополнить баланс tf2key.ru на сумму:</span></p>
                         </div>}
                         <div className={styles.popUp_sub_main_privacyPolicy}>
                             <span
