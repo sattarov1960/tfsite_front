@@ -99,7 +99,7 @@ export const Main: FC = () => {
                     </div>
                     <div className={styles.popUp_main_footer_nextItem}>
                         <span className={styles.popUp_main_footer_item_textLeft}>{t("Commission:")}</span>
-                        <p className={styles.popUp_main_footer_item_rightText}>2.5%</p>
+                        <p className={styles.popUp_main_footer_item_rightText}>0%</p>
                     </div>
                     <div className={styles.popUp_main_footer_nextItem}>
                         <span className={styles.popUp_main_footer_item_textLeft}>{t("Your payment:")}</span>

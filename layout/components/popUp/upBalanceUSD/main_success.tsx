@@ -6,6 +6,7 @@ import styles from "@/styles/popUp/upBalanceUSD/success_main.module.css"
 import Image from "next/image";
 import {useStoreUpBalanceUSD, useStoreUser} from "@/store/user";
 import axios from "axios";
+import {toast} from "react-toastify";
 
 export const Success: FC = () => {
     const store = useStoreUpBalanceUSD()
@@ -25,6 +26,40 @@ export const Success: FC = () => {
     const cancelOrder = async () => {
         await axios.post(`${process.env.api}/error_invoice_usdt`, {invoice_id: store.offerData.invoice_id}, {withCredentials: true});
         store.setOpenSuccess(false)
+    }
+    function copyToClipboard(text: string) {
+        if (navigator.clipboard) {
+            // Use Clipboard API if it's available
+            navigator.clipboard.writeText(text).then(function() {
+                console.log('Copying to clipboard was successful!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        } else {
+            let textarea = document.createElement('textarea');
+            textarea.textContent = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                console.log('Copying to clipboard was successful!');
+            } catch (err) {
+                console.error('Could not copy text: ', err);
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+        toast.success("Скопировал в буффер обмена", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            isLoading: false,
+        });
     }
     return (
         <div className={styles.popUp_replenishmentOfTheBalance_inDollars}>
@@ -53,7 +88,7 @@ export const Success: FC = () => {
                             <span className={styles.popUp_main_item_text}>{t("Translation into our")}</span>
                             <div className={`${styles.popUp_main_sub_frstItem} ${styles.popUp_main_sub_frstItemSpecial}`}>
                                 <span className={`${styles.popUp_main_item_text} ${styles.popUp_main_item_textWhite} ${styles.popUp_main_item_textWhiteSpecial}`}>Binance ID: {store.offerData.binance_id}</span>
-                                <div className={styles.popUp_main_subItem_copy} onClick={async () => window.navigator.clipboard.writeText(store.offerData.binance_id)}>
+                                <div className={styles.popUp_main_subItem_copy} onClick={async () => copyToClipboard(store.offerData.binance_id)}>
                                     <span className={styles.popUp_main_subItem_copy_text}>{t("Copy")}</span>
                                     <Image
                                         src="/icon_copy.svg"
@@ -71,14 +106,14 @@ export const Success: FC = () => {
                             <div className={styles.popUp_main_sub_nextItem}>
                                 <div className={`${styles.popUp_main_subItem_copy} ${styles.popUp_main_subItem_copySpecial}`}>
                                     <span className={`${styles.popUp_main_item_text} ${styles.popUp_main_item_textWhite} ${styles.popUp_main_item_textWhiteSpecial_two}`}>{store.offerData.usdt}</span>
-                                    <span className={styles.popUp_main_subItem_copy_text} onClick={async () => window.navigator.clipboard.writeText(store.offerData.usdt)}>{t("Copy")}</span>
+                                    <span className={styles.popUp_main_subItem_copy_text} onClick={async () => copyToClipboard(store.offerData.usdt)}>{t("Copy")}</span>
                                     <Image
                                         src="/icon_copy.svg"
                                         width={18}
                                         height={18}
                                         alt="copy"
                                         className={styles.copy}
-                                        onClick={async () => window.navigator.clipboard.writeText(store.offerData.usdt)}
+                                        onClick={async () => copyToClipboard(store.offerData.usdt)}
                                     />
                                 </div>
                             </div>
@@ -93,7 +128,7 @@ export const Success: FC = () => {
                             </p>
                             <p className={`${styles.popUp_main_item_text} ${styles.popUp_main_item_wrap}`}>
                                 <div className={styles.popUp_main_item_wrap_text}>
-                                    <span className={styles.popUp_main_item_text_two}>2.2.</span>
+                                    <span className={styles.popUp_main_item_text_two_two}>2.2.</span>
                                     <div>
                                         <span className={`${styles.popUp_main_item_text} ${styles.popUp_main_item_textWhite} ${styles.popUp_main_item_text_three} ${styles.popUp_main_item_text_four}`}>{t("Consider COMMISSION")}</span>
                                         <span>{t("when sending cryptocurrency, the amount specified above must be credited to our wallet")}</span>

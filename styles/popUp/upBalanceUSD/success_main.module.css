@@ -26,7 +26,7 @@
     @apply text-[14px] font-[600] leading-[20px];
 }
 .popUp_main_items {
-    @apply list-decimal;
+    @apply list-decimal ml-[7px];
 }
 .popUp_main_frstItem {
     @apply mt-[10px] ml-[20px] h-[40px] sm:h-auto;
@@ -41,7 +41,7 @@
     @apply flex-wrap;
 }
 .popUp_main_item_text {
-    @apply text-[14px] text-[#F2F1F899] font-[400] leading-[20px];
+    @apply text-[14px] text-[#F2F1F899] font-[400] leading-[20px] text-left;
 }
 .popUp_main_item_wrap {
     @apply flex flex-col items-start;
@@ -51,7 +51,11 @@
 }
 .popUp_main_item_text_two {
     @apply ml-[-3px];
-}.popUp_main_item_text_one {
+}
+.popUp_main_item_text_two_two {
+    @apply ml-[-3px] mr-[30px] text-left;
+}
+.popUp_main_item_text_one {
     @apply ml-[5px];
 }
 .popUp_main_item_text_three {
@@ -76,7 +80,7 @@
     @apply break-all;
 }
 .popUp_main_subItem_copy {
-    @apply flex items-center ml-[6px] flex-wrap;
+    @apply max-sm:ml-[-30px] max-sm:mt-[-35px] flex items-center ml-[6px] flex-wrap;
 }
 .popUp_main_subItem_copySpecial {
     @apply absolute sm:static top-[22px] left-[30px];
@@ -97,7 +101,7 @@
     @apply flex items-center relative;
 }
 .popUp_main_sub_nextItem_subTitle {
-    @apply mt-[20px] flex flex-col items-start;
+    @apply max-sm:mt-[35px] mt-[20px] flex flex-col items-start;
 }
 .popUp_main_buttons {
     @apply w-full flex items-center justify-center flex-wrap mt-[30px] sm:mt-[50px];

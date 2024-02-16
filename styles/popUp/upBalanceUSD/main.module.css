@@ -56,5 +56,5 @@
     @apply text-[10px] text-[#FFFFFF80] font-[500] leading-[14px] h-[28px] sm:h-[30px] block;
 }
 .popUp_main_privacyPolicy_textWhite {
-    @apply text-[10px] text-[#FFFFFF] font-[500] leading-[14px] underline underline-offset-2;
+    @apply ml-[4px] text-[10px] text-[#FFFFFF] font-[500] leading-[14px] underline underline-offset-2;
 }

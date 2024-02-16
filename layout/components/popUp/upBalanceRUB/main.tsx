@@ -248,7 +248,7 @@ export const Main: FC = () => {
                                 </div>
                                 <span className={styles.popUp_sub_main_card_percent}>4.5%</span>
                             </div>
-                            <div onClick={() => store.setActive("QiwiGM")} className={`${styles.popUp_sub_main_card} ${store.active === "QiwiGM" ? styles.popUp_sub_main_card_active : null}`}>
+                            <div onClick={() => store.setActive("BtcGM")} className={`${styles.popUp_sub_main_card} ${store.active === "BtcGM" ? styles.popUp_sub_main_card_active : null}`}>
                                 <Image
                                     src="/icon_btc.svg"
                                     width={32}
@@ -263,7 +263,7 @@ export const Main: FC = () => {
                                 </div>
                                 <span className={styles.popUp_sub_main_card_percent}>2%</span>
                             </div>
-                            <div onClick={() => store.setActive("BtcGM")} className={`${styles.popUp_sub_main_card} ${store.active === "BtcGM" ? styles.popUp_sub_main_card_active : null}`}>
+                            <div onClick={() => store.setActive("QiwiGM")} className={`${styles.popUp_sub_main_card} ${store.active === "QiwiGM" ? styles.popUp_sub_main_card_active : null}`}>
                                 <Image
                                     src="/icon_qiwi.svg"
                                     width={32}

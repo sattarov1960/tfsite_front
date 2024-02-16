@@ -141,7 +141,10 @@ export const Main: FC = () => {
                     </div>
                 </div>
                 <div className={styles.popUp_sub_mainBlock}>
-                    <p className={styles.popUp_sub_mainBlock_topText}>{t("Insert your trade link")}</p>
+                    <div className={styles.popUp_sub_mainBlock_wrap}>
+                        <p className={styles.popUp_sub_mainBlock_topText}>{t("Insert your trade link")}</p>
+                        <Link target="_blank" href="https://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url" className={styles.popUp_sub_mainBlock_topText}>{t("Get trade link")}</Link>
+                    </div>
                     <input
                         type="text"
                         className={styles.popUp_sub_mainBlock_input}

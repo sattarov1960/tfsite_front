@@ -71,6 +71,9 @@
 .popUp_sub_mainBlock {
     @apply bg-[#04050A] mt-[20px] md:mt-[26px] h-[198px] md:h-[210px] pt-[20px] pb-[20px] md:pb-[30px] px-[10px] md:px-[30px];
 }
+.popUp_sub_mainBlock_wrap{
+    @apply flex justify-between items-center w-full
+}
 .popUp_sub_mainBlock_topText {
     @apply text-[12px] text-[#F2F1F8] font-[400] leading-[16px] text-start;
 }

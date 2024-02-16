@@ -146,7 +146,10 @@ export const Main: FC = () => {
                     </div>
                 </div>
                 <div className={styles.popUp_sub_mainBlock}>
-                    <p className={styles.popUp_sub_mainBlock_topText}>{t("Insert your trade link")}</p>
+                    <div className={styles.popUp_sub_mainBlock_wrap}>
+                        <p className={styles.popUp_sub_mainBlock_topText}>{t("Insert your trade link")}</p>
+                        <Link target="_blank" href="https://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url" className={styles.popUp_sub_mainBlock_topText}>{t("Get trade link")}</Link>
+                    </div>
                     <input
                         type="text"
                         className={styles.popUp_sub_mainBlock_input}
@@ -157,18 +160,24 @@ export const Main: FC = () => {
                     <div className={styles.popUp_sub_mainBlock_bottomPart}>
                         <div className={styles.popUp_sub_mainBlock_bottomPart_leftBlock}>
                             <div className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextGray_wrap}>
-                                <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextGray}>{t("Steam account:")}</span>
-                                {countItems ? <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGrayDesktop}>{t("in inventory")}:</span> : null}
-                                <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGrayDesktop}>{t("Funds will go to")}:</span>
-                                <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGray_mobile}>{t("Payment method:")}</span>
+                                <span
+                                    className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextGray}>{t("Steam account:")}</span>
+                                {countItems ? <span
+                                    className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGrayDesktop}>{t("in inventory")}:</span> : null}
+                                <span
+                                    className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGrayDesktop}>{t("Funds will go to")}:</span>
+                                <span
+                                    className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textGray_mobile}>{t("Payment method:")}</span>
                             </div>
                             <div className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock}>
                                 <p className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextWhite}>{store_user.steam.personaname}</p>
                                 {countItems ?
-                                <p className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textViolet_start}>
-                                    <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextWhite}>{countItems}</span>
-                                    <span className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textAddGray}>{t("(pcs)")}</span>
-                                </p> : null}
+                                    <p className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textViolet_start}>
+                                        <span
+                                            className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_frstTextWhite}>{countItems}</span>
+                                        <span
+                                            className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textAddGray}>{t("(pcs)")}</span>
+                                    </p> : null}
                                 <p className={styles.popUp_sub_mainBlock_bottomPart_sub_leftBlock_textViolet}>
                                     {t("Site balance")}
                                     <span /*
@@ -181,16 +190,19 @@ export const Main: FC = () => {
                             <div className={styles.popUp_sub_mainBlock_bottomPart_sub_rightBlock}>
                                 {store.checkBox ?
                                     <div onClick={() => store.setCheckBox(false)} className={styles.checkbox_open}>
-                                        <Image src="/check.svg" alt="checkbox" className={styles.checkbox_svg} width={25} height={25}/>
+                                        <Image src="/check.svg" alt="checkbox" className={styles.checkbox_svg}
+                                               width={25} height={25}/>
                                     </div>
                                     :
                                     <div
                                         onClick={() => store.setCheckBox(true)}
                                         className={styles.checkbox_close}
                                     />}
-                                <span className={styles.popUp_sub_mainBlock_bottomPart_rightBlock_text}>{t("I accept the")}<br/>
+                                <span
+                                    className={styles.popUp_sub_mainBlock_bottomPart_rightBlock_text}>{t("I accept the")}<br/>
                                     <Link href={`${process.env.current}/privacy`}>
-                                        <span className={styles.popUp_sub_mainBlock_bottomPart_rightBlock_textWhite}>{t("user agreement")}</span>
+                                        <span
+                                            className={styles.popUp_sub_mainBlock_bottomPart_rightBlock_textWhite}>{t("user agreement")}</span>
                                     </Link>
                                 </span>
                             </div>
