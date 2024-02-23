@@ -17,6 +17,7 @@ export interface UserI {
     telegramAvatar: string
     steamTradeUrl: string
     steamApiKey: string
+    userId: number
 }
 
 export interface userStore {

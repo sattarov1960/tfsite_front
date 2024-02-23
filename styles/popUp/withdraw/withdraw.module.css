@@ -62,6 +62,9 @@
 .withdraw_wrap_left_item_percent{
     @apply text-[#919CFB] lg:text-[12px] lg:leading-[20px] text-[14px] leading-[20px] font-bold whitespace-nowrap
 }
+.withdraw_wrap_left_item_percent_red{
+    @apply text-[#CB4F4F] lg:text-[14px] lg:leading-[20px] text-[14px] leading-[20px] font-bold whitespace-nowrap
+}
 
 .withdraw_wrap_right {
     /*@apply w-[335px] h-[652px] lg:w-[548px] lg:h-[716px] bg-[#161E35] pt-[26px] px-[20px] lg:pr-[33px] lg:pl-[30px] relative*/
@@ -146,10 +149,17 @@
     @apply w-full flex flex-col items-center mt-[10px] lg:mt-[20px]
 }
 .withdraw_wrap_right_politics_grey{
-    @apply text-[10px] leading-[14px] text-white opacity-50
+    @apply text-[10px] leading-[14px] text-white opacity-50 mt-[20px]
 }
 .withdraw_wrap_right_politics_white{
     @apply text-[10px] leading-[14px] text-white underline cursor-pointer
+}
+.withdraw_wrap_right_time_red{
+    color: rgb(203, 79, 79);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
 }
 
 .withdraw_input_wrap{

@@ -131,6 +131,7 @@ export interface Withdraw extends Popup {
     emailError: boolean
     walletError: boolean
     commissionError: boolean
+    multipleError: boolean
     setActivePlatform: (platform: string) => void
     setAmount: (amount: number) => void
     setEmail: (email: string) => void
@@ -140,6 +141,7 @@ export interface Withdraw extends Popup {
     setWalletError: (error: boolean) => void
     setCommissionError: (error: boolean) => void
     setAmountView: (amount: string) => void
+    setMultipleError: (isError: boolean) => void
     reset: () => void
 }
 

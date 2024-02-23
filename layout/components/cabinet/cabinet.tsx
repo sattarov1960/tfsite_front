@@ -1,6 +1,6 @@
 "use client"
 
-import {FC, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import {useTranslations} from "next-intl";
 import styles from "@/styles/cabinet/cabinet.module.css"
 import copy from "@/public/copy.svg"
@@ -166,6 +166,11 @@ export const Cabinet: FC = () => {
                                 <div className={styles.left_section_top_left_right_item}>
                                     <span className={styles.left_section_top_left_right_span}>{t("Exchange")}</span>
                                     <span className={styles.left_section_top_left_right_span_orange}>{user.countTrades}</span>
+                                </div>
+                                <div className={styles.left_section_top_left_hr}/>
+                                <div className={styles.left_section_top_left_right_item}>
+                                    <span className={styles.left_section_top_left_right_span}>User ID</span>
+                                    <span className={styles.left_section_top_left_right_span_orange}>{user.userId}</span>
                                 </div>
                                 <div className={styles.left_section_top_left_hr}/>
                             </div>

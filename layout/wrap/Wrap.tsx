@@ -79,7 +79,8 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
             telegramName: data.telegramName,
             phone: data.phone,
             email: data.email,
-            telegramAvatar: data.telegramAvatar
+            telegramAvatar: data.telegramAvatar,
+            userId: data.userId
         })
     }
     catch (e) {
@@ -157,6 +158,7 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
                                   steamApiKey={useStoreUser.getState().steamApiKey}
                                   steamTradeUrl={useStoreUser.getState().steamTradeUrl}
                                   telegramAvatar={useStoreUser.getState().telegramAvatar}
+                                  userId={useStoreUser.getState().userId}
 
             />
             <StoreInitializerProducts

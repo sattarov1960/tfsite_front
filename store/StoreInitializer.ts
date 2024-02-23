@@ -28,7 +28,8 @@ export const StoreInitializerUser: FC<UserI> = ({balance_rub,
                                              telegramName,
                                              steamApiKey,
                                              steamTradeUrl,
-                                             telegramAvatar}) => {
+                                             telegramAvatar,
+                                             userId}) => {
     const initialized = useRef(false)
     if (!initialized.current){
         useStoreUser.setState({balance_usd: balance_usd,
@@ -46,7 +47,9 @@ export const StoreInitializerUser: FC<UserI> = ({balance_rub,
                                      telegramCodeActivate: telegramCodeActivate,
                                      steamApiKey: steamApiKey,
                                      steamTradeUrl: steamTradeUrl,
-                                     telegramAvatar: telegramAvatar})
+                                     telegramAvatar: telegramAvatar,
+                                     userId: userId
+        })
         initialized.current = true
     }
     return null

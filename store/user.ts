@@ -31,6 +31,7 @@ export const useStoreUser = create<UserI & userStore>((set) => ({
     phone: "",
     countTrades: 0,
     engineeringWorks: true,
+    userId: -1,
     steam: {
         steamid: "",
         avatarhash: "",
@@ -295,7 +296,7 @@ export const useStoreTransactions = create<Transactions>((set) => ({
 
 export const useStoreWithdrawRUB = create<WithdrawRub>((set) => ({
     isOpen: false,
-    activePlatform: "qiwi",
+    activePlatform: "aifory",
     amount: 0,
     amountView: "0",
     email: "",
@@ -304,6 +305,7 @@ export const useStoreWithdrawRUB = create<WithdrawRub>((set) => ({
     walletError: false,
     emailError: false,
     commissionError: false,
+    multipleError: false,
     bankName: "UNDEFINED",
     isOpenCards: false,
     cards: [],
@@ -323,6 +325,7 @@ export const useStoreWithdrawRUB = create<WithdrawRub>((set) => ({
     setIsOpenCards: (isOpen) => set({ isOpenCards: isOpen }),
     setCards: (cards) => set({ cards: cards }),
     setLinkAddCard: (link) => set({ linkAddCard: link }),
+    setMultipleError: (isError) => set({ multipleError: isError }),
     reset: () => set({
         isOpen: false,
         activePlatform: "card",
@@ -345,6 +348,7 @@ export const useStoreWithdrawUSDT = create<Withdraw>((set) => ({
     walletError: false,
     emailError: false,
     commissionError: false,
+    multipleError: false,
     Open: () => set({ isOpen: true }),
     Close: () => set({ isOpen: false }),
     setActivePlatform: (platform) => set({ activePlatform: platform }),
@@ -356,6 +360,7 @@ export const useStoreWithdrawUSDT = create<Withdraw>((set) => ({
     setWalletError: (error) => set({ walletError: error }),
     setCommissionError: (error) => set({ commissionError: error }),
     setAmountView: (amount) => set({ amountView: amount }),
+    setMultipleError: (multipleError) => set({ multipleError: multipleError }),
     reset: () => set({
         isOpen: false,
         activePlatform: "binance",

@@ -119,7 +119,7 @@
     @apply w-full flex justify-between flex-wrap
 }
 .left_section_top_left_btn_wrap{
-    @apply mt-[20px] lg:mt-[30px]
+    @apply mt-[20px] lg:mt-[8px]
 }
 .left_section_top_left_right_item{
     @apply flex w-full justify-between mt-[10px]

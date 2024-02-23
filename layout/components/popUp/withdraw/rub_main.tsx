@@ -15,9 +15,19 @@ import {validateCardNumber, validatePhoneNumber} from "@/utilities/rub";
 import axios from "axios";
 import Link from "next/link";
 import {CommissionResult} from "@/interface/commission";
+import {roundTo} from "@/utilities/Round";
 
 export const RUBMain: FC = () => {
     const t = useTranslations()
+    const [fullName, setFullName] = useState("")
+    const [fullNameError, setFullNameError] = useState(false)
+    const [phoneNumber, setPhoneNumber] = useState("")
+    const [phoneNumberError, setPhoneNumberError] = useState(false)
+    const [date, setDate] = useState("")
+    const [dateError, setDateError] = useState(false)
+    const [bank, setBank] = useState("")
+    const [bankError, setBankError] = useState(false)
+
     const store_user = useStoreUser()
     const store_withdraw = useStoreWithdrawRUB()
     const store_error = useStoreErrorWithdraw()
@@ -36,6 +46,17 @@ export const RUBMain: FC = () => {
         loadLastWalletQiwi()
         getBalancePaymentSystem()
     }, [start])
+    useEffect(() => {
+        if (store_withdraw.activePlatform === "СБП"){
+            store_withdraw.setAmount((Math.floor(store_user.balance_rub / 100) * 100) || 0)
+            store_withdraw.setWallet("")
+        }
+    }, [store_withdraw.activePlatform]);
+    useEffect(() => {
+        if (store_withdraw.activePlatform === "СБП" && store_withdraw.amount !== 0){
+            store_withdraw.setMultipleError(store_withdraw.amount % 100 != 0)
+        }
+    }, [store_withdraw.amount]);
 
     const getBalancePaymentSystem = async () => {
         for (const i of ["balance_aifory", "balance_gm"]) {
@@ -71,21 +92,40 @@ export const RUBMain: FC = () => {
         case "yoo money":
             activePlatformView = "Yoo Money"
             break
+        case "СБП":
+            activePlatformView = "СБП"
+            break
     }
 
     const createWithdraw = async () => {
         // const emailError = !checkEmail()
+        if (store_withdraw.activePlatform === "СБП"){
+            const _fullError = fullName === ""
+            const _phoneError = phoneNumber === ""
+            const _dateError = date === ""
+            const _bankError = bank === ""
+            setFullNameError(_fullError)
+            setPhoneNumberError(_phoneError)
+            setDateError(_dateError)
+            setBankError(_bankError)
+            if (_fullError ||
+                _phoneError ||
+                _dateError ||
+                _bankError){
+                return
+            }
+        }
         const walletError = !checkWallet()
         const amountError = !checkAmount()
         // @ts-ignore
         let balance_ps = 0
-        if (store_withdraw.activePlatform === "qiwi" ||store_withdraw.activePlatform === "card"){
+        if (store_withdraw.activePlatform === "qiwi" || store_withdraw.activePlatform === "card"){
             balance_ps = store_rub_PS.balanceGM
         }
         else if (store_withdraw.activePlatform === "aifory"){
             balance_ps = store_rub_PS.balanceAIFORY
         }
-        if (balance_ps < store_withdraw.amount){
+        if (balance_ps < store_withdraw.amount && store_withdraw.activePlatform !== "СБП"){
             store_error_balance.setBalance(balance_ps)
             store_error_balance.setCurrency("₽")
             switch (store_withdraw.activePlatform) {
@@ -113,10 +153,27 @@ export const RUBMain: FC = () => {
                 else if (store_withdraw.activePlatform === "aifory"){
                     urlEnd = "withdraw_aifory"
                 }
+                else if (store_withdraw.activePlatform === "СБП"){
+                    urlEnd = "withdraw_sbp"
+                }
                 else {return}
                 // setCookie("withdrawEmail", store_withdraw.email, 360)
-                const response = await axios.post(`${process.env.api}/${urlEnd}`,
-                    {pan: store_withdraw.wallet, network: store_withdraw.activePlatform, amount: store_withdraw.amount},
+                let url = `${process.env.api}/${urlEnd}`
+                let data;
+                if (store_withdraw.activePlatform === "СБП"){
+                    data = {
+                        amount: store_withdraw.amount,
+                        fullName: fullName,
+                        phone_number: phoneNumber,
+                        date: date,
+                        bank: bank
+                    }
+                }
+                else{
+                    data = {pan: store_withdraw.wallet, network: store_withdraw.activePlatform, amount: store_withdraw.amount}
+                }
+                let response = await axios.post(url,
+                    data,
                     { withCredentials: true });
                 if (response.data.status){
                     store_success.Open()
@@ -209,7 +266,8 @@ export const RUBMain: FC = () => {
         }
         if (store_withdraw.activePlatform === "card" && store_withdraw.amount < 1000 ||
             store_withdraw.activePlatform === "qiwi" && store_withdraw.amount < 10 ||
-            store_withdraw.activePlatform === "aifory" && store_withdraw.amount < 1050) {
+            store_withdraw.activePlatform === "aifory" && store_withdraw.amount < 1050 ||
+            store_withdraw.activePlatform === "СБП" && store_withdraw.amount < 1000) {
             store_withdraw.setCommissionError(true)
             return true
         }
@@ -285,6 +343,10 @@ export const RUBMain: FC = () => {
                 commission = (store_withdraw.amount * 0.98).toFixed(2)
                 commissionDescription = "2%"
                 break
+            case "СБП":
+                commission = (store_withdraw.amount).toFixed(2)
+                commissionDescription = "0%"
+                break
             case "yoo money":
                 break
         }
@@ -312,6 +374,12 @@ export const RUBMain: FC = () => {
             return t("Enter your wallet number");
         }
     }
+    const onBlurSBP = (key: string) => {
+        if (key === "fullName") {setFullNameError(fullName === "")}
+        if (key === "phoneNumber") {setPhoneNumberError(phoneNumber === "")}
+        if (key === "date") {setDateError(date === "")}
+        if (key === "bank") {setBankError(bank === "")}
+    }
     return (
         <section className={styles.withdraw_wrap}>
             <div className={styles.withdraw_wrap_left}>
@@ -326,32 +394,52 @@ export const RUBMain: FC = () => {
                 <h1 className={styles.withdraw_wrap_left_h1}>{t("Withdrawing funds to")} ₽</h1>
                 <hr className={styles.withdraw_wrap_left_hr}/>
                 <p className={styles.withdraw_wrap_left_p}>{t("Select a withdrawal method")}</p>
-                <div className={`${styles.withdraw_wrap_left_item} ${styles.withdraw_wrap_left_item_first}  ${store_withdraw.activePlatform === "qiwi" ?  styles.withdraw_wrap_left_item_active : null}`}
-                     onClick={() => {store_withdraw.setActivePlatform("qiwi"); loadLastWalletQiwi(); store_withdraw.setIsOpenCards(false)}}
-                     onKeyPress={(e) => {if (e.key === 'Enter') store_withdraw.setActivePlatform("qiwi"); loadLastWalletQiwi(); store_withdraw.setIsOpenCards(false)}}
-                     tabIndex={1}
+                {/*<div*/}
+                {/*    className={`${styles.withdraw_wrap_left_item} ${styles.withdraw_wrap_left_item_first}  ${store_withdraw.activePlatform === "qiwi" ? styles.withdraw_wrap_left_item_active : null}`}*/}
+                {/*    onClick={() => {*/}
+                {/*        store_withdraw.setActivePlatform("qiwi");*/}
+                {/*        loadLastWalletQiwi();*/}
+                {/*        store_withdraw.setIsOpenCards(false)*/}
+                {/*    }}*/}
+                {/*    onKeyPress={(e) => {*/}
+                {/*        if (e.key === 'Enter') store_withdraw.setActivePlatform("qiwi");*/}
+                {/*        loadLastWalletQiwi();*/}
+                {/*        store_withdraw.setIsOpenCards(false)*/}
+                {/*    }}*/}
+                {/*    tabIndex={1}*/}
+                {/*>*/}
+                {/*    <div className={styles.withdraw_wrap_left_item_img_wrap}>*/}
+                {/*        <div>*/}
+                {/*            <Image src="/withdraw_qiwi.svg" alt="qiwi" className={styles.withdraw_wrap_left_item_qiwi}*/}
+                {/*                   width={50} height={50}/>*/}
+                {/*        </div>*/}
+                {/*        <div className={styles.withdraw_wrap_left_item_desc_wrap}>*/}
+                {/*            <p className={styles.withdraw_wrap_left_item_ps}>QIWI</p>*/}
+                {/*            <span className={styles.withdraw_wrap_left_item_desc}>(Payment system)</span>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*    <div className={styles.withdraw_wrap_left_item_right_wrap}>*/}
+                {/*        <span className={styles.withdraw_wrap_left_item_percent}>3%</span>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                <div
+                    className={`${styles.withdraw_wrap_left_item} ${store_withdraw.activePlatform === "aifory" ? styles.withdraw_wrap_left_item_active : null}`}
+                    onClick={() => {
+                        store_withdraw.setActivePlatform("aifory");
+                        loadCardsAIFORY();
+                        store_withdraw.setIsOpenCards(false)
+                    }}
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') store_withdraw.setActivePlatform("aifory");
+                        loadCardsAIFORY();
+                        store_withdraw.setIsOpenCards(false)
+                    }}
+                    tabIndex={2}
                 >
                     <div className={styles.withdraw_wrap_left_item_img_wrap}>
                         <div>
-                            <Image src="/withdraw_qiwi.svg" alt="qiwi" className={styles.withdraw_wrap_left_item_qiwi} width={50} height={50}/>
-                        </div>
-                        <div className={styles.withdraw_wrap_left_item_desc_wrap}>
-                            <p className={styles.withdraw_wrap_left_item_ps}>QIWI</p>
-                            <span className={styles.withdraw_wrap_left_item_desc}>(Payment system)</span>
-                        </div>
-                    </div>
-                    <div className={styles.withdraw_wrap_left_item_right_wrap}>
-                        <span className={styles.withdraw_wrap_left_item_percent}>3%</span>
-                    </div>
-                </div>
-                <div className={`${styles.withdraw_wrap_left_item} ${store_withdraw.activePlatform === "aifory" ?  styles.withdraw_wrap_left_item_active : null}`}
-                     onClick={() => {store_withdraw.setActivePlatform("aifory"); loadCardsAIFORY(); store_withdraw.setIsOpenCards(false)}}
-                     onKeyPress={(e) => {if (e.key === 'Enter') store_withdraw.setActivePlatform("aifory"); loadCardsAIFORY(); store_withdraw.setIsOpenCards(false)}}
-                     tabIndex={2}
-                >
-                    <div className={styles.withdraw_wrap_left_item_img_wrap}>
-                        <div>
-                            <Image src="/withdraw_card.svg" alt="card" className={styles.withdraw_wrap_left_item_card} width={50} height={50}/>
+                            <Image src="/withdraw_card.svg" alt="card" className={styles.withdraw_wrap_left_item_card}
+                                   width={50} height={50}/>
                         </div>
                         <div className={styles.withdraw_wrap_left_item_desc_wrap}>
                             <p className={styles.withdraw_wrap_left_item_ps}>Cards</p>
@@ -362,14 +450,26 @@ export const RUBMain: FC = () => {
                         <span className={styles.withdraw_wrap_left_item_percent}>2%</span>
                     </div>
                 </div>
-                <div className={`${styles.withdraw_wrap_left_item}  ${store_withdraw.activePlatform === "card" ?  styles.withdraw_wrap_left_item_active : null}`}
-                     onClick={() => {store_withdraw.setActivePlatform("card"); getLinkAddCardGM(); loadCardsGM(); store_withdraw.setWallet("")}}
-                     onKeyPress={(e) => {if (e.key === 'Enter') store_withdraw.setActivePlatform("card"); getLinkAddCardGM(); loadCardsGM(); store_withdraw.setWallet("")}}
-                     tabIndex={3}
+                <div
+                    className={`${styles.withdraw_wrap_left_item}  ${store_withdraw.activePlatform === "card" ? styles.withdraw_wrap_left_item_active : null}`}
+                    onClick={() => {
+                        store_withdraw.setActivePlatform("card");
+                        getLinkAddCardGM();
+                        loadCardsGM();
+                        store_withdraw.setWallet("")
+                    }}
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') store_withdraw.setActivePlatform("card");
+                        getLinkAddCardGM();
+                        loadCardsGM();
+                        store_withdraw.setWallet("")
+                    }}
+                    tabIndex={3}
                 >
                     <div className={styles.withdraw_wrap_left_item_img_wrap}>
                         <div>
-                            <Image src="/withdraw_card_2.svg" alt="card" className={styles.withdraw_wrap_left_item_card} width={50} height={50}/>
+                            <Image src="/withdraw_card_2.svg" alt="card" className={styles.withdraw_wrap_left_item_card}
+                                   width={50} height={50}/>
                         </div>
                         <div className={styles.withdraw_wrap_left_item_desc_wrap}>
                             <p className={styles.withdraw_wrap_left_item_ps}>Cards 2</p>
@@ -380,14 +480,36 @@ export const RUBMain: FC = () => {
                         <span className={styles.withdraw_wrap_left_item_percent}>3.5% + 50₽</span>
                     </div>
                 </div>
-                <div className={`${styles.withdraw_wrap_left_item} ${store_withdraw.activePlatform === "yoo money" ?  styles.withdraw_wrap_left_item_active : null}`}
-                     // onClick={() => {store_withdraw.setActivePlatform("yoo money")}}
-                     // onKeyPress={(e) => e.key === 'Enter' ? store_withdraw.setActivePlatform("yoo money") : null}
-                     // tabIndex={4}
+                <div
+                    className={`${styles.withdraw_wrap_left_item}  ${store_withdraw.activePlatform === "СБП" ? styles.withdraw_wrap_left_item_active : null}`}
+                    onClick={() => store_withdraw.setActivePlatform("СБП")}
+                    onKeyPress={(e) => store_withdraw.setActivePlatform("СБП")}
+                    tabIndex={4}
                 >
                     <div className={styles.withdraw_wrap_left_item_img_wrap}>
                         <div>
-                            <Image src="/you_money.svg" alt="you_money" className={styles.withdraw_wrap_left_item_you_money} width={45} height={35}/>
+                            <Image src="/sbp_icon.svg" alt="SBP" className={styles.withdraw_wrap_left_item_card}
+                                   width={50} height={50}/>
+                        </div>
+                        <div className={styles.withdraw_wrap_left_item_desc_wrap}>
+                            <p className={styles.withdraw_wrap_left_item_ps}>Ручной вывод</p>
+                            <span className={styles.withdraw_wrap_left_item_desc}>(MasterCard, VISA, etc.)</span>
+                        </div>
+                    </div>
+                    <div className={styles.withdraw_wrap_left_item_right_wrap}>
+                        <span className={styles.withdraw_wrap_left_item_percent_red}>0%</span>
+                    </div>
+                </div>
+                <div
+                    className={`${styles.withdraw_wrap_left_item} ${store_withdraw.activePlatform === "yoo money" ? styles.withdraw_wrap_left_item_active : null}`}
+                    // onClick={() => {store_withdraw.setActivePlatform("yoo money")}}
+                    // onKeyPress={(e) => e.key === 'Enter' ? store_withdraw.setActivePlatform("yoo money") : null}
+                    // tabIndex={4}
+                >
+                    <div className={styles.withdraw_wrap_left_item_img_wrap}>
+                        <div>
+                            <Image src="/you_money.svg" alt="you_money"
+                                   className={styles.withdraw_wrap_left_item_you_money} width={45} height={35}/>
                         </div>
                         <div className={styles.withdraw_wrap_left_item_desc_wrap}>
                             <p className={styles.withdraw_wrap_left_item_ps}>YooMoney</p>
@@ -410,7 +532,8 @@ export const RUBMain: FC = () => {
                 />
                 <div className={styles.withdraw_wrap_right_withdrawBalance}>
                     <span className={styles.withdraw_wrap_right_withdrawBalance_grey}>{t("Your balance")}</span>
-                    <span className={styles.withdraw_wrap_right_withdrawBalance_bal}>₽ {store_user.balance_rub.toFixed(2)}</span>
+                    <span
+                        className={styles.withdraw_wrap_right_withdrawBalance_bal}>₽ {store_user.balance_rub.toFixed(2)}</span>
                 </div>
                 <div className={styles.withdraw_wrap_right_amount_wrap}>
                     <div>
@@ -423,6 +546,8 @@ export const RUBMain: FC = () => {
                                tabIndex={4}/>
                         { store_withdraw.amountError ?
                             <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Maximum withdrawal amount")} {store_user.balance_rub.toFixed(2)} ₽</p> : null}
+                        {store_withdraw.multipleError && store_withdraw.activePlatform === "СБП" &&
+                            <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("The amount must be a multiple")}</p>}
                     </div>
                     <div className={styles.withdraw_wrap_right_data_wrap}>
                         <p className={styles.withdraw_wrap_right_data_wrap_text}>{t("Enter your contact information")}</p>
@@ -438,12 +563,12 @@ export const RUBMain: FC = () => {
                         {/*    { store_withdraw.emailError ?*/}
                         {/*        <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Email mail is incorrect")}</p> : null}*/}
                         {/*</div>*/}
-                        <div className={styles.withdraw_input_wrap}>
+                        {store_withdraw.activePlatform === "СБП"  ?? <div className={styles.withdraw_input_wrap}>
                             <input
                                 type="text"
                                 placeholder={getWalletPrompt(store_withdraw.activePlatform,
-                                                             store_withdraw.cards,
-                                                             t)}
+                                    store_withdraw.cards,
+                                    t)}
                                 onBlur={() => checkWallet()}
                                 tabIndex={6}
                                 value={store_withdraw.wallet}
@@ -451,65 +576,141 @@ export const RUBMain: FC = () => {
                                 readOnly={store_withdraw.activePlatform === "card"}
                                 className={`${styles.withdraw_wrap_right_input_active} ${styles.withdraw_wrap_right_input} ${styles.withdraw_wrap_right_input_frst}`}/>
                             {store_withdraw.activePlatform.includes("card") || store_withdraw.activePlatform.includes("aifory") ?
-                            <div>
-                                {(store_withdraw.activePlatform.includes("card") || store_withdraw.activePlatform.includes("aifory")) && store_withdraw.cards.length ?
-                                    <>
-                                        <Image
-                                            className={`${styles.withdraw_input_wrap_up} ${store_withdraw.isOpenCards ? styles.withdraw_input_wrap_open : null}`}
-                                            src="/scroll.svg" alt="up"
-                                            width={24}
-                                            height={24}
-                                            onClick={() => store_withdraw.setIsOpenCards(!store_withdraw.isOpenCards)}/>
-                                        {store_withdraw.wallet[0] === "2" ? <Image className={styles.withdraw_input_wrap_card} src="/mir_card.svg" alt="mir card" width={32} height={22}/> : null}
-                                        {store_withdraw.wallet[0] === "4" ? <Image className={styles.withdraw_input_wrap_card} src="/visa_card.svg" alt="visa" width={32} height={22}/> : null}
-                                        {store_withdraw.wallet[0] === "5" ? <Image className={styles.withdraw_input_wrap_card} src="/mastercard.svg" alt="master card" width={32} height={22}/> : null}
-                                    </>
-                                     : null }
+                                <div>
+                                    {(store_withdraw.activePlatform.includes("card") || store_withdraw.activePlatform.includes("aifory")) && store_withdraw.cards.length ?
+                                        <>
+                                            <Image
+                                                className={`${styles.withdraw_input_wrap_up} ${store_withdraw.isOpenCards ? styles.withdraw_input_wrap_open : null}`}
+                                                src="/scroll.svg" alt="up"
+                                                width={24}
+                                                height={24}
+                                                onClick={() => store_withdraw.setIsOpenCards(!store_withdraw.isOpenCards)}/>
+                                            {store_withdraw.wallet[0] === "2" ?
+                                                <Image className={styles.withdraw_input_wrap_card} src="/mir_card.svg"
+                                                       alt="mir card" width={32} height={22}/> : null}
+                                            {store_withdraw.wallet[0] === "4" ?
+                                                <Image className={styles.withdraw_input_wrap_card} src="/visa_card.svg"
+                                                       alt="visa" width={32} height={22}/> : null}
+                                            {store_withdraw.wallet[0] === "5" ?
+                                                <Image className={styles.withdraw_input_wrap_card} src="/mastercard.svg"
+                                                       alt="master card" width={32} height={22}/> : null}
+                                        </>
+                                        : null}
 
-                                {store_withdraw.activePlatform.includes("card") && !store_withdraw.cards.length ?
-                                    <Link href={store_withdraw.linkAddCard ? store_withdraw.linkAddCard : ""}>
-                                        <div className={styles.withdraw_input_wrap_up_abs}>
-                                            <span className={styles.withdraw_input_wrap_up_text}>{t("Add a new card")}</span>
-                                                <Image src="/add_card.svg" alt="add card" className={`${styles.withdraw_card_menu_item_add_img} ${styles.withdraw_card_menu_item_add_img_mt}`} width={12} height={12}/>
-                                        </div>
-                                    </Link>: null }
-                            </div> : null}
+                                    {store_withdraw.activePlatform.includes("card") && !store_withdraw.cards.length ?
+                                        <Link href={store_withdraw.linkAddCard ? store_withdraw.linkAddCard : ""}>
+                                            <div className={styles.withdraw_input_wrap_up_abs}>
+                                                <span
+                                                    className={styles.withdraw_input_wrap_up_text}>{t("Add a new card")}</span>
+                                                <Image src="/add_card.svg" alt="add card"
+                                                       className={`${styles.withdraw_card_menu_item_add_img} ${styles.withdraw_card_menu_item_add_img_mt}`}
+                                                       width={12} height={12}/>
+                                            </div>
+                                        </Link> : null}
+                                </div> : null}
                             {store_withdraw.isOpenCards ?
                                 <div className={styles.withdraw_card_menu}>
                                     {store_withdraw.cards.map((card) =>
                                         <div key={card} className={styles.withdraw_card_menu_item}>
-                                            <span className={styles.withdraw_card_menu_item_text} onClick={() => {store_withdraw.setWallet(card); store_withdraw.setIsOpenCards(false)}}>{card.slice(0, 6) + "******" + card.slice(-4)}</span>
+                                            <span className={styles.withdraw_card_menu_item_text} onClick={() => {
+                                                store_withdraw.setWallet(card);
+                                                store_withdraw.setIsOpenCards(false)
+                                            }}>{card.slice(0, 6) + "******" + card.slice(-4)}</span>
                                             <div className={styles.withdraw_card_menu_item_img_wrap}>
-                                                {card[0] === "2" ? <Image className={styles.withdraw_card_menu_item_cardIcon} src="/mir_card.svg" alt="mir card" width={32} height={22}/> : null}
-                                                {card[0] === "4" ? <Image className={styles.withdraw_card_menu_item_cardIcon} src="/visa_card.svg" alt="visa" width={32} height={22}/> : null}
-                                                {card[0] === "5" ? <Image className={styles.withdraw_card_menu_item_cardIcon} src="/mastercard.svg" alt="master card" width={32} height={22}/> : null}
-                                                <Image className={styles.withdraw_card_menu_item_delIcon} src="/del_card.svg" alt="del_card" width={13} height={13} onClick={() => store_withdraw.activePlatform.includes("card") ? delCardGM(card) : delCardAIFORY(card)}/>
+                                                {card[0] === "2" ?
+                                                    <Image className={styles.withdraw_card_menu_item_cardIcon}
+                                                           src="/mir_card.svg" alt="mir card" width={32}
+                                                           height={22}/> : null}
+                                                {card[0] === "4" ?
+                                                    <Image className={styles.withdraw_card_menu_item_cardIcon}
+                                                           src="/visa_card.svg" alt="visa" width={32}
+                                                           height={22}/> : null}
+                                                {card[0] === "5" ?
+                                                    <Image className={styles.withdraw_card_menu_item_cardIcon}
+                                                           src="/mastercard.svg" alt="master card" width={32}
+                                                           height={22}/> : null}
+                                                <Image className={styles.withdraw_card_menu_item_delIcon}
+                                                       src="/del_card.svg" alt="del_card" width={13} height={13}
+                                                       onClick={() => store_withdraw.activePlatform.includes("card") ? delCardGM(card) : delCardAIFORY(card)}/>
                                             </div>
                                         </div>
                                     )}
                                     {store_withdraw.activePlatform.includes("card") ?
-                                        <Link className={styles.withdraw_card_menu_item_wrap} href={store_withdraw.linkAddCard ? store_withdraw.linkAddCard : ""}>
-                                            <span className={styles.withdraw_card_menu_item_add_text}>{t("Add a new card")}</span>
-                                            <Image src="/add_card.svg" alt="add card" className={styles.withdraw_card_menu_item_add_img} width={12} height={12}/>
+                                        <Link className={styles.withdraw_card_menu_item_wrap}
+                                              href={store_withdraw.linkAddCard ? store_withdraw.linkAddCard : ""}>
+                                            <span
+                                                className={styles.withdraw_card_menu_item_add_text}>{t("Add a new card")}</span>
+                                            <Image src="/add_card.svg" alt="add card"
+                                                   className={styles.withdraw_card_menu_item_add_img} width={12}
+                                                   height={12}/>
                                         </Link> : null}
                                 </div> : null
                             }
-                            {store_withdraw.walletError ? <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Wallet is incorrect")}</p> : null}
-                        </div>
+                            {store_withdraw.walletError ?
+                                <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Wallet is incorrect")}</p> : null}
+                        </div>}
+                        {store_withdraw.activePlatform === "СБП" && <div className={styles.withdraw_input_wrap}>
+                            <input
+                                type="text"
+                                placeholder={t("Your full name")}
+                                value={fullName}
+                                onBlur={() => onBlurSBP("fullName")}
+                                onChange={(e) => setFullName(e.target.value)}
+                                required={true}
+                                className={`${styles.withdraw_wrap_right_input_active} ${styles.withdraw_wrap_right_input} ${styles.withdraw_wrap_right_input_frst}`}/>
+                            {fullNameError && <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Enter your full name")}</p>}
+                        </div>}
+                        {store_withdraw.activePlatform === "СБП" && <div className={styles.withdraw_input_wrap}>
+                            <input
+                                type="text"
+                                placeholder={t("Your full phone number (Только РФ номера)")}
+                                value={phoneNumber}
+                                onBlur={() => onBlurSBP("phoneNumber")}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                required={true}
+                                className={`${styles.withdraw_wrap_right_input_active} ${styles.withdraw_wrap_right_input} ${styles.withdraw_wrap_right_input_frst}`}/>
+                            {phoneNumberError  && <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Enter your full phone number")}</p>}
+                        </div>}
+                        {store_withdraw.activePlatform === "СБП" && <div className={styles.withdraw_input_wrap}>
+                            <input
+                                type="text"
+                                placeholder={t("date (DD MM YYYY)")}
+                                value={date}
+                                onBlur={() => onBlurSBP("date")}
+                                onChange={(e) => setDate(e.target.value)}
+                                required={true}
+                                className={`${styles.withdraw_wrap_right_input_active} ${styles.withdraw_wrap_right_input} ${styles.withdraw_wrap_right_input_frst}`}/>
+                            {dateError && <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Enter the date of registration of the card")}</p>}
+                        </div>}
+                        {store_withdraw.activePlatform === "СБП" && <div className={styles.withdraw_input_wrap}>
+                            <input
+                                type="text"
+                                placeholder={t("Your bank")}
+                                value={bank}
+                                onBlur={() => onBlurSBP("bank")}
+                                onChange={(e) => setBank(e.target.value)}
+                                required={true}
+                                className={`${styles.withdraw_wrap_right_input_active} ${styles.withdraw_wrap_right_input} ${styles.withdraw_wrap_right_input_frst}`}/>
+                            {bankError && <p className={styles.withdraw_wrap_right_amount_wrap_err}>{t("Enter your bank")}</p>}
+                        </div>}
                     </div>
                 </div>
                 <div className={styles.withdraw_wrap_right_bottom_wrap}>
                     <div className={styles.withdraw_wrap_right_wrap_text}>
                         <div className={styles.withdraw_wrap_right_wrap_text_col}>
-                            <span className={styles.withdraw_wrap_right_bottom_wrap_text_left}>{t("Withdrawal method")}</span>
+                            <span
+                                className={styles.withdraw_wrap_right_bottom_wrap_text_left}>{t("Withdrawal method")}</span>
                             <span className={styles.withdraw_wrap_right_bottom_wrap_text_left}>{t("Commission:")}</span>
                             <span
                                 className={styles.withdraw_wrap_right_bottom_wrap_text_left}>{t("The amount you receive")}</span>
                         </div>
                         <div className={styles.withdraw_wrap_right_wrap_text_col}>
-                            <span className={styles.withdraw_wrap_right_bottom_wrap_text_right}>{activePlatformView}</span>
-                            <span className={styles.withdraw_wrap_right_bottom_wrap_text_right}>{getAmountCommission().commissionDescription}</span>
-                            <span className={store_withdraw.amountError || store_withdraw.commissionError ? styles.withdraw_wrap_right_bottom_wrap_text_right_error : styles.withdraw_wrap_right_bottom_wrap_text_right_orange}>₽ {getAmountCommission().commission}</span>
+                            <span
+                                className={styles.withdraw_wrap_right_bottom_wrap_text_right}>{activePlatformView}</span>
+                            <span
+                                className={styles.withdraw_wrap_right_bottom_wrap_text_right}>{getAmountCommission().commissionDescription || 0}</span>
+                            <span
+                                className={store_withdraw.amountError || store_withdraw.commissionError ? styles.withdraw_wrap_right_bottom_wrap_text_right_error : styles.withdraw_wrap_right_bottom_wrap_text_right_orange}>₽ {getAmountCommission().commission}</span>
                         </div>
                     </div>
                     <div className={styles.withdraw_wrap_right_bottom_wrap_btn}
@@ -521,6 +722,8 @@ export const RUBMain: FC = () => {
                     </div>
                 </div>
                 <div className={styles.withdraw_wrap_right_btm_wrap}>
+                    {activePlatformView === "СБП" && <span
+                        className={styles.withdraw_wrap_right_time_red}>{t("The application is processed within 24 hours from the moment of submission")}</span>}
                     <span className={styles.withdraw_wrap_right_politics_grey}>{t("pressing get i agree")}</span>
                     <span className={styles.withdraw_wrap_right_politics_white}>{t("refund policy")}</span>
                 </div>
