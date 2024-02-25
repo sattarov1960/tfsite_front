@@ -226,7 +226,7 @@
   "The amount must be a multiple": "Сумма должна быть кратна 100. (2429 нельзя, 2400 можно!)",
   "Your full name": "Ваше полное ФИО на английском",
   "Your full phone number (Только РФ номера)": "Ваш номер телефона. (Только РФ номера)",
-  "date (DD MM YYYY)": "Дата регистрации карты (DD.MM.YYYY)",
+  "date (DD MM YYYY)": "До какого карта действительна (DD.MM.YYYY)",
   "Your bank": "Название вашего банка",
   "The application is processed within 24 hours from the moment of submission": "Заявка обрабатывается в течении 24 ч. с момента подачи.",
   "Enter your full name": "Введите ФИО",
