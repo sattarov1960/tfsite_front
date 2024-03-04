@@ -17,7 +17,7 @@
     @apply z-10 flex flex-col items-center relative 2xl:ml-[100px];
 }
 .menu_wrap_auth{
-    @apply z-10 flex flex-col items-center relative ml-[10px] 2xl:ml-[100px];
+    @apply z-10 flex flex-col items-center relative ml-[10px] 2xl:ml-[100px] max-xl:hidden;
 }
 .wrap_language{
     @apply z-10 w-full flex flex-col items-center lg:ml-[-2px];

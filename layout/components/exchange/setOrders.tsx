@@ -7,9 +7,11 @@ import {roundTo} from "@/utilities/Round";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import {useStoreAllOrders, useStoreAuth, useStoreMyOrders, useStoreProducts, useStoreUser} from "@/store/user";
+import {useTranslations} from "next-intl";
 
 
 export function SetOrders(){
+    const t = useTranslations()
     const store_auth = useStoreAuth()
     const store_user = useStoreUser()
     const setRerender = useStoreMyOrders(state => state.setRerender)
@@ -87,7 +89,7 @@ export function SetOrders(){
             return
         }
         if (IsCreate){
-            toast("Вы уже создаете заявку, если это не так обновите страницу", {
+            toast(t("You are already creating a request, if this is not the case, refresh the page"), {
                 position: "bottom-right",
                 type: toast.TYPE.INFO,
                 isLoading: false,
@@ -110,7 +112,7 @@ export function SetOrders(){
             market_hash_name: "Mann Co. Supply Crate Key",
             symbol: "RUB"
         }
-        const toastId = toast("Создаем заявку", {
+        const toastId = toast(t("Create an application"), {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -133,7 +135,7 @@ export function SetOrders(){
                 })
                 setRerender(true)
                 toast.update(toastId, {
-                    render: "Заявка успешно создана",
+                    render: t("Application successfully created"),
                     type: toast.TYPE.SUCCESS,
                     isLoading: false,
                     autoClose: 5000
@@ -162,7 +164,7 @@ export function SetOrders(){
                     "trade url invalid": "Ссылка на обмен не работает обновите ее в личном кабинете",
                 }
                 toast.update(toastId, {
-                    render: data.error ? answer[data.error as keyof typeof answer] : "Ошибка при создании заявки",
+                    render: data.error ? answer[data.error as keyof typeof answer] : t("Error when creating a request"),
                     type: toast.TYPE.ERROR,
                     isLoading: false,
                     autoClose: 5000
@@ -171,7 +173,7 @@ export function SetOrders(){
         }).catch((error) => {
             console.log(error)
             toast.update(toastId, {
-                render: "Ошибка при создании заявки",
+                render: t("Error when creating a request"),
                 type: toast.TYPE.ERROR,
                 isLoading: false,
                 autoClose: 5000
@@ -182,21 +184,21 @@ export function SetOrders(){
     return (
         <section className={styles.section_wrap}>
             <div className={styles.section_card_wrap}>
-                <h2 className={styles.card_top_header}>Заявка на покупку</h2>
+                <h2 className={styles.card_top_header}>{t("Purchase Request")}</h2>
                 <div className={styles.card_wrap}>
                     <div className={styles.card_inner_wrap}>
                         <div className={styles.card_item_wrap}>
-                            <span className={styles.card_item_p}>Цена (за 1 шт.):</span>
+                            <span className={styles.card_item_p}>{t("Price (for 1 pc")}.):</span>
                             <input className={styles.card_item_input_text} value={`₽ ${buyPrice}`} onChange={(event) =>  inputPrice(event.target.value, "buy", "₽ ")}/>
                         </div>
                         <div className={styles.card_item_wrap}>
-                            <span className={styles.card_item_p}>Сколько вы хотите купить (шт.):</span>
+                            <span className={styles.card_item_p}>{t("How many do you want to buy (pcs")}.):</span>
                             <div className={styles.card_item_input}>
                             <input className={styles.card_item_input_text} value={buyCount} onChange={(event) =>  inputCount(event.target.value, "buy")}/>
                             </div>
                         </div>
                         <div className={`${styles.card_item_wrap} ${styles.card_item_wrap_bottom}`}>
-                            <span className={styles.card_item_p}>Общая сумма:</span>
+                            <span className={styles.card_item_p}>{t("total amount")}:</span>
                             <div className={styles.card_item_total}>
                                 <span>₽{roundTo(buyCount * buyPrice, 2)}</span>
                             </div>
@@ -204,24 +206,24 @@ export function SetOrders(){
                         <div className={styles.card_item_hr}></div>
                     </div>
                     <button className={styles.card_item_button} onClick={() => createOrder("buy")}>
-                        <span className={styles.card_item_button_span}>Купить</span>
+                        <span className={styles.card_item_button_span}>{t("Buy")}</span>
                     </button>
                 </div>
             </div>
             <div className={styles.section_card_wrap}>
-                <h2 className={styles.card_top_header}>Заявка на продажу</h2>
+                <h2 className={styles.card_top_header}>{t("Sales application")}</h2>
                 <div className={styles.card_wrap}>
                     <div className={styles.card_inner_wrap}>
                         <div className={styles.card_item_wrap}>
-                            <span className={styles.card_item_p}>Цена (за 1 шт.):</span>
+                            <span className={styles.card_item_p}>{t("Price (for 1 pc")}.):</span>
                             <input className={styles.card_item_input_text} value={`₽ ${sellPrice}`} onChange={(event) =>  inputPrice(event.target.value, "sell", "₽ ")}/>
                         </div>
                         <div className={styles.card_item_wrap}>
-                            <span className={styles.card_item_p}>Сколько вы хотите продать (шт.):</span>
+                            <span className={styles.card_item_p}>{t("How much do you want to sell (pcs")}.):</span>
                             <input className={styles.card_item_input_text} value={sellCount} onChange={(event) =>  inputCount(event.target.value, "sell")}/>
                         </div>
                         <div className={`${styles.card_item_wrap} ${styles.card_item_wrap_bottom}`}>
-                            <span className={styles.card_item_p}>Общая сумма:</span>
+                            <span className={styles.card_item_p}>{t("total amount")}:</span>
                             <div className={styles.card_item_total}>
                                 <span>₽{roundTo(sellCount * sellPrice, 2)}</span>
                             </div>
@@ -229,7 +231,7 @@ export function SetOrders(){
                         <div className={styles.card_item_hr}></div>
                     </div>
                     <button className={styles.card_item_button} onClick={() => createOrder("sell")}>
-                        <span className={styles.card_item_button_span}>Продать</span>
+                        <span className={styles.card_item_button_span}>{t("Sell")}</span>
                     </button>
                 </div>
             </div>

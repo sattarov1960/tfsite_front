@@ -8,6 +8,7 @@ import {roundTo} from "@/utilities/Round";
 import axios from "axios";
 import {toast} from "react-toastify";
 import {useStoreAllOrders} from "@/store/user";
+import {useTranslations} from "next-intl";
 
 
 interface Item {
@@ -52,6 +53,7 @@ export function ExchangeTop() {
         //     behavior: 'smooth'
         // });
     })
+    const t = useTranslations()
     const buyOrders = useStoreAllOrders(state => state.buyOrders)
     const sellOrders = useStoreAllOrders(state => state.sellOrders)
     return (
@@ -67,23 +69,23 @@ export function ExchangeTop() {
                 <div className={styles.exchange_right_wrap}>
                     <div className={styles.exchange_right_top_wrap}>
                         <div className={styles.exchange_right_top_wrap}>
-                            <h1 className={styles.exchange_right_top_wrap_h1}>Ключ от ящика Манн Ко</h1>
+                            <h1 className={styles.exchange_right_top_wrap_h1}>{t("Mann Co Crate Key")}</h1>
                             <span className={styles.exchange_right_top_wrap_span_frst}><span className={styles.exchange_right_top_wrap_span_scnd}></span></span>
                         </div>
                     </div>
                     <p className={styles.exchange_right_p}>(Mann Co Supply Crate Key)</p>
                     <div className={styles.exchange_right_bottom_wrap}>
                         <div className={styles.statistics_header_orders}>
-                            <p className={styles.exchange_statistics_p}>Запросы на покупку и продажу</p>
+                            <p className={styles.exchange_statistics_p}>{t("Buy and sell requests")}</p>
                             <div className={styles.statistics_header_open_wrap} onClick={() => setOpen(!isOpen)}>
-                                <span className={styles.statistics_header_open_span}>{isOpen ? "Скрыть": "Развернуть"}</span>
+                                <span className={styles.statistics_header_open_span}>{isOpen ? t("Hide"): t("Expand")}</span>
                                 <Image src={open_items} alt="open" height={24} width={24} style={{rotate: isOpen ? "180deg" : ""}}/>
                             </div>
                         </div>
                         <div className={styles.exchange_statistics_header_wrap}>
-                            <span className={styles.exchange_statistics_header_span_frst}>На покупку</span>
-                            <span className={styles.exchange_statistics_header_span_scnd}>Цена</span>
-                            <span className={styles.exchange_statistics_header_span_thrd}>На продажу</span>
+                            <span className={styles.exchange_statistics_header_span_frst}>{t("To purchase")}</span>
+                            <span className={styles.exchange_statistics_header_span_scnd}>{t("Price")}</span>
+                            <span className={styles.exchange_statistics_header_span_thrd}>{t("For sale")}</span>
                         </div>
                         <div className={styles.orders_table_wrap}>
                             {sellOrders.length || buyOrders.length ? <>

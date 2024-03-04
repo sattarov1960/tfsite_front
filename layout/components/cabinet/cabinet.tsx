@@ -61,34 +61,64 @@ export const Cabinet: FC = () => {
     }
 
     const copyCode = () => {
-        try{
-            navigator.clipboard.writeText(user.telegramCodeActivate)
-            toast.success(
-                "Код активации скопирован", {
-                    position: "bottom-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
+        try {
+            navigator.clipboard.writeText(user.telegramCodeActivate).then(() => {
+                toast.success(
+                    "Код активации скопирован", {
+                        position: "bottom-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    }
+                )
+            })
+        } catch (e) {
+            try{
+                const textArea = document.createElement('textarea');
+                textArea.value = "/start " + user.telegramCodeActivate;
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    const msg = successful ? 'successful' : 'unsuccessful';
+                    console.log('Fallback copying text command was ' + msg);
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
                 }
-            )
-        }
-        catch (e) {
-            toast.error(
-                "Ошибка копирования кода активации", {
-                    position: "bottom-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                }
-            )
+                document.body.removeChild(textArea);
+                toast.success(
+                    "Код активации скопирован", {
+                        position: "bottom-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    }
+                )
+            }
+            catch (e) {
+                toast.error(
+                    "Ошибка копирования кода активации", {
+                        position: "bottom-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    }
+                )
+            }
         }
     }
 

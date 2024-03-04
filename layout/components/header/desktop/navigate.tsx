@@ -30,7 +30,7 @@ const Navigate: FC = () => {
                         alt="Home"
                         className={`${styles.hover_navigate} ${["/ru", "/en", "/blr", "/ua", "/"].includes(pathname) ? "" : styles.menu_item_icon_active}`}
                     />
-                    <Link href="/"><span className={`${styles.menu_item_text} ${["/ru", "/en", "/blr", "/ua", "/"].includes(pathname) ? styles.menu_item_text_active : ""}`}>{t("Home")}</span></Link>
+                    <Link prefetch={false} href="/"><span className={`${styles.menu_item_text} ${["/ru", "/en", "/blr", "/ua", "/"].includes(pathname) ? styles.menu_item_text_active : ""}`}>{t("Home")}</span></Link>
                 </div>
                 {["/ru", "/en", "/blr", "/ua", "/"].includes(pathname) ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
@@ -41,10 +41,10 @@ const Navigate: FC = () => {
                         width={20}
                         height={20}
                         alt="exchange"
-                        style={{opacity: "40%"}}/>
-                        {/*className={`${styles.hover_navigate} ${pathname.includes("swap") ? "" : styles.menu_item_icon_active}`}/>*/}
-                    {/*<Link href="/swap"><span className={`${styles.menu_item_text} ${pathname.includes("swap") ? styles.menu_item_text_active : ""}`}>{t("swap")}</span></Link>*/}
-                    <Link href="/"><span className={`${styles.menu_item_text_inactive} ${pathname.includes("swap") ? styles.menu_item_text_active : ""}`}>{t("swap")}</span></Link>
+                        // style={{opacity: "40%"}}/>
+                        className={`${styles.hover_navigate} ${pathname.includes("swap") ? "" : styles.menu_item_icon_active}`}/>
+                    <Link href="/swap" prefetch={false}><span className={`${styles.menu_item_text} ${pathname.includes("swap") ? styles.menu_item_text_active : ""}`}>{t("swap")}</span></Link>
+                    {/*<Link href="/"><span className={`${styles.menu_item_text_inactive} ${pathname.includes("swap") ? styles.menu_item_text_active : ""}`}>{t("swap")}</span></Link>*/}
                 </div>
                 {pathname.includes("/swap") ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
@@ -57,13 +57,15 @@ const Navigate: FC = () => {
                         alt="BUY/SELL"
                         className={`${styles.hover_navigate} ${pathname.includes("#buy-sell") ? "" : styles.menu_item_icon_active}`}
                     />
-                    <Link href="/#buy-sell" onClick={(e) => {
+                    <Link prefetch={false} href="/#buy-sell" onClick={(e) => {
                         e.preventDefault();
                         scrollToBuySell('buy-sell');
                     }}><span className={styles.menu_item_text}>{t("Buy/Sell")}</span></Link>
                 </div>
                 {pathname.includes("#buy-sell") ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
+            rm -rf .next
+            npm run build
             <li className={styles.menu_item}>
                 <div className={styles.sub_menu_item}>
                     <Image
@@ -72,7 +74,7 @@ const Navigate: FC = () => {
                         height={20}
                         alt="FAQ"
                         className={`${styles.hover_navigate} ${pathname.includes("#faq") ? "" : styles.menu_item_icon_active}`}/>
-                    <Link href="/#faq" onClick={(e) => {
+                    <Link prefetch={false} href="/#faq" onClick={(e) => {
                         e.preventDefault();
                         scrollToBuySell('faq');
                     }}><span className={`${styles.menu_item_text} ${pathname.includes("#faq") ? styles.menu_item_text_active : ""}`}>{t("FAQ")}</span></Link>

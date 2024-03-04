@@ -7,8 +7,10 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
 import {useStoreAllOrders, useStoreAuth, useStoreMyOrders, useStoreUser} from "@/store/user";
+import {useTranslations} from "next-intl";
 
 export function MyOrders(){
+    const t = useTranslations()
     const store_auth = useStoreAuth()
     const store_user = useStoreUser()
     const setRerender = useStoreMyOrders(state => state.setRerender)
@@ -40,11 +42,11 @@ export function MyOrders(){
                 setHaveSellOrders(data.haveSellOrder)
             }
             else{
-                toast.error(data.error ? data.error : "Ошибка при получении заявок пользователя")
+                toast.error(data.error ? data.error : t("Error while receiving user requests"))
             }
         }).catch((error) => {
             console.log(error)
-            toast.error("Ошибка при получении заявок пользователя")
+            toast.error(t("Error while receiving user requests"))
         })
     }, [rerender]);
     function cancelOrder(orderID: string, action: string){
@@ -53,7 +55,7 @@ export function MyOrders(){
             return
         }
         if (orderID){
-            const toastId = toast("Удаляем заявку", {
+            const toastId = toast(t("Deleting the application"), {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -70,7 +72,7 @@ export function MyOrders(){
                     deleteOrder(orderID)
                     setRerender(false)
                     toast.update(toastId, {
-                        render: "Заявка успешно удалена",
+                        render: t("Application successfully deleted"),
                         type: toast.TYPE.SUCCESS,
                         isLoading: false
                     });
@@ -83,7 +85,7 @@ export function MyOrders(){
                 }
                 else{
                     toast.update(toastId, {
-                        render: data.error ? data.error : "Ошибка при удалении заявки",
+                        render: data.error ? data.error : t("Error when deleting an application"),
                         type: toast.TYPE.ERROR,
                         isLoading: false
                     });
@@ -91,7 +93,7 @@ export function MyOrders(){
             }).catch((error) => {
                 console.log(error)
                 toast.update(toastId, {
-                    render: "Ошибка при удалении заявки",
+                    render: t("Error when deleting an application"),
                     type: toast.TYPE.ERROR,
                     isLoading: false
                 })
@@ -101,17 +103,17 @@ export function MyOrders(){
     return (
         <section className={styles.section_wrap}>
             {haveBuyOrder ? <div className={styles.section_card_wrap}>
-                <h2 className={styles.card_top_header}>Мои лоты на покупку</h2>
+                <h2 className={styles.card_top_header}>{t("My purchase requests")}</h2>
                 <div className={styles.card_wrap}>
                     <div className={styles.card_inner_wrap}>
                         <div className={`${styles.card_item_wrap}`}>
-                            <span className={styles.card_item_p}>Цена (за 1 шт):</span>
+                            <span className={styles.card_item_p}>{t("Price (for 1 pc):")}</span>
                             <div className={styles.card_item_total}>
                                 <span>₽ {buyPrice}</span>
                             </div>
                         </div>
                         <div className={`${styles.card_item_wrap} ${styles.card_item_wrap_bottom}`}>
-                            <span className={styles.card_item_p}>Сколько вы хотите хотите купить (шт.):</span>
+                            <span className={styles.card_item_p}>{t("How many do you want to buy (pcs")}.):</span>
                             <div className={styles.card_item_total}>
                                 <span>{countBuy}</span>
                             </div>
@@ -119,33 +121,33 @@ export function MyOrders(){
                         <div className={styles.card_item_hr}></div>
                     </div>
                     <button className={styles.card_item_button} onClick={() => cancelOrder(buyOrderID, "buy")}>
-                        <span>Отменить</span>
+                        <span>{t("Cancel")}</span>
                     </button>
                 </div>
             </div> :
                 <div className={styles.section_card_wrap}>
-                    <h2 className={styles.card_top_header}>Мои лоты на покупку</h2>
+                    <h2 className={styles.card_top_header}>{t("My lots for purchase")}</h2>
                     <div className={styles.section_card_wrap_no_lots}>
-                        <h2 className={styles.section_card_no_lots_h2}>У вас нету активных запросов на покупку.</h2>
-                        <p className={styles.section_card_no_lots_p}>Для того, чтобы выставить запрос на покупку<br/> перейдите в верх страницы</p>
+                        <h2 className={styles.section_card_no_lots_h2}>{t("You have no active purchase requests")}.</h2>
+                        <p className={styles.section_card_no_lots_p}>{t("To submit a purchase request")}<br/> {t("go to the top of the page")}</p>
                         <div className={styles.card_item_hr_no_lots}></div>
                         <button className={`${styles.card_item_button} ${styles.card_item_button_inactive}`}>
-                            <span>Отменить</span>
+                            <span>{t("Cancel")}</span>
                         </button>
                     </div>
                 </div>}
             {haveSellOrder ? <div className={styles.section_card_wrap}>
-                <h2 className={styles.card_top_header}>Мои лоты на продажу</h2>
+                <h2 className={styles.card_top_header}>{t("My lots for sale")}</h2>
                 <div className={styles.card_wrap}>
                     <div className={styles.card_inner_wrap}>
                         <div className={`${styles.card_item_wrap}`}>
-                            <span className={styles.card_item_p}>Цена (за 1 шт):</span>
+                            <span className={styles.card_item_p}>{t("Price (for 1 pc):")}</span>
                             <div className={styles.card_item_total}>
                                 <span>₽ {sellPrice}</span>
                             </div>
                         </div>
                         <div className={`${styles.card_item_wrap} ${styles.card_item_wrap_bottom}`}>
-                            <span className={styles.card_item_p}>Сколько вы хотите хотите продать (шт.):</span>
+                            <span className={styles.card_item_p}>{t("How much do you want to sell (pcs")}.):</span>
                             <div className={styles.card_item_total}>
                                 <span>{countSell}</span>
                             </div>
@@ -153,18 +155,18 @@ export function MyOrders(){
                         <div className={styles.card_item_hr}></div>
                     </div>
                     <button className={styles.card_item_button} onClick={() => cancelOrder(sellOrderID, "sell")}>
-                        <span>Отменить</span>
+                        <span>{t("Cancel")}</span>
                     </button>
                 </div>
             </div> :
                 <div className={styles.section_card_wrap}>
-                    <h2 className={styles.card_top_header}>Мои лоты на продажу</h2>
+                    <h2 className={styles.card_top_header}>{t("My lots for sale")}</h2>
                     <div className={styles.section_card_wrap_no_lots}>
-                        <h2 className={styles.section_card_no_lots_h2}>У вас нету активных запросов на продажу.</h2>
-                        <p className={styles.section_card_no_lots_p}>Для того, чтобы выставить запрос на продажу<br/> перейдите в верх страницы</p>
+                        <h2 className={styles.section_card_no_lots_h2}>{t("You have no active sales requests")}.</h2>
+                        <p className={styles.section_card_no_lots_p}>{t("To submit a sales request")}<br/> {t("go to the top of the page")}</p>
                         <div className={styles.card_item_hr_no_lots}></div>
                         <button className={`${styles.card_item_button} ${styles.card_item_button_inactive}`}>
-                            <span>Отменить</span>
+                            <span>{t("Cancel")}</span>
                         </button>
                     </div>
                 </div>}

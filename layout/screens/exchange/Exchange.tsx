@@ -10,7 +10,6 @@ import styles from "@/styles/exchange/exchangeScreen.module.css"
 import {redirect} from "next/navigation";
 
 const ExchangeScreen: FC = () => {
-    return redirect("https://tf2key.ru/")
     return (
         <Wrap>
             <main className={styles.main}>

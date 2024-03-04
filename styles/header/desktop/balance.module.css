@@ -1,5 +1,5 @@
 .menu_balance {
-    @apply max-2xl:mb-[60px] max-2xl:space-y-7 max-2xl:mt-[60px] mr-[225px] flex-col flex 2xl:flex-row items-center 2xl:mr-[105px];
+    @apply max-2xl:mb-[60px] max-2xl:space-y-7 max-2xl:mt-[60px] xl:mr-[225px] flex lg:flex-row flex-col items-center 2xl:mr-[105px];
 }
 .sub_menu_balance{
     @apply ml-[80px] relative
@@ -30,6 +30,9 @@
 }
 .sub_menu_balance_bot {
     @apply flex items-center mt-[4px];
+}
+.sub_menu_balance_bot_last {
+    @apply flex items-center mt-[-28px];
 }
 .sub_menu_balance_bot_text {
     @apply text-[14px] text-[#f2f1f866] font-[500] cursor-pointer;

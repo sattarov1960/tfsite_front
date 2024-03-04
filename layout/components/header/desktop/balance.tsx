@@ -34,7 +34,7 @@ export const Balance: FC = () => {
                         onClick={() => storeUpBalanceRUB.setIsOpenBalance(!storeUpBalanceRUB.isOpenMenu)}
                     />
                 </div>
-                <div className={styles.sub_menu_balance_bot} onClick={() => storeUpBalanceRUB.Open()}>
+                <div className={`${styles.sub_menu_balance_bot}`} onClick={() => storeUpBalanceRUB.Open()}>
                                 <span className={styles.sub_menu_balance_bot_text}
                                 >{t("Top up")}</span
                                 >
@@ -48,8 +48,7 @@ export const Balance: FC = () => {
                 </div>
                 {storeUpBalanceRUB.isOpenMenu ? <BalanceMenu platform="rub"/> : null}
             </div>
-
-            <div className={styles.sub_menu_balance}>
+            <div className={`${styles.sub_menu_balance} ${styles.sub_menu_balance_last}`}>
                 <div className={styles.sub_menu_balance_top}>
                     <Image
                         src="/icon_wallet.svg"
