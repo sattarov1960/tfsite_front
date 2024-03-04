@@ -263,7 +263,7 @@ export const RUBMain: FC = () => {
         else {
             store_withdraw.setAmountError(false)
         }
-        if (store_withdraw.activePlatform === "card" && store_withdraw.amount < 1000 ||
+        if (store_withdraw.activePlatform === "card" && store_withdraw.amount < 1100 ||
             store_withdraw.activePlatform === "qiwi" && store_withdraw.amount < 10 ||
             store_withdraw.activePlatform === "aifory" && store_withdraw.amount < 1050 ||
             store_withdraw.activePlatform === "СБП" && store_withdraw.amount < 1000) {
