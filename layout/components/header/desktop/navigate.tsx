@@ -64,8 +64,6 @@ const Navigate: FC = () => {
                 </div>
                 {pathname.includes("#buy-sell") ? <hr className={styles.menu_item_active_border}/> : null}
             </li>
-            rm -rf .next
-            npm run build
             <li className={styles.menu_item}>
                 <div className={styles.sub_menu_item}>
                     <Image
