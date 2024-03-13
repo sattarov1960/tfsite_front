@@ -489,3 +489,11 @@ export const useStoreEngineeringWorks = create<Popup>((set) => ({
     Close: () => set({ isOpen: false })
 }))
 
+
+
+export const useStoreInstallExtension = create<Popup>((set) => ({
+    isOpen: false,
+    Open: () => set({ isOpen: true }),
+    Close: () => set({ isOpen: false })
+}))
+

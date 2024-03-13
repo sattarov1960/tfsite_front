@@ -6,7 +6,14 @@ import {type} from "node:os";
 import {roundTo} from "@/utilities/Round";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
-import {useStoreAllOrders, useStoreAuth, useStoreMyOrders, useStoreProducts, useStoreUser} from "@/store/user";
+import {
+    useStoreAllOrders,
+    useStoreAuth,
+    useStoreInstallExtension,
+    useStoreMyOrders,
+    useStoreProducts,
+    useStoreUser
+} from "@/store/user";
 import {useTranslations} from "next-intl";
 
 
@@ -18,6 +25,7 @@ export function SetOrders(){
     const addOrder = useStoreAllOrders(state => state.addOrder)
     const buyOrders = useStoreAllOrders(state => state.buyOrders)
     const sellOrders = useStoreAllOrders(state => state.sellOrders)
+    const store_extension = useStoreInstallExtension()
     let IsCreate = false
     const [buyPrice, setBuyPrice] = useState(150)
     const [buyCount, setBuyCount] = useState(1)
@@ -142,6 +150,9 @@ export function SetOrders(){
                 });
             }
             else{
+                if (data.error === "Seller need download extension and login in steam"){
+                    store_extension.Open()
+                }
                 let answer = {
                     "symbol must be RUB or USD": "Валюта должна быть RUB или USD",
                     "type must be sell or buy": "Тип должен быть sell или buy",
@@ -161,7 +172,7 @@ export function SetOrders(){
                     "appId must be 440": "appId должен быть 440",
                     "market_hash_name must be Mann Co. Supply Crate Key": "market_hash_name должен быть Mann Co. Supply Crate Key",
                     "Seller need download extension and login in steam": "Вам необходимо скачать расширение и войти в Steam.",
-                    "trade url invalid": "Ссылка на обмен не работает обновите ее в личном кабинете",
+                    "trade url invalid": "Ссылка на обмен не работает, перезапустите расширение",
                 }
                 toast.update(toastId, {
                     render: data.error ? answer[data.error as keyof typeof answer] : t("Error when creating a request"),

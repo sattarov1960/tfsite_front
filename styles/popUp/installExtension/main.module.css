@@ -1,0 +1,37 @@
+.cross {
+    @apply absolute w-[30px] sm:w-[40px] h-[30px] sm:h-[40px] right-[4px] sm:right-[20px] top-[4px] sm:top-[20px] cursor-pointer;
+}
+.popup_wrap{
+    @apply w-[335px] h-[342px] lg:w-[545px] lg:h-[410px] relative rounded-[8px] lg:rounded-[10px] flex flex-col items-center;
+    background: rgb(17, 23, 41);
+}
+.popup_info_icon{
+    @apply w-[50px] h-[50px] lg:w-[64px] lg:h-[64px] mt-[30px] lg:mt-[40px];
+}
+.popup_header{
+    @apply text-[16px] lg:text-[22px] leading-[22px] lg:leading-[32px] text-center font-medium mt-[20px];
+    color: rgb(242, 241, 248);
+}
+.popup_desc_text{
+    @apply text-[12px] lg:text-[16px] lg:leading-[22px] font-normal leading-[18px] text-center whitespace-pre-line mt-[10px] lg:mt-[14px];
+    color: rgba(242, 241, 248, 0.6);
+}
+.popup_desc_btn{
+    @apply mt-[20px] lg:mt-[30px] w-[256px] h-[50px] rounded-[7px] flex justify-center items-center;
+    background: rgb(255, 119, 16);
+}
+.popup_desc_btn_text{
+    @apply text-[16px] font-semibold leading-[20px];
+    color: rgb(242, 241, 248);
+}
+.popup_desc_text_gray{
+    @apply text-[12px] lg:text-[16px] leading-[18px] lg:leading-[22px] text-center mt-[30px];
+    color: rgb(242, 241, 248);
+}
+.popup_wrap_text{
+    @apply flex flex-nowrap gap-x-[10px] lg:gap-x-[30px] justify-center mt-[10px];
+}
+.popup_wrap_text_text{
+    @apply underline text-[16px] font-semibold leading-[24px];
+    color: rgb(145, 156, 251);
+}

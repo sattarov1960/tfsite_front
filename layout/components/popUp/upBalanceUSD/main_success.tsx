@@ -20,7 +20,7 @@ export const Success: FC = () => {
             store.setOpenSuccess(false)
         }
         else {
-            alert(response.data.msg)
+            alert("Не нашли ваш платеж")
         }
     }
     const cancelOrder = async () => {

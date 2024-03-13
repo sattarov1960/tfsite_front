@@ -3,7 +3,7 @@
 import {FC} from "react";
 import styles from "@/styles/popUp/buyOrder/buyOrder.module.css"
 import Image from "next/image";
-import {useStoreBuyOrder, useStoreUser} from "@/store/user";
+import {useStoreBuyOrder, useStoreInstallExtension, useStoreUser} from "@/store/user";
 import {toast} from "react-toastify";
 import {roundTo} from "@/utilities/Round";
 import axios from "axios";

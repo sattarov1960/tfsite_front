@@ -23,6 +23,7 @@ import Withdraw from "@/layout/components/popUp/withdraw/withdraw";
 import Ban from "@/layout/components/popUp/ban/ban";
 import BuyOrder from "@/layout/components/popUp/buyOrder/buyOrder";
 import EngineeringWorks from "@/layout/components/popUp/engineeringWorks/engineeringWorks";
+import InstallExtension from "@/layout/components/popUp/installExtension/installExtension";
 //
 // const Auth = dynamic(() => import("@/layout/components/popUp/auth/auth"), {loading: () => <p>Loading...</p>});
 // const Logout = dynamic(() => import("@/layout/components/popUp/logout/logout"), {loading: () => <p>Loading...</p>});
@@ -185,6 +186,7 @@ const Wrap: FC<PropsWithChildren<unknown>> = async ({children}) => {
             <SuccessUpBalanceUSD/>
             <Withdraw/>
             <Sell/>
+            <InstallExtension/>
             <EngineeringWorks/>
             <Buy/>
             <Auth/>

@@ -268,5 +268,14 @@
   "Active lots for sale": "Активные лоты на продажу",
   "Mann co box key": "Ключ от ящика Манн ко",
   "things": "штук",
-  "руб": "руб"
+  "руб": "руб",
+
+  "You do not have the extension installed": "У вас не установлено расширение!",
+  "For the exchange to work correctly, you need to install the extension": "Для корректной работы биржи\nвам необходимо установить расширение.",
+  "Download extension": "Скачать расширение",
+  "Installation instructions:": "Инструкция по установке:",
+  "Text instructions": "Текстовая инструкция",
+  "Video instruction": "Видеоинструкция",
+  "": ""
+
 }
